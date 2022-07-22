@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
+import UserData from './pages/UserData'
+import AppFunctionComponent from './pages/AppFunctionComponent'
+import AppClassComponent from './pages/AppClassComponent'
+import AddUserForm from './pages/AddUserForm'
+import NotFound from './pages/NotFound'
+import ListUsers from './pages/ListUsers'
+import NavbarComponent from './Components/NavbarComponent'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+      <div className="App">
+        <BrowserRouter>
+        <NavbarComponent/>
+        <Switch>
+          <Route path={"/"} exact component={AddUserForm}/>
+          <Route path={"/function/:id"} exact component={AppFunctionComponent}/>
+          <Route path={"/class"} exact component={AppClassComponent}/>
+          <Route path={"/UserData"} exact component={UserData}/>
+          <Route path={"/ListUsers"} exact component={ListUsers}/>
+          <Route path={"*"} exact component={NotFound}/>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
 }
 
 export default App;
