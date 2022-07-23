@@ -2,6 +2,9 @@ import '../App.css';
 import React from 'react'
 import { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 function AddUserForm(props) {
     console.log("Add User Props", props)
     // History,Location Hooks To Navigate Through The Pages , look onSubmit() Function
@@ -79,6 +82,7 @@ function AddUserForm(props) {
                 disabled={errors.positionErr || errors.nameErr}
                 type="submit" className="btn btn-primary">Submit</button>
         </form>
+        <i class="fa-solid fa-envelope"></i>
     </>)
 }
 export default AddUserForm
