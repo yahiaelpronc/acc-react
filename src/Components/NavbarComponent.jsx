@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-
+import { useSelector } from 'react-redux';
 function NavbarComponent() {
+    const language = useSelector((state) => state.lang)
+    console.log("Redux Session Variable :", language)
     return (<>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -22,6 +24,9 @@ function NavbarComponent() {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/ListUsers">List Users</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="#">Redux Session Variable : {language}</Link>
                         </li>
                     </ul>
                 </div>
