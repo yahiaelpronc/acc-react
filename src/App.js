@@ -15,11 +15,13 @@ function App() {
         <BrowserRouter>
         <NavbarComponent/>
         <Switch>
+          {/* Pages */}
           <Route path={"/"} exact component={AddUserForm}/>
           <Route path={"/function"} exact component={AppFunctionComponent}/>
           <Route path={"/class"} exact component={AppClassComponent}/>
           <Route path={"/UserData"} exact component={UserData}/>
           <Route path={"/ListUsers"} exact component={ListUsers}/>
+          {/* Test Pages */}
           <Route path={"*"} exact component={NotFound}/>
           </Switch>
         </BrowserRouter>
