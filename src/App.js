@@ -9,18 +9,14 @@ import AddUserForm from './pages/AddUserForm'
 import NotFound from './pages/NotFound'
 import ListUsers from './pages/ListUsers'
 import NavbarComponent from './Components/NavbarComponent'
+import FooterComponent from './Components/FooterComponent';
 function App() {
     return (
       <div className="App">
         <BrowserRouter>
         <NavbarComponent/>
+        <FooterComponent/>
         <Switch>
-          <Route path={"/"} exact component={AddUserForm}/>
-          <Route path={"/function"} exact component={AppFunctionComponent}/>
-          <Route path={"/class"} exact component={AppClassComponent}/>
-          <Route path={"/UserData"} exact component={UserData}/>
-          <Route path={"/ListUsers"} exact component={ListUsers}/>
-          <Route path={"*"} exact component={NotFound}/>
           </Switch>
         </BrowserRouter>
       </div>
