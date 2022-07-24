@@ -1,7 +1,14 @@
+.chat-container{
+  overflow-y:scroll;
+  height:400px
+}
 body{
   overflow-x: hidden;
 }
-.card {
+.box3{
+  box-shadow: 0 0 15px 2px rgb(0 0 0 / 40%) !important;
+}
+.card1{
   display: block;
   height: 300px;
   width: 300px;
@@ -14,8 +21,8 @@ body{
   margin-top: 41px;
 }
 
-.card:hover,
-.card:focus {
+.card1:hover,
+.card1:focus {
   transform: scale(1.1);
 }
 
@@ -38,7 +45,7 @@ body{
   position: relative;
 }
 
-.card {
+.card1 {
   width: fit-content;
   height: fit-content;
   margin: var(--cardMargin);
@@ -48,11 +55,11 @@ body{
   margin: 20px auto;
 }
 
-.card:not(:nth-child(1)) {
+.card1:not(:nth-child(1)) {
   margin-top: 50px;
 }
 
-.card .content {
+.card1 .content {
   width: 100%;
   height: 100%;
   display: flex;
@@ -62,7 +69,7 @@ body{
   text-transform: capitalize;
 }
 
-.card .content P {
+.card1 .content P {
   font-weight: bold;
   font-size: 18PX;
   color: #5B6068;
@@ -180,7 +187,7 @@ h4.card-title {
 .ps-container {
   -ms-touch-action: auto;
   touch-action: auto;
-  overflow: hidden !important;
+  overflow-x: hidden !important;
   -ms-overflow-style: none;
 }
 

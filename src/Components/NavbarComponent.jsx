@@ -44,12 +44,9 @@ function NavbarComponent() {
         <Link to="/" className="logo">ACC</Link>
         <ul className="main-nav">
           <li><Link to="/emergency">Emergency</Link></li>
-          <li><Link to="#services">Services</Link></li>
           <li><Link to="/testAddLocation">Add Location</Link></li>
           <li><Link to="/testAddAnimal">Add Animal</Link></li>
-          <li>
-            <Link to="#">Other Links</Link>
-          </li>
+          <li><Link to="/login">Login</Link></li>
         </ul>
       </div>
     </div>

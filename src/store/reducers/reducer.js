@@ -1,12 +1,24 @@
 const INITIAL_VALUE = {
-    lang:"en"
+    loggedUser:[],
+    currentVet:[],
+    logged:false
 }
-export default function LangReducer(state=INITIAL_VALUE,action){
+export default function UserReducer(state=INITIAL_VALUE,action){
     switch(action.type){
-        case "CHANGE_LANG":
+        case "CHANGE_USER":
             return{
                 ...state,
-                lang : action.payload
+                loggedUser : action.payload
+            };
+        case "CHANGE_VET":
+            return{
+                ...state,
+                currentVet : action.payload
+            };
+        case "CHANGE_LOGGED":
+            return{
+                ...state,
+                logged : action.payload
             };
         default :
             return state
