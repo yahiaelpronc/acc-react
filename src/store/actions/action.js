@@ -1,15 +1,22 @@
-export const changeLang = (payload) => {
+export const changeUser = (payload) => {
     return {
         payload,
-        type: "CHANGE_LANG"
+        type: "CHANGE_USER"
     }
 }
 
 
 
-export const changeTheme = (payload) => {
+export const changeVet = (payload) => {
     return {
         payload,
-        type: "CHANGE_THEME"
+        type: "CHANGE_VET"
+    }
+}
+
+export const changeLogged = (payload) => {
+    return {
+        payload,
+        type: "CHANGE_LOGGED"
     }
 }

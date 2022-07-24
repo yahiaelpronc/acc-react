@@ -36,6 +36,11 @@ function FooterComponent() {
                                     <i className="fab fa-youtube"></i>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#" className="instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
                         </ul>
                         <p className="text">
                             Welcome to Animal Care Center of Qena, your local veterinarians in Qena,Egypt.
