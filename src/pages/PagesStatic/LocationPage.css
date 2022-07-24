@@ -1,0 +1,25 @@
+
+.card{
+    
+    margin-left: 4%;
+    background-color: #1787e0;
+    transition: width 2s, height 2s, transform 2s;
+    
+}
+.card:hover{
+    transform: scale(1.1);
+    
+}
+.card-title{
+    font-weight: bold;
+    font-size: 18px;
+
+}
+.card-para{
+    margin-right: 65%;
+    color: white;
+}
+.img{
+    height: 250px;
+}
+    

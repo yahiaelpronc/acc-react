@@ -13,13 +13,15 @@ import ListUsers from './pages3/listusers';
 import UserDetails from './pages3/userdetails';
 import ListVets from './pages3/listvets';
 import VetDetails from './pages3/vetdetails';
-import NavbarComponent from './Components/NavbarComponent'
+//import NavbarComponent from './Components/NavbarComponent';
 import FooterComponent from './Components/FooterComponent';
 import Home from './pages/HomePage';
-import TestAddLocation from './pages2/TestAddLocation';
-import TestAddAnimal from './pages2/TestAddAnimal';
-import Emergency from './pages/Emergency';
-import './pages/PagesStatic/Home.css';
+//import Home from './pages/HomePage';
+//import TestAddLocation from './pages2/TestAddLocation';
+//import TestAddAnimal from './pages2/TestAddAnimal';
+//import Emergency from './pages/Emergency';
+//import './pages/PagesStatic/Home.css';
+import Locations from './pages/ListLocations';
 function App() {
     return (
       <div className="App">
@@ -27,7 +29,11 @@ function App() {
         <NavbarComponent/>
     
         <Switch>
-          <Route path={"/"} exact component={AddUserForm}/>
+        <Route path={"/"} exact component={Home}/>
+        <Route path={"/list"} exact component={Locations}/>
+        
+        
+          {/*
           <Route path={"/myform"} exact component={Myform}/>
           <Route path={"/vetform2"} exact component={VetForm2}/>
           <Route path={"/listlocations"} exact component={ListLocations} />
@@ -36,21 +42,31 @@ function App() {
           <Route path={"/userdetails/:username"} exact component={UserDetails} />
           <Route path={"/vetdetails/:username"} exact component={VetDetails} />
           <Route path={"/listvets"} exact component={ListVets} />
+          
+          */}
+          
 
 
+
+          {/*
 
           <Route path={"/function/:id"} exact component={AppFunctionComponent}/>
           <Route path={"/class"} exact component={AppClassComponent}/>
           <Route path={"/UserData"} exact component={UserData}/>
+           */}
           {/* <Route path={"/ListUsers"} exact component={ListUsers}/> */}
           {/* Pages */} 
           
+          {/*
           <Route path={"/"} exact component={Home}/>
           <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
           <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
-          {/* Test Pages */}
+          {/* Test Pages 
           <Route path={"*"} exact component={NotFound}/>
+          */}
+          
+          
           </Switch>
           <FooterComponent/>
         </BrowserRouter>
