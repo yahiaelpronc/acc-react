@@ -15,8 +15,8 @@ import VetDetails from './pages3/vetdetails';
 
 import FooterComponent from './Components/FooterComponent';
 import Home from './pages/HomePage';
-import TestAddLocation from './pages2/testAddLocation';
-import TestAddAnimal from './pages2/TestAddAnimal';
+//import TestAddLocation from './pages2/testAddLocation';
+//import TestAddAnimal from './pages2/TestAddAnimal';
 import Emergency from './pages/Emergency';
 import './pages/PagesStatic/Home.css';
 import SurgeryRequest from './pages3/SurgeryRequests';
@@ -29,6 +29,7 @@ import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
 import LoginUsers from './pages/LoginUsers';
 import ScheduledOperation from './pages/ScheduledOperation';
+import RequestSur from './pages/RequestSur';
 function App() {
     return (
       <div className="App">
@@ -43,9 +44,10 @@ function App() {
         <Route path={"/details"} exact component={DetailsLocations}/>
         <Route path={"/login"} exact component={LoginUsers}/>
         <Route path={"/operation"} exact component={ScheduledOperation}/>
+        <Route path={"/request"} exact component={RequestSur}/>
         <Route path={"/emergency"} exact component={Emergency}/>
-        <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
-        <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
+        {/*<Route path={"/testAddLocation"} exact component={TestAddLocation}/>
+        <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>*/}
         <Route path={"*"} exact component={NotFound}/>
         
           <Route path={"/myform"} exact component={Myform}/>
@@ -85,8 +87,10 @@ function App() {
        
           <Route path={"/"} exact component={Home}/>
           <Route path={"/emergency"} exact component={Emergency}/>
+          {/*
           <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
           <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
+          */}
         
           <Route path={"*"} exact component={NotFound}/>
           

@@ -10,6 +10,7 @@ label{
     border: 1px solid white;
     background-color: #1787e0;
     margin-top: 8%;
+    border-radius: 20px;
 }
 .special label{
     margin-left: 3%;
@@ -25,3 +26,9 @@ label{
     margin-top: 2%;
     margin-left: 49%;
 }
+.div2{
+    background-color: aliceblue;
+}
+
+
+
