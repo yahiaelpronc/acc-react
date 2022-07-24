@@ -82,7 +82,7 @@ function AddUserForm(props) {
                 disabled={errors.positionErr || errors.nameErr}
                 type="submit" className="btn btn-primary">Submit</button>
         </form>
-        <i class="fa-solid fa-envelope"></i>
+        <i className="fa-solid fa-envelope"></i>
     </>)
 }
 export default AddUserForm

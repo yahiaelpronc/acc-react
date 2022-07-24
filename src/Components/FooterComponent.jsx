@@ -28,7 +28,7 @@ function FooterComponent() {
                             </li>
                             <li>
                                 <a href="#" className="twitter">
-                                <i class="fa-brands fa-twitter"></i>
+                                    <i className="fa-brands fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
@@ -38,9 +38,9 @@ function FooterComponent() {
                             </li>
                         </ul>
                         <p className="text">
-                            Welcome to Animal Care Center of Qena, your local veterinarians in Qena,Egypt. 
+                            Welcome to Animal Care Center of Qena, your local veterinarians in Qena,Egypt.
                             We are pleased to provide a wide variety of animal veterinary services in Qena.
-                             
+
                         </p>
                     </div>
                     <div className="box">
@@ -58,7 +58,7 @@ function FooterComponent() {
                             <div className="info">Egypt, Giza, Inside The Sphinx, Room Number 220</div>
                         </div>
                         <div className="line">
-                        <i class="fa-solid fa-clock"></i>
+                            <i className="fa-solid fa-clock"></i>
                             <div className="info">Business Hours: From 10:00 To 18:00</div>
                         </div>
                         <div className="line">
@@ -70,14 +70,14 @@ function FooterComponent() {
                         </div>
                     </div>
                     <div className="box footer-gallery">
-                        <img src={img1}/>
-                        <img src={img2}/>
-                        <img src={img3}/>
-                        <img src={img4}/>
-                        <img src={img2}/>
-                        <img src={img1}/>
+                        <img src={img1} />
+                        <img src={img2} />
+                        <img src={img3} />
+                        <img src={img4} />
+                        <img src={img2} />
+                        <img src={img1} />
 
-                        
+
                     </div>
                 </div>
                 <p className="copyright">Made With &lt;3 By Team</p>
