@@ -22,6 +22,8 @@ import Home from './pages/HomePage';
 //import Emergency from './pages/Emergency';
 //import './pages/PagesStatic/Home.css';
 import Locations from './pages/ListLocations';
+import DetailsLocations from './pages/Details';
+import LoginUsers from './pages/LoginUsers';
 function App() {
     return (
       <div className="App">
@@ -31,6 +33,8 @@ function App() {
         <Switch>
         <Route path={"/"} exact component={Home}/>
         <Route path={"/list"} exact component={Locations}/>
+        <Route path={"/details"} exact component={DetailsLocations}/>
+        <Route path={"/login"} exact component={LoginUsers}/>
         
         
           {/*

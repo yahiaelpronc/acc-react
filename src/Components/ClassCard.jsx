@@ -16,6 +16,7 @@ class Cards extends React.Component{
                     <h5 className="card-title">{this.props.title}</h5>
                     <p className="card-para">{this.props.para}</p>
                     <p className="card-para">{this.props.para1}</p>
+                    
                 </div>
 
                 </div>
