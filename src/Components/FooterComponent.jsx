@@ -22,12 +22,12 @@ function FooterComponent() {
                         <h3>ACC</h3>
                         <ul className="social">
                             <li>
-                                <a href="#" class="facebook">
+                                <a href="#" className="facebook">
                                     <i className="fab fa-facebook-f"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="twitter">
+                                <a href="#" className="twitter">
                                 <i class="fa-brands fa-twitter"></i>
                                 </a>
                             </li>

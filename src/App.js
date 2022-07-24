@@ -10,17 +10,18 @@ import NotFound from './pages/NotFound'
 import ListUsers from './pages/ListUsers'
 import NavbarComponent from './Components/NavbarComponent'
 import FooterComponent from './Components/FooterComponent';
+import Home from './pages/HomePage';
+import './pages/PagesStatic/Home.css';
 function App() {
     return (
       <div className="App">
         <BrowserRouter>
         <NavbarComponent/>
-        <FooterComponent/>
+    
         <Switch>
-          {/* Pages */}
-          <Route path={"/"} exact component={AddUserForm}/>
-          <Route path={"/function"} exact component={AppFunctionComponent}/>
-          <Route path={"/class"} exact component={AppClassComponent}/>
+          {/* Pages */} 
+          
+          <Route path={"/"} exact component={Home}/>
           <Route path={"/UserData"} exact component={UserData}/>
           <Route path={"/ListUsers"} exact component={ListUsers}/>
           {/* Test Pages */}

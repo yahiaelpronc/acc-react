@@ -8,13 +8,13 @@ function NavbarComponent() {
     return (<>
           <div className="header" id="header">
     <div className="container">
-      <a href="#" className="logo">ACC</a>
+      <Link to="#" className="logo">ACC</Link>
       <ul className="main-nav">
-        <li><a href="#articles">Articles</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#features">Features</a></li>
+        <li><Link to="#articles">Articles</Link></li>
+        <li><Link to="#services">Services</Link></li>
+        <li><Link to="#features">Features</Link></li>
         <li>
-          <a href="#">Other Links</a>
+          <Link to="#">Other Links</Link>
         </li>
       </ul>
     </div>
