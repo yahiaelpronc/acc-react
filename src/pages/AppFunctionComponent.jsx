@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import UserData from './UserData'
+import ChangeLang from '../Components/ChangeLang'
 function AppFunctionComponent(props) {
     console.log(props)
     console.log("Params :", props.match.params)
@@ -60,6 +61,7 @@ function AppFunctionComponent(props) {
 
     return (<>
         <h1>Hello From Function Component</h1>
+        <ChangeLang />
         {/* Show Data */}
         <h1>{username}</h1>
         <h1>{age}</h1>

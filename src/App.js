@@ -2,10 +2,6 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
-import UserData from './pages/UserData'
-import AppFunctionComponent from './pages/AppFunctionComponent'
-import AppClassComponent from './pages/AppClassComponent'
-import AddUserForm from './pages/AddUserForm'
 import NotFound from './pages/NotFound'
 // import ListUsers from './pages/ListUsers'
 import NavbarComponent from './Components/NavbarComponent'
@@ -17,11 +13,19 @@ import ListUsers from './pages3/listusers';
 import UserDetails from './pages3/userdetails';
 import ListVets from './pages3/listvets';
 import VetDetails from './pages3/vetdetails';
+import NavbarComponent from './Components/NavbarComponent'
+import FooterComponent from './Components/FooterComponent';
+import Home from './pages/HomePage';
+import TestAddLocation from './pages2/TestAddLocation';
+import TestAddAnimal from './pages2/TestAddAnimal';
+import Emergency from './pages/Emergency';
+import './pages/PagesStatic/Home.css';
 function App() {
     return (
       <div className="App">
         <BrowserRouter>
         <NavbarComponent/>
+    
         <Switch>
           <Route path={"/"} exact component={AddUserForm}/>
           <Route path={"/myform"} exact component={Myform}/>
@@ -39,8 +43,16 @@ function App() {
           <Route path={"/class"} exact component={AppClassComponent}/>
           <Route path={"/UserData"} exact component={UserData}/>
           {/* <Route path={"/ListUsers"} exact component={ListUsers}/> */}
+          {/* Pages */} 
+          
+          <Route path={"/"} exact component={Home}/>
+          <Route path={"/emergency"} exact component={Emergency}/>
+          <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
+          <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
+          {/* Test Pages */}
           <Route path={"*"} exact component={NotFound}/>
           </Switch>
+          <FooterComponent/>
         </BrowserRouter>
       </div>
     );
