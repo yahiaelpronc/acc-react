@@ -1,0 +1,27 @@
+.mainDiv{
+    background-color: aliceblue;
+}
+label{
+    font-size: 18px;
+    color: black;
+    margin-bottom: 1%;
+}
+.message{
+    border: 1px solid white;
+    background-color: #1787e0;
+    margin-top: 8%;
+}
+.special label{
+    margin-left: 3%;
+    font-weight: bold;
+    color: crimson;
+}
+.table{
+    background-color: aliceblue;
+    border: 2px solid #1787e0;
+}
+#dent1{
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 49%;
+}

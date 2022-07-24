@@ -24,6 +24,7 @@ import Home from './pages/HomePage';
 import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
 import LoginUsers from './pages/LoginUsers';
+import ScheduledOperation from './pages/ScheduledOperation';
 function App() {
     return (
       <div className="App">
@@ -35,6 +36,7 @@ function App() {
         <Route path={"/list"} exact component={Locations}/>
         <Route path={"/details"} exact component={DetailsLocations}/>
         <Route path={"/login"} exact component={LoginUsers}/>
+        <Route path={"/operation"} exact component={ScheduledOperation}/>
         
         
           {/*
