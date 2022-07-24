@@ -8,9 +8,9 @@ function NavbarComponent() {
   return (<>
     <div className="header" id="header">
       <div className="container">
-        <Link to="#" className="logo">ACC</Link>
+        <Link to="/" className="logo">ACC</Link>
         <ul className="main-nav">
-          <li><Link to="#articles">Articles</Link></li>
+          <li><Link to="/emergency">Emergency</Link></li>
           <li><Link to="#services">Services</Link></li>
           <li><Link to="/testAddLocation">Add Location</Link></li>
           <li><Link to="/testAddAnimal">Add Animal</Link></li>

@@ -8,6 +8,7 @@ import FooterComponent from './Components/FooterComponent';
 import Home from './pages/HomePage';
 import TestAddLocation from './pages2/TestAddLocation';
 import TestAddAnimal from './pages2/TestAddAnimal';
+import Emergency from './pages/Emergency';
 import './pages/PagesStatic/Home.css';
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
           {/* Pages */} 
           
           <Route path={"/"} exact component={Home}/>
+          <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
           <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
           {/* Test Pages */}
