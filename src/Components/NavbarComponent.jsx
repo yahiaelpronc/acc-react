@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Myform from './Myform';
 
 function NavbarComponent() {
     return (<>
@@ -22,6 +23,9 @@ function NavbarComponent() {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/ListUsers">List Users</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/myform"> MY Form</Link>
                         </li>
                     </ul>
                 </div>
