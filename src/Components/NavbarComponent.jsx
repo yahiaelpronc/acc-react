@@ -19,10 +19,12 @@ function NavbarComponent() {
             <>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
+              <li><Link to="/AdminPage2">Add location</Link></li>
             </>
             :
             <>
               <li><Link to="/emergency">Emergency</Link></li>
+             
               <li><Link to="/logout">Logout</Link></li>
             </>
           }
