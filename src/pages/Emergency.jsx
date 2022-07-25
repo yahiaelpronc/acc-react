@@ -5,14 +5,17 @@ import { Link } from "react-router-dom";
 // import { Helmet } from "react-helmet";
 import './PagesStatic/EmergencyCSS.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { changeUser } from '../store/actions/action'
-import { changeVet } from '../store/actions/action'
-import { changeLogged } from '../store/actions/action'
+import { changeUser, changeVet, changeLogged, changeLoggedType } from '../store/actions/action'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 function Emergency() {
     const loggedUser = useSelector((state) => state.loggedUser);
     const currentVet = useSelector((state) => state.currentVet);
+    const [governorates, setGovernorates] = useState(
+        ["Alexandria", "Aswan", "Asyut", "Beheira", "Beni Suef", "Cairo", "Dakahlia", "Damietta", "Faiyum",
+            "Gharbia", "Giza", "Ismailia", "Kafr El Sheikh", "Luxor", "Matruh", "Minya", "Monufia", "New Valley",
+            "North Sinai", "Port Said", "Qalyubia", "Qena", "Red Sea", "Sharqia", "Sohag", "South Sinai", "Suez"]
+    )
     const [messages, setMessages] = useState([])
     const [vets, setVets] = useState([])
     const [locations, setLocations] = useState([])
@@ -22,6 +25,7 @@ function Emergency() {
     const [IntervalVariable, setIntervalVariable] = useState()
     const [sentMessage, setSentMessage] = useState("")
     const [scrollNeeded, setscrollNeeded] = useState(true)
+    const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
     const dispatch = useDispatch()
     useEffect(() => {
         axios.get("http://localhost:8000/api/listvets/")
@@ -41,6 +45,8 @@ function Emergency() {
             )
             .catch((err) => console.log(err))
     }, [])
+
+
     const sendMessage = async (e) => {
         setscrollNeeded(true)
         let formField = new FormData()
@@ -61,9 +67,13 @@ function Emergency() {
             setscrollNeeded(false)
         }
     }
+
+
     function changeMessage(e) {
         setSentMessage(e.target.value)
     }
+
+
     const loginUser = (e) => {
         e.preventDefault()
         axios.get("http://localhost:8000/api/loginUser/zoldeek/zoldeek1")
@@ -71,6 +81,7 @@ function Emergency() {
                 console.log(res.data)
                 dispatch(changeUser(res.data))
                 dispatch(changeLogged(true))
+                dispatch(changeLoggedType("user"))
             }
             )
             .catch((err) => console.log(err))
@@ -111,28 +122,46 @@ function Emergency() {
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
+    function handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            sendMessage(e)
+        }
+    }
     return (
         <>
             <div className="row mt-3">
                 <div className="col-md-4">
                     <h2 className="main-title my-5">Nearest Locations</h2>
+                    <select class="form-select card1 mb-3" aria-label="Default select example" style={{ maxWidth: "70%" }} onChange={(e) => setSelectedCity(e.target.value)}>
+                        {governorates.map(gov => {
+                            return (<>
+                                {gov === selectedCity ?
+                                    <option selected value={gov}>{gov}</option> :
+                                    <option value={gov}>{gov}</option>
+                                }
+                            </>)
+                        })}
+                    </select>
                     <div className="wrapper">
                         {DidGetLocations &&
                             locations.map(location => {
                                 return (<>
-                                    <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
-                                        <img src={require(`../media/profileImages${location.picture}`)} alt="React Logo" height={200} width={250} />
-                                        <div className="content mt-3">
-                                            <h4><strong>{location.name}</strong></h4>
-                                            <p>Phone Number : {location.mobile} </p>
-                                            <p>Address : {location.address}</p>
-                                            <p>Website : {location.website_link}
-                                                <Link to={location.website_link} target="blank">
-                                                </Link>
-                                            </p>
-                                            <p>Work Hours : {location.work_hours_start}-{location.work_hours_start_period} <strong>:</strong> {location.work_hours_end}-{location.work_hours_end_period}</p>
+                                    {selectedCity === location.governorate &&
+                                        <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
+                                            <img src={require(`../media/profileImages${location.picture}`)} alt="React Logo" height={200} width={250} />
+                                            <div className="content mt-3">
+                                                <h4><strong>{location.name}</strong></h4>
+                                                <p>Phone Number : {location.mobile} </p>
+                                                <p>Address : {location.address}</p>
+                                                <p>Website : {location.website_link}
+                                                    <Link to={location.website_link} target="blank">
+                                                    </Link>
+                                                </p>
+                                                <p>Work Hours : {location.work_hours_start}-{location.work_hours_start_period} <strong>:</strong> {location.work_hours_end}-{location.work_hours_end_period}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 </>
                                 );
                             })
@@ -222,7 +251,7 @@ function Emergency() {
                                     <div className="publisher bt-1 border-light">
                                         <form action="">
                                             <input className="publisher-input" type="text" placeholder="Write something"
-                                                id="Message" onChange={(e) => changeMessage(e)} value={sentMessage} />
+                                                id="Message" onChange={(e) => changeMessage(e)} value={sentMessage} onKeyDown={(e) => handleKeyDown(e)} />
                                             <Link className="publisher-btn text-info" data-abc="true">
                                                 <i className="fa fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
                                             </Link>

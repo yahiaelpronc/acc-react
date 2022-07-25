@@ -20,3 +20,10 @@ export const changeLogged = (payload) => {
         type: "CHANGE_LOGGED"
     }
 }
+
+export const changeLoggedType = (payload) => {
+    return {
+        payload,
+        type: "CHANGE_LOGGED_TYPE"
+    }
+}

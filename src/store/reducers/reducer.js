@@ -1,7 +1,8 @@
 const INITIAL_VALUE = {
     loggedUser:[],
     currentVet:[],
-    logged:false
+    logged:false,
+    type:""
 }
 export default function UserReducer(state=INITIAL_VALUE,action){
     switch(action.type){
@@ -19,6 +20,11 @@ export default function UserReducer(state=INITIAL_VALUE,action){
             return{
                 ...state,
                 logged : action.payload
+            };
+        case "CHANGE_LOGGED_TYPE":
+            return{
+                ...state,
+                type : action.payload
             };
         default :
             return state
