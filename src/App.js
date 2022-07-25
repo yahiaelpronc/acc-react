@@ -2,8 +2,11 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
-import NotFound from './pages/NotFound'
+// import NotFound from './pages/NotFound'
 // import ListUsers from './pages/ListUsers'
+import VetRegister from './pages/VetRegister';
+import UserRegister from './pages/UserRegister';
+import Login from './pages/Login';
 import NavbarComponent from './Components/NavbarComponent'
 import Myform from './Components/Myform';
 import VetForm2 from './pages3/VetForm';
@@ -83,8 +86,12 @@ function App() {
           <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
           <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
+          <Route path={"/VetRegister"} exact component={VetRegister}/>
+          <Route path={"/UserRegister"} exact component={UserRegister}/>
+          <Route path={"/Login"} exact component={Login}/>
+
         
-          <Route path={"*"} exact component={NotFound}/>
+          {/* <Route path={"*"} exact component={NotFound}/> */}
           
           
           
