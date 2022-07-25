@@ -1,49 +1,6 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #282f3b;
-}
-
-
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #575d57, #414d63);
-    /* background-size: cover; */
-    background-repeat: no-repeat;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    height: 100vh;
-} */
-
 /* Start Global Rules */
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
-:root {
-    --main-color: #2196f3;
-    --main-color-alt: #1787e0;
-    --main-transition: 0.3s;
-    --main-padding-top: 100px;
-    --main-padding-bottom: 100px;
-    --section-background: #ececec;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Cairo", sans-serif;
-    /* justify-content: center; */
-    /* background: #575d57; */
-}
-
-.box {
+.box2 {
     font-size: 25px;
     font-weight: 500;
     position: relative;
@@ -53,24 +10,14 @@ body {
     padding: 15px 20px;
     border: 3px solid #f5af1b;
     border-radius: 40px;
-    /* width: 380px; */
     height: 480px;
-    /* padding: 20px; */
     text-align: start;
     box-sizing: border-box;
     flex-direction: column;
     margin: 0 auto;
-    transform: translateY(30%);
-    
 }
 
-
-/* .box img {
-    width: 100px;
-    margin-top: -50px;
-  } */
-
-.header {
+.header2 {
     width: 600px;
     height: 50px;
     text-transform: uppercase;
@@ -84,7 +31,7 @@ body {
     position: relative;
 }
 
-.header a {
+.header2 a {
     font-size: 20px;
     text-decoration: none;
     color: #282f3b;
@@ -100,33 +47,27 @@ body {
 }
 
 
-.header .active {
+.header2 .active {
     color: #282f3b;
     font-weight: bold;
     position: relative;
 }
 
-.header .active:after {
+.header2 .active:after {
     position: absolute;
     border: none;
     content: '';
 }
 
-#errorMsg {
-    color: red;
-    text-align: center;
-    font-size: 12px;
-    padding-bottom: 20px;
-}
 
-.content {
+.content2 {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     align-items: center;
 }
 
-.frist{
+.frist {
     margin-bottom: 15px;
     width: calc(100%/2 - 20px);
     display: flex;
@@ -162,10 +103,10 @@ form {
 .extend form {
     right: 100%;
 }
-  
-  input[type='text'],
-  input[type='password'],
-  input[type='email'] {
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
     height: 45px;
     width: 100%;
     outline: none;
@@ -176,15 +117,15 @@ form {
     font-size: 15px;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
-  }
-  
-  input[type='text']:hover,
-  input[type='password']:hover,
-  input[type='email']:hover {
+}
+
+input[type='text']:hover,
+input[type='password']:hover,
+input[type='email']:hover {
     border: 4px solid #182e76;
-  }
-  
-  input[type='submit'] {
+}
+
+input[type='submit'] {
     height: 100%;
     width: 100%;
     outline: none;
@@ -195,33 +136,31 @@ form {
     border-radius: 10px;
     letter-spacing: 1px;
     background: linear-gradient(135deg, #414d63, #414d63);
-
-
     height: 45px;
     margin: 0;
     display: block;
     position: relative;
     padding: 12px;
-    /* margin-bottom: 20px; */
     width: 100%;
     background-color: #414d63;
     text-align: center;
     cursor: pointer;
-    
-  }
-  
-  input[type='submit']:hover {
+
+}
+
+input[type='submit']:hover {
     background-color: #ffffff;
     background: linear-gradient(135deg, #e897b4, #f5af1b);
     font-weight: bold;
-  }
-  input[type='checkbox'] {
+}
+
+input[type='checkbox'] {
     background-color: #182e76;
-  }
-  #check {
+}
+
+#check {
     margin-top: 10px;
     text-align: left;
     color: #ffffff;
     font-size: 15px;
-  }
-  
+}

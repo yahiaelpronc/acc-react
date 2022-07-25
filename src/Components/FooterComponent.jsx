@@ -38,7 +38,7 @@ function FooterComponent() {
                             </li>
                             <li>
                                 <a href="#" className="instagram">
-                                    <i class="fa-brands fa-instagram"></i>
+                                    <i className="fa-brands fa-instagram"></i>
                                 </a>
                             </li>
                         </ul>

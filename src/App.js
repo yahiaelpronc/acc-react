@@ -2,11 +2,7 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
-// import NotFound from './pages/NotFound'
-// import ListUsers from './pages/ListUsers'
-import VetRegister from './pages/VetRegister';
-import UserRegister from './pages/UserRegister';
-import Login from './pages/Login';
+import NotFound from './pages/NotFound'
 import NavbarComponent from './Components/NavbarComponent'
 import Myform from './Components/Myform';
 import VetForm2 from './pages3/VetForm';
@@ -19,8 +15,6 @@ import VetDetails from './pages3/vetdetails';
 
 import FooterComponent from './Components/FooterComponent';
 import Home from './pages/HomePage';
-//import TestAddLocation from './pages2/testAddLocation';
-//import TestAddAnimal from './pages2/TestAddAnimal';
 import Emergency from './pages/Emergency';
 import './pages/PagesStatic/Home.css';
 import SurgeryRequest from './pages3/SurgeryRequests';
@@ -32,22 +26,30 @@ import MedicationAdmin2 from './pages3/MedicationAdmin2';
 import Logout from './pages/Logout';
 import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
-import LoginUsers from './pages/LoginUsers';
+import loginUsers from './pages/LoginUsers';
+import LoginAsUser from './pages/LoginAsUser';
 import AddAnimal from './pages3/AddAnimal';
+import AddUserForm from './pages/AddUserForm';
+import Register from './pages/Register';
+import VetRegister from './pages/VetRegister';
+import UserRegister from './pages/UserRegister';
 import ScheduledOperation from './pages/ScheduledOperation';
 import RequestSur from './pages/RequestSur';
 function App() {
     return (
       <div className="App">
-        <BrowserRouter/>
+        <BrowserRouter>
         <NavbarComponent/>
         <Switch>
-        <Route path={"/"} exact component={Home}/>
-        <Route path={"/list"} exact component={Locations}/>
-        <Route path={"/details"} exact component={DetailsLocations}/>
-        <Route path={"/login"} exact component={LoginUsers}/>
-        
-        
+          <Route path={"/"} exact component={Home}/>
+          <Route path={"/VetRegister"} exact component={VetRegister}/>
+          <Route path={"/UserRegister"} exact component={UserRegister}/>
+          <Route path={"/Register"} exact component={Register}/>
+          <Route path={"/login"} exact component={loginUsers}/>
+          <Route path={"/LoginAsUser"} exact component={LoginAsUser}/>
+          <Route path={"/operation"} exact component={ScheduledOperation}/>
+          <Route path={"/request"} exact component={RequestSur}/>
+          <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/myform"} exact component={Myform}/>
           <Route path={"/vetform2"} exact component={VetForm2}/>
           <Route path={"/listlocations"} exact component={ListLocations} />
@@ -60,64 +62,12 @@ function App() {
           <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
           <Route path={"/SendSurgeryUser"} exact component={SendSurgeryUser} />
           <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
-
-
-          {/*
-
-          {/* <Route path={"/function/:id"} exact component={AppFunctionComponent}/>
-          <Route path={"/class"} exact component={AppClassComponent}/>
-          <Route path={"/UserData"} exact component={UserData}/> */}
-          
-          
-          
-
-
-
-          {/*
-
-          <Route path={"/function/:id"} exact component={AppFunctionComponent}/>
-          <Route path={"/class"} exact component={AppClassComponent}/>
-          <Route path={"/UserData"} exact component={UserData}/>
-           */}
-          {/* <Route path={"/ListUsers"} exact component={ListUsers}/> */}
-          {/* Pages */} 
-          
-          <Route path={"/"} exact component={Home}/>
-          <Route path={"/emergency"} exact component={Emergency}/>
-          <Route path={"/testAddLocation"} exact component={TestAddLocation}/>
-          <Route path={"/testAddAnimal"} exact component={TestAddAnimal}/>
-          <Route path={"/VetRegister"} exact component={VetRegister}/>
-          <Route path={"/UserRegister"} exact component={UserRegister}/>
-          <Route path={"/Login"} exact component={Login}/>
-
-        
-          {/* <Route path={"*"} exact component={NotFound}/> */}
-          
-          
-          
-          </Switch>
-          
-        <Route path={"/operation"} exact component={ScheduledOperation}/>
-        <Route path={"/request"} exact component={RequestSur}/>
-        <Route path={"/emergency"} exact component={Emergency}/>
-        <Route path={"/myform"} exact component={Myform}/>
-        <Route path={"/vetform2"} exact component={VetForm2}/>
-        <Route path={"/listlocations"} exact component={ListLocations} />
-        <Route path={"/details/:id"} exact component={LocationDetails} />
-        <Route path={"/listusers"} exact component={ListUsers} />
-        <Route path={"/userdetails/:username"} exact component={UserDetails} />
-        <Route path={"/vetdetails/:username"} exact component={VetDetails} />
-        <Route path={"/listvets"} exact component={ListVets} />
-        <Route path={"/SurgeryRequest"} exact component={SurgeryRequest} />
-        <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
-        <Route path={"/SendSurgeryUser"} exact component={SendSurgeryUser} />
-        <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
-        <Route path={"/AddAnimal"} exact component={AddAnimal} />
-        <Route path={"/logout"} exact component={Logout} />
-        <Route path={"*"} exact component={NotFound}/>
-        <Switch/>
+          <Route path={"/AddAnimal"} exact component={AddAnimal} />
+          <Route path={"/logout"} exact component={Logout} />
+          <Route path={"*"} exact component={NotFound}/>
+        </Switch>
         <FooterComponent/>
-        <BrowserRouter/>
+        </BrowserRouter>
       </div>
     );
 }

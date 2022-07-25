@@ -90,18 +90,7 @@ function Emergency() {
     }
 
 
-    const loginUser = (e) => {
-        e.preventDefault()
-        axios.get("http://localhost:8000/api/loginUser/zoldeek/zoldeek1")
-            .then((res) => {
-                console.log(res.data)
-                dispatch(changeUser(res.data))
-                dispatch(changeLogged(true))
-                dispatch(changeLoggedType("user"))
-            }
-            )
-            .catch((err) => console.log(err))
-    }
+
 
 
     function myFunction(e) {
@@ -202,7 +191,7 @@ function Emergency() {
                                                     <div className="mt-4">
                                                         {loggedUser.length < 1 ?
                                                             <button type="button" className="btn btn-success" id="Vet1" >
-                                                                <Link style={{ color: "white", textDecoration: "none" }} to="#" id="Vet1" onClick={(e) => loginUser(e)}>Login To
+                                                                <Link style={{ color: "white", textDecoration: "none" }} to="/login" id="Vet1">Login To
                                                                     Chat</Link>
                                                             </button>
                                                             :
