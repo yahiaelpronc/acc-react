@@ -23,10 +23,10 @@ function LoginUsers() {
                     </div>
                     <div className=" col-lg-6">
                         <div className="card" style={{ width: "18rem" }}>
-                            <Link to="/loginVet/" className="hh">
+                            <Link to="/loginAsVet/" className="hh">
                                 <img className="card-img-top" src={require(`./images/dd.jpg`)} alt="Card image cap" />
                                 <div className="card-body">
-                                    <Link to="/loginVet/" className="btn btn-primary">LOGIN AS VET</Link>
+                                    <Link to="/loginAsVet/" className="btn btn-primary">LOGIN AS VET</Link>
                                 </div>
                             </Link>
                         </div>

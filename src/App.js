@@ -28,6 +28,7 @@ import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
 import loginUsers from './pages/LoginUsers';
 import LoginAsUser from './pages/LoginAsUser';
+import LoginAsVet from './pages/LoginAsVet';
 import AddAnimal from './pages3/AddAnimal';
 import AddUserForm from './pages/AddUserForm';
 import Register from './pages/Register';
@@ -47,6 +48,7 @@ function App() {
           <Route path={"/Register"} exact component={Register}/>
           <Route path={"/login"} exact component={loginUsers}/>
           <Route path={"/LoginAsUser"} exact component={LoginAsUser}/>
+          <Route path={"/LoginAsVet"} exact component={LoginAsVet}/>
           <Route path={"/operation"} exact component={ScheduledOperation}/>
           <Route path={"/request"} exact component={RequestSur}/>
           <Route path={"/emergency"} exact component={Emergency}/>

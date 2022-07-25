@@ -7,6 +7,7 @@ import './ComponentStatic/navbar.css';
 function NavbarComponent() {
   const loggedUser = useSelector((state) => state.loggedUser);
   const currentVet = useSelector((state) => state.currentVet);
+  const userType = useSelector((state) => state.type);
   return (<>
     <div className="header" id="header">
       <div className="container">
@@ -22,8 +23,16 @@ function NavbarComponent() {
             </>
             :
             <>
-              <li><Link to="/emergency">Emergency</Link></li>
-              <li><Link to="/logout">Logout</Link></li>
+              {userType === "user" ?
+                <>
+                  <li><Link to="/emergency">Emergency</Link></li>
+                  <li><Link to="/logout">Logout</Link></li>
+                </>
+                :
+                <>
+                  <li><Link to="/logout">Logout</Link></li>
+                </>
+              }
             </>
           }
 
