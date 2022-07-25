@@ -56,7 +56,8 @@ function App() {
           <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/myform"} exact component={Myform}/>
           <Route path={"/vetform2"} exact component={VetForm2}/>
-          <Route path={"/listlocations"} exact component={ListLocations} />
+          <Route path={"/detailslocations"} exact component={DetailsLocations} />
+          <Route path={"/listlocations"} exact component={Locations} />
           <Route path={"/details/:id"} exact component={LocationDetails} />
           <Route path={"/listusers"} exact component={ListUsers} />
           <Route path={"/userdetails/:username"} exact component={UserDetails} />
