@@ -13,7 +13,10 @@
     --main-padding-bottom: 100px;
     --section-background: #ececec;
   }
-  
+  .smallImg1{
+    width:100% !important; 
+    height:auto
+  }
   html {
     scroll-behavior: smooth;
   }

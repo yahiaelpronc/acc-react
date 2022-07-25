@@ -41,15 +41,16 @@ function NavbarComponent() {
   return (<>
     <div className="header" id="header">
       <div className="container">
-        <Link to="/" className="logo">ACC</Link>
+        <Link to="/" className="logo my-1">
+          <img src={require(`../pages/images/ACC Logo (1).png`)} alt="Navbar Logo" className="logo" />
+          <p className="mt-3 mx-3">ACC</p>
+        </Link>
         <ul className="main-nav">
           <li><Link to="/emergency">Emergency</Link></li>
-          <li><Link to="#services">Services</Link></li>
           <li><Link to="/testAddLocation">Add Location</Link></li>
           <li><Link to="/testAddAnimal">Add Animal</Link></li>
-          <li>
-            <Link to="#">Other Links</Link>
-          </li>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/logout">Logout</Link></li>
         </ul>
       </div>
     </div>
