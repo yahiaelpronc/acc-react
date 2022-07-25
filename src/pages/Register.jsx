@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Register() {
     return (
         <>
-            <h2 className="main-title mt-5">Login</h2>
+            <h2 className="main-title mt-5">Register</h2>
             <div className=" contain container mb-5 ">
                 <div className=" container row">
                     <div className="  col-lg-6">

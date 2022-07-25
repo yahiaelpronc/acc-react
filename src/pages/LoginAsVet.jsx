@@ -25,12 +25,12 @@ function Login() {
     }
     const loginUser = (e) => {
         e.preventDefault()
-        axios.get(`http://localhost:8000/api/loginUser/${username}/${password}`)
+        axios.get(`http://localhost:8000/api/loginVet/${username}/${password}`)
             .then((res) => {
                 console.log(res.data)
                 dispatch(changeUser(res.data))
                 dispatch(changeLogged(true))
-                dispatch(changeLoggedType("user"))
+                dispatch(changeLoggedType("vet"))
                 history.push("/")
             }
             )
