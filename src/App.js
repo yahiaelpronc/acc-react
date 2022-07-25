@@ -21,6 +21,7 @@ import SurgeryRequest from './pages3/SurgeryRequests';
 import SurgicalOperationsUser from './pages3/SurgicalOperationsUser';
 import SendSurgeryUser from './pages3/SendSurgeryUser';
 import MedicationAdmin2 from './pages3/MedicationAdmin2';
+import AdminPage2 from './pages3/AdminPage';
 
 
 import Logout from './pages/Logout';
@@ -68,6 +69,7 @@ function App() {
           <Route path={"/AddAnimal"} exact component={AddAnimal} />
           <Route path={"/logout"} exact component={Logout} />
           <Route path={"/logoutVet"} exact component={logoutVet} />
+          <Route path={"/AdminPage2"} exact component={AdminPage2} />
           <Route path={"*"} exact component={NotFound}/>
         </Switch>
         <FooterComponent/>

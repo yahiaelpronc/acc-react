@@ -50,7 +50,7 @@ function AddAnimal(){
             setweight(e.target.value)
             seterrdata({
                 ...errdata,
-                errweight:weight > 0 ? "" : "weight must be greater than 0"
+                errweight:e.target.value > 0 ? "" : "weight must be greater than 0"
             })
         }
     }
