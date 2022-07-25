@@ -29,6 +29,7 @@ import MedicationAdmin2 from './pages3/MedicationAdmin2';
 import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
 import LoginUsers from './pages/LoginUsers';
+import AddAnimal from './pages3/AddAnimal';
 function App() {
     return (
       <div className="App">
@@ -56,6 +57,7 @@ function App() {
           <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
           <Route path={"/SendSurgeryUser"} exact component={SendSurgeryUser} />
           <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
+          <Route path={"/AddAnimal"} exact component={AddAnimal} />
 
 
           {/*
