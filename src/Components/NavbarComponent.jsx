@@ -26,11 +26,11 @@ function NavbarComponent() {
               {userType === "user" ?
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
-                  <li><Link to="/logout">Logout</Link></li>
+                  <li><Link to={`/logout`}>Logout</Link></li>
                 </>
                 :
                 <>
-                  <li><Link to="/logout">Logout</Link></li>
+                  <li><Link to={`/logoutVet`}>Logout</Link></li>
                 </>
               }
             </>

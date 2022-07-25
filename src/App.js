@@ -24,6 +24,7 @@ import MedicationAdmin2 from './pages3/MedicationAdmin2';
 
 
 import Logout from './pages/Logout';
+import logoutVet from './pages/logoutVet';
 import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
 import loginUsers from './pages/LoginUsers';
@@ -66,6 +67,7 @@ function App() {
           <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
           <Route path={"/AddAnimal"} exact component={AddAnimal} />
           <Route path={"/logout"} exact component={Logout} />
+          <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"*"} exact component={NotFound}/>
         </Switch>
         <FooterComponent/>

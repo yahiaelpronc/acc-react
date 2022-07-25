@@ -25,6 +25,7 @@ function Emergency() {
     const [DidGetVets, setDidGetVets] = useState(false)
     const [IntervalVariable, setIntervalVariable] = useState()
     const [sentMessage, setSentMessage] = useState("")
+    const [selectedVet, setSelectedVet] = useState("")
     const [isOnlineColor, setIsOnlineColor] = useState("rgba(187, 187, 187, 0.6)")
     const [scrollNeeded, setscrollNeeded] = useState(true)
     const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
@@ -104,9 +105,11 @@ function Emergency() {
 
     function getAllMessages(e) {
         // GET MESSAGES FROM BACKEND
+        clearInterval(IntervalVariable);
+        setMessages([])
         setIntervalVariable(
             setInterval(function () {
-                axios.get("http://localhost:8000/api/getAllMessages/zoldeek/Vet1")
+                axios.get(`http://localhost:8000/api/getAllMessages/${loggedUser.username}/${e.target.id}`)
                     .then((res) => {
                         // console.log(res.data)
                         setMessages(res.data)
@@ -134,6 +137,11 @@ function Emergency() {
             sendMessage(e)
         }
     }
+    useEffect(() => {
+        return () => {
+            clearInterval(IntervalVariable);
+        };
+    }, []);
     return (
         <>
             <div className="row mt-3">
@@ -190,12 +198,12 @@ function Emergency() {
                                                     <p>Phone : {vet.mobile}</p>
                                                     <div className="mt-4">
                                                         {loggedUser.length < 1 ?
-                                                            <button type="button" className="btn btn-success" id="Vet1" >
-                                                                <Link style={{ color: "white", textDecoration: "none" }} to="/login" id="Vet1">Login To
+                                                            <button type="button" className="btn btn-success" id={vet.username} >
+                                                                <Link style={{ color: "white", textDecoration: "none" }} to="/login" id={vet.username}>Login To
                                                                     Chat</Link>
                                                             </button>
                                                             :
-                                                            <button type="button" className="btn btn-primary" id="Vet1"
+                                                            <button type="button" className="btn btn-primary" id={vet.username}
                                                                 onClick={(e) => myFunction(e)}>chat</button>
                                                         }
                                                     </div>
