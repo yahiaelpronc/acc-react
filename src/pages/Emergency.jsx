@@ -18,15 +18,31 @@ function Emergency() {
     )
     const [messages, setMessages] = useState([])
     const [vets, setVets] = useState([])
+    const [vetFullData, setVetFullData] = useState([])
     const [locations, setLocations] = useState([])
     const [DidGetMessages, setDidGetMessages] = useState(false)
     const [DidGetLocations, setDidGetLocations] = useState(false)
     const [DidGetVets, setDidGetVets] = useState(false)
     const [IntervalVariable, setIntervalVariable] = useState()
     const [sentMessage, setSentMessage] = useState("")
+    const [isOnlineColor, setIsOnlineColor] = useState("rgba(187, 187, 187, 0.6)")
     const [scrollNeeded, setscrollNeeded] = useState(true)
     const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
     const dispatch = useDispatch()
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/findvet/${currentVet}/`)
+            .then((res) => {
+                setVetFullData(res.data)
+                console.log(res.data)
+            }
+            )
+            .catch((err) => console.log(err))
+        if (vetFullData.isOnline) {
+            setIsOnlineColor("rgba(52, 183, 0, 0.6)")
+        } else {
+            setIsOnlineColor("rgba(187, 187, 187, 0.6)")
+        }
+    }, [messages])
     useEffect(() => {
         axios.get("http://localhost:8000/api/listvets/")
             .then((res) => {
@@ -109,7 +125,8 @@ function Emergency() {
                     }
                     )
                     .catch((err) => console.log(err))
-            }, 300))
+            }
+                , 300))
     }
 
 
@@ -213,7 +230,7 @@ function Emergency() {
                                 <div className="cards card-bordered" id="card_chat">
                                     <div className="card-header">
                                         <h4 className="card-title"><strong className="text-white"
-                                            id="receiver-name">{currentVet}</strong></h4>
+                                            id="receiver-name"><i class="fa-solid fa-circle" style={{ color: `${isOnlineColor}` }}></i> {currentVet}</strong></h4>
                                         <Link className="btn btn-xs btn-secondary" to="#" data-abc="true">Request Surgery</Link>
                                         <button type="button" className="btn-close" aria-label="Close" onClick={(e) => closeWindow(e)}>
                                         </button>
