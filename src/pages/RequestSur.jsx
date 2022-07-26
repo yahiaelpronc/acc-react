@@ -1,13 +1,104 @@
 import './PagesStatic/Operations.css';
-import React from "react";
+import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Table from '../Components/ClassTable';
 import Button from '../Components/ClassButton';
+import { useParams } from "react-router-dom"
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from "react-router-dom";
+
+
+import { useState } from 'react'
+
+
 
 function RequestSur(){
+    const history=useHistory()
 
+
+
+    const myid=useParams().id
+    const [Request,setRequest]=useState({})
+    const [MyAnimal,setMyAnimal]=useState({})
+    const [dataCame,setDataCame]=useState(false)
+    const [price,setPrice]=useState()
+    const [date,setDate]=useState()
+    const [Surgery_Operation,setSurgery_Operation]=useState()
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8000/api/findRequest/${myid}/`)
+        .then((res)=> {
+        setRequest(res.data)
+        setDataCame(true)
+        console.log(dataCame)
+        console.log(Request.user)
+        console.log(Request.animalName)}
+
+        )
+        .catch((err)=> console.log(err))
+    },[])
+
+    
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8000/api/findSpecificAnimal/${Request.user}/${Request.animalName}/`)
+        .then((res)=> setMyAnimal(res.data))
+        .catch((err)=> console.log(err))
+    },[dataCame])
+
+    const mydate=new Date()
+    const myYear=mydate.getFullYear()
+
+    const animalB_Date=MyAnimal.b_date
+    // const myarr=animalB_Date.split("-")
+
+    // const AnimalAgeY=myYear-(myarr[0])
+    // const AnimalAgeM=mydate.getMonth()-(myarr[1])
+    // const AnimalAgeD=mydate.getDay()-(myarr[2])
+    // console.log(myarr)
+    // console.log(myYear)
+    console.log(animalB_Date)
+    const CurrentVet = useSelector((state) => state.loggedUser);
+    const [medication,setMedication]=useState([])
+
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8000/api/getMedication/${Request.animalName}/`)
+        .then((res)=> setMedication(res.data))
+        .catch((err)=> console.log(err))
+    },[dataCame])
+
+
+
+    
+
+    const addnewSurgery = async()=>{
+        const dataField=new FormData()
+        dataField.append("animalName",MyAnimal.animalName)
+        dataField.append("vetName",CurrentVet.username)
+        dataField.append("operationName",Surgery_Operation)
+        dataField.append("price",price)
+        dataField.append("date",date)
+        dataField.append("owner",Request.user)
+        await axios({
+            method:'post',
+            url:'http://127.0.0.1:8000/api/insertSurgry/',
+            data:dataField
+        }).then((res)=>
+            history.push("/")
+        )
+        .catch((err)=> console.log(err))
+
+    }
+
+
+
+
+
+    
 
 
     return(
@@ -17,38 +108,79 @@ function RequestSur(){
             <div className='container-fluid row'>
                 <div className='col-4'>
                     <form action="">
-                    <label htmlFor="">Animal Name</label><br />
-                    <label htmlFor="">Species</label><br />
-                    <label htmlFor="">Username</label><br />
-                    <label htmlFor="">Age</label><br />
-                    <label htmlFor="">Weight</label><br />
-                    <label htmlFor="">Gender</label>
+                    <label htmlFor="">{Request.animalName}</label><br />
+                    <label htmlFor="">{MyAnimal.species}</label><br />
+                    <label htmlFor="">{Request.user}</label><br />
+                    {/* <label htmlFor="">{AnimalAgeY} years,{AnimalAgeM} months,{AnimalAgeD} days</label><br /> */}
+                    <label htmlFor="">{MyAnimal.weight}</label><br />
+                    <label htmlFor="">{MyAnimal.gender}</label>
                     <div className='special'>
-                    <i className="fa-solid fa-calendar-check" style={{color:'#1787e0'}}></i>
-                        <label htmlFor="">Date</label>
+                        <i className="fa-solid fa-calendar-check" style={{color:'#1787e0'}}></i>
+                        <input type="text" class="form-control" onChange={(e) => setDate(e.target.value)} name='date' value={date}  required aria-describedby="emailHelp" placeholder="Enter Available Date"/>
+                        
                     </div>
                     <div className='special'>
-                    <i className="fa-solid fa-money-bill" style={{color:'#1787e0'}}></i>
-                        <label htmlFor="">Price</label>
+                        <i className="fa-solid fa-money-bill" style={{color:'#1787e0'}}></i>
+                        <input type="number" class="form-control" onChange={(e) => setPrice(e.target.value)} name='price' value={price}  required aria-describedby="emailHelp" placeholder="Enter price"/>
+
                     </div>
                     <div className='special'>
                     <i className="fa-solid fa-angles-right" style={{color:'#1787e0'}}></i>
-                        <label htmlFor="">Surgery Operation</label>
+                        <input type="text" class="form-control" onChange={(e) => setSurgery_Operation(e.target.value)} name='Surgery_Operation' value={Surgery_Operation}  required aria-describedby="emailHelp" placeholder="Enter Surgery Operation"/>
+                       
                     </div>
-                    <Button btnTitle="Schedule Surgery"/>
+                    {/* <Button onClick={addnewSurgery} btnTitle="Schedule Surgery"/> */}
+                    <button onClick={addnewSurgery} className='btn btn-danger'>Schedule Surgery</button>
                     </form>
                 </div>
                 <div className='col-8'>
                     <div className='message'>
-                        <h3>Message</h3>
+                        <h3>{Request.message}</h3>
                     </div>
                     <img src={require(`./images/dental.jpg`)} alt="" id='dent1'/>
                 </div>
             </div>
         </div>
         <div className=' div2 container'>
-        <Table Med1="Med x"  Dos1="200m" interval1="20th June"/>
-        <Button btnTitle="Deny Surgery Request"/>
+        {/* <Table Med1="Med x"  Dos1="200m" interval1="20th June"/> */}
+        <div className='my-3 p-3'>
+                    <table class="table table-success table-striped table-hover ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Animal Name</th>
+                                    <th scope="col">Vet Name</th>
+                                    <th scope="col">Medication Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Dosage</th>
+                                    <th scope="col">Dosage Interval </th>
+                                    <th scope="col">Adminstration Route</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {medication.map(med=>{
+                                return(<>
+                                            <tr>
+                                                    
+                                                    <td>{med.animalName}</td>
+                                                    <td>{med.vetName}</td>
+                                                    <td>{med.medicationName}</td>
+                                                    <td>{med.date}</td>
+                                                    <td>{med.dosage}</td>
+                                                    <td>{med.dosageInterval}</td>
+                                                    <td>{med.adminstrationRoute}</td>
+                                                    
+
+                                            </tr>
+
+                                        </>)
+                            })}
+
+
+                         </tbody>
+                    </table>
+
+                </div>
+        <Button  btnTitle="Deny Surgery Request"/>
         </div>
         
         </>

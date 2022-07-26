@@ -6,9 +6,22 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import RequestDiv from '../components3/RequestDiv'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 
 function SurgeryRequest(){
+    const loggedUser = useSelector((state) => state.loggedUser);
+    const [Requests,setRequests]=useState([])
+    console.log(loggedUser)
+
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8000/api/getRequests/${loggedUser.username}/`)
+        .then((res)=> setRequests(res.data))
+        .catch((err)=> console.log(err))
+
+    },[])
 
 
     return(<>
@@ -25,7 +38,12 @@ function SurgeryRequest(){
                     </div>
 
                 </div>
-                <RequestDiv/>
+                {Requests.map(req=>{
+                    return(<>
+                                <RequestDiv details={`request/${req.id}`} message={req.message} OwnerName={req.user} AnimalName={req.animalName}/>
+                        </>)
+                })}
+                
 
 
 

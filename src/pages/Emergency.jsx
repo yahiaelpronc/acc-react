@@ -192,7 +192,7 @@ function Emergency() {
                                         <div className="testimonials bg-transparent" id="testimonials">
                                             <div className="container container1">
                                                 <div className="box box3">
-                                                    <img src={require(`../media/profileImages${vet.profile_pic}`)} alt="React Logo" height={150} width={150} />
+                                                    {/* <img src={require(`../media/profileImages${vet.profile_pic}`)} alt="React Logo" height={150} width={150} /> */}
                                                     <h3 class="mt-5">Vet Name : {vet.firstname}</h3>
                                                     <span className="title">Specialization : {vet.specialization}</span>
                                                     <p>Phone : {vet.mobile}</p>
@@ -228,7 +228,7 @@ function Emergency() {
                                     <div className="card-header">
                                         <h4 className="card-title"><strong className="text-white"
                                             id="receiver-name"><i class="fa-solid fa-circle" style={{ color: `${isOnlineColor}` }}></i> {currentVet}</strong></h4>
-                                        <Link className="btn btn-xs btn-secondary" to="#" data-abc="true">Request Surgery</Link>
+                                        <Link className="btn btn-xs btn-secondary" to={`SendSurgeryUser/${currentVet}`} data-abc="true">Request Surgery</Link>
                                         <button type="button" className="btn-close" aria-label="Close" onClick={(e) => closeWindow(e)}>
                                         </button>
                                     </div>

@@ -24,6 +24,7 @@ import MedicationAdmin2 from './pages3/MedicationAdmin2';
 import AdminPage2 from './pages3/AdminPage';
 
 
+
 import Logout from './pages/Logout';
 import logoutVet from './pages/logoutVet';
 import Locations from './pages/ListLocations';
@@ -52,7 +53,7 @@ function App() {
           <Route path={"/LoginAsUser"} exact component={LoginAsUser}/>
           <Route path={"/LoginAsVet"} exact component={LoginAsVet}/>
           <Route path={"/operation"} exact component={ScheduledOperation}/>
-          <Route path={"/request"} exact component={RequestSur}/>
+          <Route path={"/request/:id"} exact component={RequestSur}/>
           <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/myform"} exact component={Myform}/>
           <Route path={"/vetform2"} exact component={VetForm2}/>
@@ -65,7 +66,7 @@ function App() {
           <Route path={"/listvets"} exact component={ListVets} />
           <Route path={"/SurgeryRequest"} exact component={SurgeryRequest} />
           <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
-          <Route path={"/SendSurgeryUser"} exact component={SendSurgeryUser} />
+          <Route path={"/SendSurgeryUser/:vetUsername"} exact component={SendSurgeryUser} />
           <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
           <Route path={"/AddAnimal"} exact component={AddAnimal} />
           <Route path={"/logout"} exact component={Logout} />

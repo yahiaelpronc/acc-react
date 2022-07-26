@@ -214,6 +214,7 @@ function AdminPage2(){
                                 <option value="Suhaj">Suhaj</option>
                             
                         </select>
+                        
                        
 
                     </div>

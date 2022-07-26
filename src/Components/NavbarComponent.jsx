@@ -28,10 +28,13 @@ function NavbarComponent() {
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
                   <li><Link to={`/logout`}>Logout</Link></li>
+                  
                 </>
                 :
                 <>
                   <li><Link to={`/logoutVet`}>Logout</Link></li>
+                  <li><Link to={`/SurgeryRequest`}>SurgeryRequest</Link></li>
+                  <li><Link to={`/operation`}>Scheduled Surgery</Link></li>
                 </>
               }
             </>
