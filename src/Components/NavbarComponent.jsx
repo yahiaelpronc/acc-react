@@ -21,25 +21,27 @@ function NavbarComponent() {
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
               <li><Link to="/AdminPage2">Add location</Link></li>
+              <li><Link to="/listlocations">List locations</Link></li>
             </>
             :
             <>
               {userType === "user" ?
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
+                  <li><Link to="/listlocations">List locations</Link></li>
                   <li><Link to={`/logout`}>Logout</Link></li>
-                  
                 </>
                 :
                 <>
-                  <li><Link to={`/logoutVet`}>Logout</Link></li>
                   <li><Link to={`/SurgeryRequest`}>SurgeryRequest</Link></li>
                   <li><Link to={`/operation`}>Scheduled Surgery</Link></li>
+                  <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li>
+                  <li><Link to="/listlocations">List locations</Link></li>
+                  <li><Link to={`/logoutVet`}>Logout</Link></li>
                 </>
               }
             </>
           }
-
         </ul>
       </div>
     </div>

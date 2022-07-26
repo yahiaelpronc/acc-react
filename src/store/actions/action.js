@@ -14,6 +14,21 @@ export const changeVet = (payload) => {
     }
 }
 
+export const changeCurrentUser = (payload) => {
+    return {
+        payload,
+        type: "CHANGE_CURRENT_USER"
+    }
+}
+
+
+export const changeCurrentLocation = (payload) => {
+    return {
+        payload,
+        type: "CHANGE_CURRENT_LOCATION"
+    }
+}
+
 export const changeLogged = (payload) => {
     return {
         payload,

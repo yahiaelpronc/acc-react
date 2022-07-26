@@ -1,6 +1,8 @@
 const INITIAL_VALUE = {
     loggedUser:[],
     currentVet:[],
+    currentUser:"",
+    currentLocation:"",
     logged:false,
     type:""
 }
@@ -15,6 +17,16 @@ export default function UserReducer(state=INITIAL_VALUE,action){
             return{
                 ...state,
                 currentVet : action.payload
+            };
+        case "CHANGE_CURRENT_USER":
+            return{
+                ...state,
+                currentUser : action.payload
+            };
+        case "CHANGE_CURRENT_LOCATION":
+            return{
+                ...state,
+                currentLocation : action.payload
             };
         case "CHANGE_LOGGED":
             return{

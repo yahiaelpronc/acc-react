@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
-import { changeUser, changeVet, changeLogged, changeLoggedType } from '../store/actions/action'
+import { changeUser, changeVet, changeLogged, changeLoggedType, changeCurrentUser } from '../store/actions/action'
 function Logout() {
     const dispatch = useDispatch()
     const loggedUser = useSelector((state) => state.loggedUser);
@@ -16,6 +16,7 @@ function Logout() {
                 dispatch(changeLogged(false))
                 dispatch(changeLoggedType(""))
                 dispatch(changeVet([]))
+                dispatch(changeCurrentUser(""))
                 history.push("/")
             }
             )

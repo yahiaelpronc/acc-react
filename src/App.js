@@ -12,7 +12,6 @@ import ListUsers from './pages3/listusers';
 import UserDetails from './pages3/userdetails';
 import ListVets from './pages3/listvets';
 import VetDetails from './pages3/vetdetails';
-
 import FooterComponent from './Components/FooterComponent';
 import Home from './pages/HomePage';
 import Emergency from './pages/Emergency';
@@ -20,11 +19,8 @@ import './pages/PagesStatic/Home.css';
 import SurgeryRequest from './pages3/SurgeryRequests';
 import SurgicalOperationsUser from './pages3/SurgicalOperationsUser';
 import SendSurgeryUser from './pages3/SendSurgeryUser';
-import MedicationAdmin2 from './pages3/MedicationAdmin2';
+import MedicationAdmin2 from './pages/MedicationAdmin2';
 import AdminPage2 from './pages3/AdminPage';
-
-
-
 import Logout from './pages/Logout';
 import logoutVet from './pages/logoutVet';
 import Locations from './pages/ListLocations';
@@ -57,7 +53,7 @@ function App() {
           <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/myform"} exact component={Myform}/>
           <Route path={"/vetform2"} exact component={VetForm2}/>
-          <Route path={"/detailslocations"} exact component={DetailsLocations} />
+          <Route path={"/detailslocations/:locationName"} exact component={DetailsLocations} />
           <Route path={"/listlocations"} exact component={Locations} />
           <Route path={"/details/:id"} exact component={LocationDetails} />
           <Route path={"/listusers"} exact component={ListUsers} />

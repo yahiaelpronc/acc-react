@@ -1,30 +1,48 @@
-import React from "react";
 import Cards from "../Components/ClassCard";
 import img from './images/1.jpg';
 import './PagesStatic/LocationPage.css';
-
+import React, { useEffect, useState } from "react"
+import axios from "axios"
+import { changeCurrentLocation } from '../store/actions/action'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from "react-router-dom"
 function Locations() {
-
-
+    const dispatch = useDispatch()
+    const currentLocation = useSelector((state) => state.currentLocation);
+    const [locations, setlocation] = useState([])
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/api/listlocation/")
+            .then((res) => setlocation(res.data))
+            .catch((err) => console.log(err))
+    }, [])
 
     return (
         <>
-
             <h2 className="main-title">Animal Care Locations</h2>
-
             <div className="container-fluid">
                 <div className="container-fluid row">
-                    <div className="col-4">
-                        <Cards title="Animal Care Center" ground="#1787e0" photo={require(`./images/dental.jpg`)} para="Our Service" para1="13th St-cairo" />
-                    </div>
-                    <div className="col-4">
-                        <Cards title="Animal Care Center" ground="#1787e0" photo={require(`./images/ccc.jpg`)} para="Our Service" para1="13th St-cairo" />
-                    </div>
-                    <div className="col-4">
-                        <Cards title="Veterinary Hospital" ground="#1787e0" photo={require(`./images/dd.jpg`)} para="Our Service" para1="13th St-cairo" />
-                    </div>
-
-
+                    {locations.map(location => {
+                        return (<>
+                            <div className="col-4">
+                                <Link to={`detailslocations/${location.id}`}>
+                                    <Cards
+                                        title={location.name} ground="#1787e0"
+                                        photo={require(`../media/profileImages${location.picture}`)}
+                                        para={location.service} para1={location.address} />
+                                </Link>
+                            </div>
+                            {/* <div className="col-4" id={location.name} onMouseEnter={(e) => changeLocation(e)}>
+                                <div className="card" id={location.name}>
+                                    <img className=" img card-img-top" src={require(`../media/profileImages${location.picture}`)} alt="Card image cap" />
+                                    <div className="card-body" style={{ backgroundColor: "#1787e0" }}>
+                                        <h5 className="card-title" style={{ color: "white" }}>{location.name}</h5>
+                                        <p className="card-para">{location.mobile}</p>
+                                        <p className="card-para">{location.address}</p>
+                                    </div>
+                                </div>
+                            </div> */}
+                        </>)
+                    })}
                 </div>
             </div>
         </>
