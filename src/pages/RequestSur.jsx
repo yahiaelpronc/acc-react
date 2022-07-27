@@ -88,7 +88,8 @@ function RequestSur() {
 
 
 
-    const addnewSurgery = async () => {
+    const addnewSurgery = async (e) => {
+        e.preventDefault()
         const dataField = new FormData()
         dataField.append("animalName", MyAnimal.animalName)
         dataField.append("vetName", CurrentVet.username)
@@ -107,12 +108,12 @@ function RequestSur() {
 
 
 
-        updatestaus()
+        updatestaus(e)
 
     }
 
-    const updatestaus = async () => {
-   
+    const updatestaus = async (e) => {
+        e.preventDefault()
         let formdata1 = new FormData()
         formdata1.append("statusVet", "accepted")
         await axios({
@@ -120,15 +121,15 @@ function RequestSur() {
             url: `http://localhost:8000/api/updateRequestStatusVet/${myid}/`,
             data: formdata1
         })
-            .then((data) => 
+            .then((data) =>
                 console.log(data.data)
             )
             .catch((err) => console.log(err))
     }
 
-    
-    const VetCancelRequest = async () => {
-   
+
+    const VetCancelRequest = async (e) => {
+        e.preventDefault()
         let formdata2 = new FormData()
         formdata2.append("statusVet", "declined")
         await axios({
@@ -137,9 +138,10 @@ function RequestSur() {
             data: formdata2
         })
             .then((data) => {
-            // history.push("/")
-            console.log(data.data)
-        console.log("done sir")}
+                // history.push("/")
+                console.log(data.data)
+                console.log("done sir")
+            }
 
             )
             .catch((err) => console.log(err))
@@ -181,7 +183,7 @@ function RequestSur() {
 
                             </div>
                             {/* <Button onClick={addnewSurgery} btnTitle="Schedule Surgery"/> */}
-                            <button onClick={addnewSurgery} className='btn btn-danger'>Schedule Surgery</button>
+                            <button onClick={(e) => addnewSurgery(e)} className='btn btn-danger'>Schedule Surgery</button>
                         </form>
                     </div>
                     <div className='col-8'>
@@ -191,7 +193,7 @@ function RequestSur() {
                         <img src={require(`./images/dental.jpg`)} alt="" id='dent1' />
                     </div>
                 </div>
-                
+
                 {/* <div className=' left col-4'>
                     <p className='ll'>Animal Name</p>
                     <p className='ll'>UserName</p>
@@ -205,9 +207,9 @@ function RequestSur() {
                     <p className='rr text-danger'>Operation</p>
                     <button className='btn my-5' id='btn2'> Deny Surgery</button>
                 </div> */}
-                
-                
-                
+
+
+
             </div>
             <div className=' div2 container'>
                 {/* <Table Med1="Med x"  Dos1="200m" interval1="20th June"/> */}
@@ -248,7 +250,7 @@ function RequestSur() {
                     </table>
 
                 </div>
-                <button onClick={VetCancelRequest}  className="btn btn-info mx-3 my-3"> Deny Surgery Request</button>
+                <button onClick={(e) => VetCancelRequest(e)} className="btn btn-info mx-3 my-3"> Deny Surgery Request</button>
             </div>
 
         </>

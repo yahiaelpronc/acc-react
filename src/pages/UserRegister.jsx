@@ -17,6 +17,7 @@ function UserRegister() {
             "North Sinai", "Port Said", "Qalyubia", "Qena", "Red Sea", "Sharqia", "Sohag", "South Sinai", "Suez"]
     )
     const [image, setImage] = useState("")
+    const [submitErr, setSubmitErr] = useState("")
     const [userData, setUserData] = useState({
         username: "",
         password: "",
@@ -375,9 +376,24 @@ function UserRegister() {
             url: 'http://127.0.0.1:8000/api/insertUser/',
             data: formField
         }).then((res) => {
-            // if (res.data)
-            console.log(res.data.length)
-            // history.push("/login")
+            if (res.data === "Username Already Exists") {
+                seterrdata({
+                    ...errdata,
+                    usernameErr: res.data
+                })
+                setSubmitErr(res.data)
+            }
+            else if (res.data === "Email Already Exists") {
+                seterrdata({
+                    ...errdata,
+                    emailErr: res.data
+                })
+                setSubmitErr(res.data)
+            }
+            else {
+                console.log(res.data)
+                history.push("/login")
+            }
         })
             .catch((err) => console.log(err))
     }
@@ -477,13 +493,12 @@ function UserRegister() {
                     <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.facebook_linkErr}</p>
                 </div>
 
-
+                <p className="text-danger">{submitErr}</p>
                 <div className="button">
                     <input disabled={errors()} type="submit" value="Register" id="submitbtn" onClick={(e) => RegisterUser(e)} />
                 </div>
 
 
-                <p id="submiterror"></p>
             </form>
         </div>
     </>

@@ -17,6 +17,7 @@ function Login() {
     const [password, setPassword] = useState("")
     const [usernameErr, setUsernameErr] = useState("")
     const [passwordErr, setPasswordErr] = useState("")
+    const [submitErr, setSubmitErr] = useState("")
     function handleKeyDown(e) {
         if (e.key === 'Enter') {
             e.preventDefault()
@@ -27,11 +28,16 @@ function Login() {
         e.preventDefault()
         axios.get(`http://localhost:8000/api/loginVet/${username}/${password}`)
             .then((res) => {
-                console.log(res.data)
-                dispatch(changeUser(res.data))
-                dispatch(changeLogged(true))
-                dispatch(changeLoggedType("vet"))
-                history.push("/")
+                if (res.data === "Incorrect Credintials") {
+                    setSubmitErr(res.data)
+                }
+                else {
+                    console.log(res.data)
+                    dispatch(changeUser(res.data))
+                    dispatch(changeLogged(true))
+                    dispatch(changeLoggedType("vet"))
+                    history.push("/")
+                }
             }
             )
             .catch((err) => console.log(err))
@@ -84,6 +90,7 @@ function Login() {
                             <label for="remember" className="mx-4">Remember me</label>
                         </div>
                         <br /><br />
+                        <p className="text-danger" style={{ fontSize: "17px" }}>{submitErr}</p>
                         <input type="submit" value="Login" id="submitButton" onClick={(e) => loginUser(e)} />
                     </div>
                 </div>
