@@ -6,8 +6,24 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import SurgericalResponseDiv from '../components3/SurgicalResponseDiv'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 function SurgicalOperationsUser(){
+    const loggedUser = useSelector((state) => state.loggedUser);
+    const [Responses,setResponses]=useState([])
+
+
+    
+
+
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8000/api/getSurgicalResponses/${loggedUser.username}/`)
+        .then((res)=> setResponses(res.data))
+        .catch((Err)=> console.log(Err))
+
+    },[])
 
 
     return(<>
@@ -24,9 +40,17 @@ function SurgicalOperationsUser(){
                     </div>
 
                 </div>
+                
+                {Responses.map(response=>{
+                    return(<>
+                                 <SurgericalResponseDiv operationName={response.operationName} vetName={response.vetName} animalName={response.animalName} price={response.price}
+                                    date={response.date} id={response.id}  />
+
+                            </>)
+                })}
 
 
-                <SurgericalResponseDiv/>
+           
             
 
 

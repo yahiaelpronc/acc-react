@@ -45,22 +45,33 @@ function RequestSur(){
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/findSpecificAnimal/${Request.user}/${Request.animalName}/`)
-        .then((res)=> setMyAnimal(res.data))
+        .then((res)=> { setMyAnimal(res.data)
+            getAge()
+        })
         .catch((err)=> console.log(err))
     },[dataCame])
 
-    const mydate=new Date()
-    const myYear=mydate.getFullYear()
+    const [agedata ,setagedata]=useState("")
 
-    const animalB_Date=MyAnimal.b_date
-    // const myarr=animalB_Date.split("-")
+    const getAge =()=> {
+        const mydate=new Date()
+        const myYear=mydate.getFullYear()
+    
+        const animalB_Date=MyAnimal.b_date
+        const myarr=animalB_Date.split("-")
+        console.log("my arr",myarr)
+    
+    
+        const AnimalAgeY=myYear-(myarr[0])
+        const AnimalAgeM=mydate.getMonth()-(myarr[1])
+        const AnimalAgeD=mydate.getDay()-(myarr[2])
+        console.log(myarr)
+        console.log(myYear)
+        console.log("birth date",animalB_Date)
+        setagedata(AnimalAgeY+" years " + AnimalAgeM + "months " + AnimalAgeD + " days ")
 
-    // const AnimalAgeY=myYear-(myarr[0])
-    // const AnimalAgeM=mydate.getMonth()-(myarr[1])
-    // const AnimalAgeD=mydate.getDay()-(myarr[2])
-    // console.log(myarr)
-    // console.log(myYear)
-    console.log(animalB_Date)
+    }
+ 
     const CurrentVet = useSelector((state) => state.loggedUser);
     const [medication,setMedication]=useState([])
 
@@ -94,6 +105,29 @@ function RequestSur(){
 
     }
 
+    const updatestaus= async ()=>{
+        let formdata= new FormData()
+        formdata.append("status","dismissed")
+        // formdata.append("animalName",Request.animalName)
+        // formdata.append("vetName",Request.vetName)
+        // formdata.append("message",Request.message)
+        // formdata.append("user",Request.user)
+        console.log("yessssssssss")
+        console.log("id",myid)
+        
+        await axios({
+            method:'PUT',
+            url:`http://127.0.0.1:8000/api/updateRequestStatus/${myid}/`,
+            data:formdata
+
+        })
+        .then((data)=> {console.log(data.data)
+            history.push("/")})
+        .catch((err)=> console.log(err))
+
+
+    }
+
 
 
 
@@ -111,7 +145,7 @@ function RequestSur(){
                     <label htmlFor="">{Request.animalName}</label><br />
                     <label htmlFor="">{MyAnimal.species}</label><br />
                     <label htmlFor="">{Request.user}</label><br />
-                    {/* <label htmlFor="">{AnimalAgeY} years,{AnimalAgeM} months,{AnimalAgeD} days</label><br /> */}
+                    <label htmlFor="">Age: {agedata}</label><br />
                     <label htmlFor="">{MyAnimal.weight}</label><br />
                     <label htmlFor="">{MyAnimal.gender}</label>
                     <div className='special'>
@@ -180,7 +214,7 @@ function RequestSur(){
                     </table>
 
                 </div>
-        <Button  btnTitle="Deny Surgery Request"/>
+        <Button onClick={updatestaus} btnTitle="Deny Surgery Request"/>
         </div>
         
         </>

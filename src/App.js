@@ -35,6 +35,7 @@ import VetRegister from './pages/VetRegister';
 import UserRegister from './pages/UserRegister';
 import ScheduledOperation from './pages/ScheduledOperation';
 import RequestSur from './pages/RequestSur';
+import ServicesRequest from './pages3/ServicesRequest';
 function App() {
     return (
       <div className="App">
@@ -68,6 +69,7 @@ function App() {
           <Route path={"/logout"} exact component={Logout} />
           <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
+          <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
           <Route path={"*"} exact component={NotFound}/>
         </Switch>
         <FooterComponent/>
