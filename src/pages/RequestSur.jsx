@@ -110,7 +110,7 @@ function RequestSur() {
     const updatestaus = async () => {
         console.log("update Status")
         let formdata = new FormData()
-        formdata.append("status", 'dismissed')
+        formdata.append("dismissVet", true)
         // formdata.append("animalName",Request.animalName)
         // formdata.append("vetName",Request.vetName)
         // formdata.append("message",Request.message)
