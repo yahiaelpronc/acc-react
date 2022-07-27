@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -16,6 +17,8 @@ function RequestDiv(props){
                     </div>
                     <div className='my-3'>
                     <h3 className='d-flex justify-content-start'>UserName  :<p className='ms-2 text-danger fw-bold'>{props.OwnerName}</p></h3>
+                    <h3 className='d-flex justify-content-start'>statusUser  :<p className='ms-2 text-danger fw-bold'>{props.statusUser}</p></h3>
+                    <h3 className='d-flex justify-content-start'>statusVet  :<p className='ms-2 text-danger fw-bold'>{props.statusVet}</p></h3>
 
                     </div>
 
@@ -30,7 +33,7 @@ function RequestDiv(props){
 
                     <div className='d-flex  my-2'>
 
-                      <a href={props.details}><button className='btn btn-danger mx-5'>Details</button></a>  
+                      <Link to={props.details}><button className='btn btn-danger mx-5'>Details</button></Link>  
                         {/* <button className='btn btn-danger'>Cancel</button> */}
                     </div>
 

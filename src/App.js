@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
+import ScheduledOperation from './pages/ScheduledOperation';
+// import NotFound from './pages/NotFound'
 import NavbarComponent from './Components/NavbarComponent'
 import Myform from './Components/Myform';
 import VetForm2 from './pages3/VetForm';
@@ -32,9 +34,9 @@ import AddUserForm from './pages/AddUserForm';
 import Register from './pages/Register';
 import VetRegister from './pages/VetRegister';
 import UserRegister from './pages/UserRegister';
-import ScheduledOperation from './pages/ScheduledOperation';
 import RequestSur from './pages/RequestSur';
-import NotFound from './pages/NotFound'
+import ServicesRequest from './pages3/ServicesRequest';
+import NotFound from './pages/NotFound';
 function App() {
     return (
       <div className="App">
@@ -68,7 +70,10 @@ function App() {
           <Route path={"/logout"} exact component={Logout} />
           <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
+          <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
+          <Route path={"/Loc"} exact component={ListLocations} />
           <Route path={"*"} exact component={NotFound}/>
+
         </Switch>
         <FooterComponent/>
         </BrowserRouter>

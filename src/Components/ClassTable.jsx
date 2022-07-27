@@ -8,37 +8,58 @@ class Table extends React.Component{
 
     render(){
         return <>
-        <table className="table container">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Medication</th>
-      <th scope="col">Dosage</th>
-      <th scope="col">Interval</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>{this.props.Med1}</td>
-      <td>{this.props.Dos1}</td>
-      <td>{this.props.interval1}</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-  
+    <div className='my-3 p-3'>
+                    <table class="table table-success table-striped table-hover ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Animal Name</th>
+                                    <th scope="col">Vet Name</th>
+                                    <th scope="col">Medication Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Medication Type</th>
+                                    <th scope="col">Dosage</th>
+                                    <th scope="col">Dosage Interval </th>
+                                    <th scope="col">Adminstration Route</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                
+                                <td>Bondok</td>
+                                <td>Samy Adel</td>
+                                <td>pharma X</td>
+                                <td>22/3/2022</td>
+                                <td>pills</td>
+                                <td>200m</td>
+                                <td>8 h</td>
+                                <td>type1 </td>
+                            </tr>
+                            <tr>
+                            <td>Bondok</td>
+                                <td>Samy Adel</td>
+                                <td>pharma X</td>
+                                <td>22/3/2022</td>
+                                <td>pills</td>
+                                <td>200m</td>
+                                <td>8 h</td>
+                                <td>type1 </td>
+                      
+                            </tr>
+                            <tr>
+                            <td>Bondok</td>
+                                <td>Samy Adel</td>
+                                <td>pharma X</td>
+                                <td>22/3/2022</td>
+                                <td>pills</td>
+                                <td>200m</td>
+                                <td>8 h</td>
+                                <td>type1 </td>
+                        
+                            </tr>
+                         </tbody>
+                    </table>
+
+                </div>
         </>
     }
 }

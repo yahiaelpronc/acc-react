@@ -29,6 +29,8 @@ function NavbarComponent() {
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
                   <li><Link to="/listlocations">List locations</Link></li>
+                  <li><Link to="/ServicesRequest">Services Request</Link></li>
+                  <li><Link to="/SurgicalOperationsUser">Surgical Operations User</Link></li>
                   <li><Link to={`/logout`}>Logout</Link></li>
                 </>
                 :

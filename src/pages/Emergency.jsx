@@ -26,7 +26,7 @@ function Emergency() {
     const [IntervalVariable, setIntervalVariable] = useState()
     const [sentMessage, setSentMessage] = useState("")
     const [selectedVet, setSelectedVet] = useState("")
-    const [isOnlineColor, setIsOnlineColor] = useState("rgba(187, 187, 187, 0.6)")
+    const [isOnlineColor, setIsOnlineColor] = useState("grey")
     const [scrollNeeded, setscrollNeeded] = useState(true)
     const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
     const dispatch = useDispatch()
@@ -162,19 +162,25 @@ function Emergency() {
                             locations.map(location => {
                                 return (<>
                                     {selectedCity === location.governorate &&
-                                        <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
-                                            <img src={require(`../media/profileImages${location.picture}`)} alt="React Logo" height={200} width={250} />
-                                            <div className="content mt-3">
-                                                <h4><strong>{location.name}</strong></h4>
-                                                <p>Phone Number : {location.mobile} </p>
-                                                <p>Address : {location.address}</p>
-                                                <p>Website : {location.website_link}
-                                                    <Link to={location.website_link} target="blank">
-                                                    </Link>
-                                                </p>
-                                                <p>Work Hours : {location.work_hours_start}-{location.work_hours_start_period} <strong>:</strong> {location.work_hours_end}-{location.work_hours_end_period}</p>
+                                        <Link to={`detailslocations/${location.id}`} style={{ textDecoration: "none", color: "black" }}>
+                                            <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
+                                                {(location.picture === null | location === undefined) ?
+                                                    <img src={require(`../media/profileImages/ACC Logo.png`)} alt="React Logo" height={200} width={250} />
+                                                    :
+                                                    <img src={require(`../media/profileImages${location.picture}`)} alt="React Logo" height={200} width={250} />
+                                                }
+                                                <div className="content mt-3">
+                                                    <h4><strong>{location.name}</strong></h4>
+                                                    <p>Phone Number : {location.mobile} </p>
+                                                    <p>Address : {location.address}</p>
+                                                    <p>Website : {location.website_link}
+                                                        <Link to={location.website_link} target="blank">
+                                                        </Link>
+                                                    </p>
+                                                    <p>Work Hours : {location.work_hours_start}-{location.work_hours_start_period} <strong>:</strong> {location.work_hours_end}-{location.work_hours_end_period}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     }
                                 </>
                                 );
@@ -192,7 +198,11 @@ function Emergency() {
                                         <div className="testimonials bg-transparent" id="testimonials">
                                             <div className="container container1">
                                                 <div className="box box3">
-                                                    {/* <img src={require(`../media/profileImages${vet.profile_pic}`)} alt="React Logo" height={150} width={150} /> */}
+                                                    {vet.profile_pic === null ?
+                                                        <img src={require(`../media/profileImages/ACC Logo.png`)} alt="React Logo" height={200} width={250} />
+                                                        :
+                                                        <img src={require(`../media/profileImages${vet.profile_pic}`)} alt="React Logo" height={150} width={150} />
+                                                    }
                                                     <h3 class="mt-5">Vet Name : {vet.firstname}</h3>
                                                     <span className="title">Specialization : {vet.specialization}</span>
                                                     <p>Phone : {vet.mobile}</p>

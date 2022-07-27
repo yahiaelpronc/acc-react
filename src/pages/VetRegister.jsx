@@ -9,14 +9,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeUser, changeVet, changeLogged, changeLoggedType } from '../store/actions/action'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-function VetRegister() {
+function UserRegister() {
     const history = useHistory()
     const [governorates, setGovernorates] = useState(
         ["Alexandria", "Aswan", "Asyut", "Beheira", "Beni Suef", "Cairo", "Dakahlia", "Damietta", "Faiyum",
             "Gharbia", "Giza", "Ismailia", "Kafr El Sheikh", "Luxor", "Matruh", "Minya", "Monufia", "New Valley",
             "North Sinai", "Port Said", "Qalyubia", "Qena", "Red Sea", "Sharqia", "Sohag", "South Sinai", "Suez"]
     )
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState("")
+    const [submitErr, setSubmitErr] = useState("")
     const [userData, setUserData] = useState({
         username: "",
         password: "",
@@ -29,199 +30,525 @@ function VetRegister() {
         b_date: "",
         address: "",
         facebook_link: "",
-        Specialization: ""
+        specialization: "",
     })
     const [errdata, seterrdata] = useState({
         usernameErr: "",
         firstnameErr: "",
         lastnameErr: "",
         emailErr: "",
-        phoneErr: "",
         passwordErr: "",
-        confirmpassErr: "",
         cityErr: "",
+        phoneErr: "",
+        confirmpassErr: "",
         b_dateErr: "",
         addressErr: "",
         facebook_linkErr: "",
+        specializationErr: "",
     })
+    const [errdataB, seterrdataB] = useState({
+        usernameErrB: false,
+        firstnameErrB: false,
+        lastnameErrB: false,
+        emailErrB: false,
+        passwordErrB: false,
+        phoneErrB: false,
+        confirmpassErrB: false,
+        b_dateErrB: false,
+        addressErrB: false,
+        facebook_linkErrB: false,
+        specializationErrB: false,
+    })
+    function errors(e) {
+        if (errdataB.usernameErrB
+            && errdataB.firstnameErrB
+            && errdataB.lastnameErrB
+            && errdataB.emailErrB
+            && errdataB.passwordErrB
+            && errdataB.phoneErrB
+            && errdataB.confirmpassErrB
+            && errdataB.b_dateErrB
+        ) {
+            return false
+        }
+        return true
+    }
+    function isInTheFuture(date) {
+        let today = new Date();
+        // 👇️ OPTIONAL!
+        // This line sets the time of the current date to the
+        // last millisecond, so the comparison returns `true` only if
+        // date is at least tomorrow
+        today.setHours(23, 59, 59, 998);
+        console.log(date)
+        return date > today;
+    }
 
-    const [username, setusername] = useState("")
-    const [firstname, setfirstname] = useState("")
-    const [lastname, setlastname] = useState("")
-    const [email, setemail] = useState("")
-    const [mobile, setmobile] = useState("")
-    const [password, setpassword] = useState("")
-    const [profile_pic, setimage] = useState(null)
-    const [birthdate, setbirthdate] = useState(null)
-    const [country, setcountry] = useState("")
-    const [address, setaddress] = useState("")
-    const [facelink, setfacelink] = useState(null)
-    const [specialization, setspecialization] = useState(null)
-
-
-    // useEffect(()=>{
-    //     axios.post("http://127.0.0.1:8000/api/insert/")
-    //     .then((res)=> res.data)
-
-    // },[])
-
-
-    const addnewvet = async () => {
+    function changeData(e) {
+        if (e.target.name === "username") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    usernameErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    usernameErrB: false
+                })
+            } else {
+                seterrdataB({
+                    ...errdataB,
+                    usernameErrB: true
+                })
+                seterrdata({
+                    ...errdata,
+                    usernameErr: ""
+                })
+                setUserData({
+                    ...userData,
+                    username: e.target.value
+                })
+                console.log(errdataB)
+            }
+        }
+        else if (e.target.name === "specialization") {
+            if (e.target.value.length < 1) {
+                seterrdata({
+                    ...errdata,
+                    specializationErr: "This Field Is Required"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    specializationErrB: false
+                })
+            } else {
+                seterrdataB({
+                    ...errdataB,
+                    specializationErrB: true
+                })
+                seterrdata({
+                    ...errdata,
+                    specializationErr: ""
+                })
+                setUserData({
+                    ...userData,
+                    specialization: e.target.value
+                })
+                console.log(errdataB)
+            }
+        }
+        else if (e.target.name === "password") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    passwordErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    passwordErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    passwordErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    passwordErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    password: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "firstname") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    firstnameErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    firstnameErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    firstnameErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    firstnameErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    firstname: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "lastname") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    lastnameErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    lastnameErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    lastnameErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    lastnameErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    lastname: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "email") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    emailErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    emailErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    emailErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    emailErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    email: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "phone") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    phoneErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    phoneErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    phoneErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    phoneErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    phone: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "confirmpass") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                if (e.target.value !== userData.password) {
+                    seterrdata({
+                        ...errdata,
+                        confirmpassErr: "This Field Has To Be 3 to 30 Characters Long"
+                    })
+                    seterrdataB({
+                        ...errdataB,
+                        confirmpassErrB: false
+                    })
+                }
+            } else if (e.target.value !== userData.password) {
+                seterrdata({
+                    ...errdata,
+                    confirmpassErr: "Passwords Don't Match"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    confirmpassErrB: false
+                })
+            }
+            else {
+                seterrdata({
+                    ...errdata,
+                    confirmpassErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    confirmpassErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    confirmpass: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "city") {
+            setUserData({
+                ...userData,
+                city: e.target.value
+            })
+        }
+        else if (e.target.name === "b_date") {
+            if (isInTheFuture(new Date(String(e.target.value)))) {
+                seterrdata({
+                    ...errdata,
+                    b_dateErr: "Please Choose A Correct Birth Date"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    b_dateErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    b_dateErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    b_dateErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    b_date: e.target.value
+                })
+            }
+        }
+        else if (e.target.name === "address") {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    addressErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    addressErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    addressErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    addressErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    address: e.target.value
+                })
+            }
+        }
+        else {
+            if (e.target.value.length < 3 | e.target.value.length > 30) {
+                seterrdata({
+                    ...errdata,
+                    facebook_linkErr: "This Field Has To Be 3 to 30 Characters Long"
+                })
+                seterrdataB({
+                    ...errdataB,
+                    facebook_linkErrB: false
+                })
+            } else {
+                seterrdata({
+                    ...errdata,
+                    facebook_linkErr: ""
+                })
+                seterrdataB({
+                    ...errdataB,
+                    facebook_linkErrB: true
+                })
+                setUserData({
+                    ...userData,
+                    facebook_link: e.target.value
+                })
+            }
+        }
+    }
+    const RegisterUser = async (e) => {
+        e.preventDefault()
         let formField = new FormData()
-        formField.append('username', username)
-        formField.append('firstname', firstname)
-        formField.append('lastname', lastname)
-        formField.append('b_date', birthdate)
-        formField.append('email', email)
-        formField.append('password', password)
-        formField.append('country', country)
-        formField.append('address', address)
-        formField.append('face_link', facelink)
-        formField.append('mobile', mobile)
-        formField.append('profile_pic', profile_pic)
-        formField.append('specialization', specialization)
+        formField.append("username", userData.username)
+        formField.append("firstname", userData.firstname)
+        formField.append("lastname", userData.lastname)
+        formField.append("email", userData.email)
+        formField.append("password", userData.password)
+        formField.append("governorate", userData.city)
+        formField.append("address", userData.address)
+        formField.append("mobile", userData.phone)
+        formField.append("b_date", userData.b_date)
+        formField.append("face_link", userData.facebook_link)
+        formField.append("specialization", userData.specialization)
+        formField.append("profile_pic", image)
         await axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/api/insertVet/',
             data: formField
-
-        }).then((response) => console.log(response.data))
+        }).then((res) => {
+            if (res.data === "Username Already Exists") {
+                seterrdata({
+                    ...errdata,
+                    usernameErr: res.data
+                })
+                setSubmitErr(res.data)
+            }
+            else if (res.data === "Email Already Exists") {
+                seterrdata({
+                    ...errdata,
+                    emailErr: res.data
+                })
+                setSubmitErr(res.data)
+            }
+            else if (res.data === "Specialization Field Is Required") {
+                seterrdata({
+                    ...errdata,
+                    specializationErr: res.data
+                })
+                setSubmitErr(res.data)
+            }
+            else {
+                console.log(res.data)
+                history.push("/login")
+            }
+        })
             .catch((err) => console.log(err))
-
-
-        history.push("/class")
-
-
     }
+    return <>
+        <div className="containervet">
 
-    return (
-        <>
-            <div className="containervet">
+            <div className="title">Registration for Vets</div>
+            <form className="myform">
 
-                <div className="title">Registration for Veterinarians</div>
-                <form action="./hometest.html" method="get" id="myform" className="myform row">
-
-                    <div className="user-details columnset">
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">Username</span>
-                            <input type="text" className="itemvalue" name="userrname" placeholder="Username" aria-label="Username"
-                                aria-describedby="basic-addon1" />
-                        </div>
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">First Name</span>
-                            <input type="text" className="itemvalue" placeholder="Enter Your fisrt Name" name="frisstname" id="name" />
-                            <p id="nameerr"></p>
-                        </div>
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">Last Name</span>
-                            <input type="text" className="itemvalue" placeholder="Enter Your last Name" name="lasstname" id="user" />
-                            <p id="usererr"></p>
-                        </div>
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12 dropdown">
-                            <span className="item">Specialization</span>
-                            <select className="itemvalue" name="specialization" value={specialization} onChange={(e) => setspecialization(e.target.value)} class="form-select p-2" aria-label="Default select example">
-                                <option selected>Specialization</option>
-                                <option value="obstetrics and gynecology">obstetrics and gynecology</option>
-                                <option value="poultry">poultry</option>
-                                <option value="equine">equine</option>
-                                <option value="ruminant">ruminant</option>
-                                <option value="fishes and aquatics">fishes and aquatics</option>
-                            </select>
-
-                        </div>
-
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">Email</span>
-                            <input type="text" className="itemvalue" placeholder="Enter Your Email" id="email" />
-                            <p id="emailerr"></p>
-                        </div>
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">Phone Number</span>
-                            <input type="text" className="itemvalue" placeholder="Enter Your egyption PhoneNumber" id="phone" />
-                            <p id="phoneerr"></p>
-                        </div>
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">Password</span>
-                            <input type="password" className="itemvalue" placeholder="Enter Your Password" id="pass1" />
-                            <p id="pass1err"></p>
-                        </div>
-
-                        <div className="iteems col-lg-3 col-md-6 col-sm-12">
-                            <span className="item">Confirm Password</span>
-                            <input type="password" className="itemvalue" placeholder="Confirm Your Password" id="pass2" />
-                            <p id="pass2err"></p>
-                        </div>
-
-
-                        <div className="pic">
-                            <span className="item">upload a profile pic.</span>
-                            <input type="file" className="itemvalue" placeholder="upload" id="file" accept="image/png, image/jpeg" />
-                            <p id="fileerr"></p>
-                        </div>
-
-
-
-
-
+                <div className="user-details">
+                    <div className="iteems">
+                        <span className="item">Username</span>
+                        <input type="text" className="itemvalue" placeholder="Username" onChange={(e) => changeData(e)} name="username" />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.usernameErr}</p>
                     </div>
-
-
-
-
-                    <div className="optional col-md-12">
-                        <h5>* optional</h5>
-
-
+                    <div className="iteems">
+                        <span className="item">First Name</span>
+                        <input type="text" className="itemvalue" name="firstname" placeholder="Enter Your fisrt Name" id="name" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.firstnameErr}</p>
                     </div>
-
-
-
-                    <div className="extra col-md-12 col-sm-6">
-                        <label for="bdate" className="extrafeild">Birth Date</label>
-                        <input type="date" className="feildvalue" name="bdate" id="bdate" aria-describedby="emailHelp"
-                            placeholder=" Birth Date" />
-
+                    <div className="iteems">
+                        <span className="item">Last Name</span>
+                        <input type="text" className="itemvalue" name="lastname" placeholder="Enter Your last Name" id="user" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.lastnameErr}</p>
                     </div>
-
-
-                    <div className="extra col-md-12 col-sm-6">
-                        <label for="country" className="extrafeild">Country</label>
-                        <input type="text" className="feildvaluee" name="country" id="Country" aria-describedby="emailHelp" placeholder="Country" />
-
+                    <div className="iteems">
+                        <span className="item">Specialization</span>
+                        <select className="itemvalue" name="specialization" aria-label="Default select example" onChange={(e) => changeData(e)}>
+                            <option value="" selected>-------------</option>
+                            <option value="obstetrics and gynecology" >obstetrics and gynecology</option>
+                            <option value="poultry">poultry</option>
+                            <option value="equine">equine</option>
+                            <option value="ruminant">ruminant</option>
+                            <option value="fishes and aquatics">fishes and aquatics</option>
+                        </select>
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.specializationErr}</p>
                     </div>
-
-                    <div className="extra col-md-12 col-sm-6">
-                        <label for="country" className="extrafeild">Address.</label>
-                        <input type="text" className="feildvaluee" name="address" id="Country" aria-describedby="emailHelp"
-                            placeholder="add Address." />
-
+                    <div className="iteems">
+                        <span className="item">Email</span>
+                        <input type="text" className="itemvalue" name="email" placeholder="Enter Your Email" id="email" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.emailErr}</p>
                     </div>
-
-
-
-                    <div className="extra col-md-12 col-sm-6">
-                        <label for="faceLink" className="extrafeild">Facebook Link</label>
-                        <input type="url" className="feildvalue" name="" id="faceLink" aria-describedby="emailHelp"
-                            placeholder="http//www.Facebook.com/fn.page" />
-
+                    <div className="iteems">
+                        <span className="item">Phone Number</span>
+                        <input type="number" className="itemvalue" name="phone" placeholder="Enter Your egyption PhoneNumber" id="phone" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.phoneErr}</p>
                     </div>
-
-
-
-                    <div className="buttoon col-12">
-                        <input type="submit" value="Register" id="submitbtn" />
+                    <div className="iteems">
+                        <span className="item">Password</span>
+                        <input type="password" className="itemvalue" name="password" placeholder="Enter Your Password" id="pass1" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.passwordErr}</p>
                     </div>
+                    <div className="iteems">
+                        <span className="item">Confirm Password</span>
+                        <input type="password" className="itemvalue" name="confirmpass" placeholder="Confirm Your Password" id="pass2" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.confirmpassErr}</p>
+                    </div>
+                </div>
+
+                <div className="pic">
+                    <span className="details">upload a profile pic.</span>
+                    <input type="file" placeholder="upload" id="file" onChange={(e) => setImage(e.target.files[0])} />
+                </div>
+
+                <div className="mt-3">
+                    <h5>* optional</h5>
+                </div>
+
+                <div className="extra">
+                    <label htmlFor="bdate" className="extrafeild">Birth Date</label>
+                    <input type="date" className="feildvalue" id="bdate" aria-describedby="emailHelp"
+                        placeholder=" Birth Date" name="b_date" onChange={(e) => changeData(e)} />
+                    <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.b_dateErr}</p>
+                </div>
+
+                <div className="extra">
+                    <span className="extrafeild">City</span>
+                    <select className="feildvalue" name="city" aria-label="Default select example" onChange={(e) => changeData(e)}>
+                        {governorates.map(gov => {
+                            return (<>
+                                {gov === "Cairo" &&
+                                    <option selected value={gov}>{gov}</option>
+                                }
+                                <option value={gov}>{gov}</option>
+                            </>)
+                        })}
+                    </select>
+                    <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.cityErr}</p>
+                </div>
+
+                <div className="extra">
+                    <label htmlFor="Address" className="extrafeild">Address</label>
+                    <input type="text" className="feildvalue" id="Address" aria-describedby="emailHelp"
+                        placeholder="Address" name="address" onChange={(e) => changeData(e)} />
+                    <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.addressErr}</p>
+                </div>
+
+                <div className="extra">
+                    <label htmlFor="faceLink" className="extrafeild">Facebook Page</label>
+                    <input type="text" className="feildvalue" id="faceLink" aria-describedby="emailHelp"
+                        placeholder="http//www.Facebook.com/fn.page" name="facebook" onChange={(e) => changeData(e)} />
+                    <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.facebook_linkErr}</p>
+                </div>
 
 
-                    <p id="submiterror"></p>
-                </form>
-            </div >
 
-        </>
-    )
+                <p className="text-danger">{submitErr}</p>
+                <div className="buttoon">
+                    <input disabled={errors()} type="submit" value="Register" id="submitbtn" onClick={(e) => RegisterUser(e)} />
+                </div>
+            </form>
+        </div >
 
+
+
+
+
+
+
+
+
+
+    </>
 }
 
-export default VetRegister;
-
-
+export default UserRegister;
