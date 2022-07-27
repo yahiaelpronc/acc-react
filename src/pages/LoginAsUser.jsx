@@ -45,7 +45,7 @@ function Login() {
     function changeData(e) {
         if (e.target.name === "username") {
             setUsername(e.target.value)
-            if (e.target.value.length < 3) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 setUsernameErr("Username Has To Be 3-30 Characters Long")
                 document.getElementById("submitButton").disabled = true
             } else {
@@ -55,7 +55,7 @@ function Login() {
         }
         else {
             setPassword(e.target.value)
-            if (e.target.value.length < 3) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 setPasswordErr("Password Has To Be 3-30 Characters Long")
                 document.getElementById("submitButton").disabled = true
             } else {

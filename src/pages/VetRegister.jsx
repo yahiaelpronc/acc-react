@@ -86,7 +86,7 @@ function UserRegister() {
 
     function changeData(e) {
         if (e.target.name === "username") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     usernameErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -138,7 +138,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "password") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     passwordErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -163,7 +163,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "firstname") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     firstnameErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -188,7 +188,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "lastname") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     lastnameErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -213,7 +213,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "email") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     emailErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -238,7 +238,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "phone") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     phoneErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -263,7 +263,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "confirmpass") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 if (e.target.value !== userData.password) {
                     seterrdata({
                         ...errdata,
@@ -331,7 +331,7 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "address") {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     addressErr: "This Field Has To Be 3 to 30 Characters Long"
@@ -356,7 +356,7 @@ function UserRegister() {
             }
         }
         else {
-            if (e.target.value.length < 3 | e.target.value.length > 30) {
+            if (e.target.value.length < 3 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
                     facebook_linkErr: "This Field Has To Be 3 to 30 Characters Long"
