@@ -162,23 +162,25 @@ function Emergency() {
                             locations.map(location => {
                                 return (<>
                                     {selectedCity === location.governorate &&
-                                        <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
-                                            {location.picture === null ?
-                                                <img src={require(`../media/profileImages/ACC Logo.png`)} alt="React Logo" height={200} width={250} />
-                                                :
-                                                <img src={require(`../media/profileImages${location.picture}`)} alt="React Logo" height={200} width={250} />
-                                            }
-                                            <div className="content mt-3">
-                                                <h4><strong>{location.name}</strong></h4>
-                                                <p>Phone Number : {location.mobile} </p>
-                                                <p>Address : {location.address}</p>
-                                                <p>Website : {location.website_link}
-                                                    <Link to={location.website_link} target="blank">
-                                                    </Link>
-                                                </p>
-                                                <p>Work Hours : {location.work_hours_start}-{location.work_hours_start_period} <strong>:</strong> {location.work_hours_end}-{location.work_hours_end_period}</p>
+                                        <Link to={`detailslocations/${location.id}`} style={{ textDecoration: "none", color: "black" }}>
+                                            <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
+                                                {(location.picture === null | location === undefined) ?
+                                                    <img src={require(`../media/profileImages/ACC Logo.png`)} alt="React Logo" height={200} width={250} />
+                                                    :
+                                                    <img src={require(`../media/profileImages${location.picture}`)} alt="React Logo" height={200} width={250} />
+                                                }
+                                                <div className="content mt-3">
+                                                    <h4><strong>{location.name}</strong></h4>
+                                                    <p>Phone Number : {location.mobile} </p>
+                                                    <p>Address : {location.address}</p>
+                                                    <p>Website : {location.website_link}
+                                                        <Link to={location.website_link} target="blank">
+                                                        </Link>
+                                                    </p>
+                                                    <p>Work Hours : {location.work_hours_start}-{location.work_hours_start_period} <strong>:</strong> {location.work_hours_end}-{location.work_hours_end_period}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     }
                                 </>
                                 );

@@ -18,7 +18,7 @@ function Locations() {
       .catch((err) => console.log(err))
   }, [])
   function o(location) {
-    if (location.picture === null) {
+    if (location.picture === null | location === undefined) {
       return "/ACC Logo.png"
     } else {
       return location.picture
