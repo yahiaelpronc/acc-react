@@ -13,14 +13,20 @@ function DetailsLocations() {
       .then((res) => setCurrentLocationDetails(res.data))
       .catch((err) => console.log(err))
   }, [])
-
+  function o(location) {
+    if (location === null | location === undefined) {
+      return "/ACC Logo.png"
+    } else {
+      return location
+    }
+  }
   return (
     <>
       <h2 className="main-title">Detailed Locations</h2>
       <div className="container-fluid">
         <div className="container-fluid row">
           <div className="col-4">
-            <img className="image1" src={require(`./images/dental.jpg`)} alt="" />
+            <img className="image1" src={require(`../media/profileImages${o(currentLocationDetails.picture)}`)} alt="" />
           </div>
           <div className="col-8">
             <h3>{currentLocationDetails.name}</h3>
