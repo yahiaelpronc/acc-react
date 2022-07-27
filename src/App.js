@@ -70,7 +70,9 @@ function App() {
           <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
           <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
+          <Route path={"/Loc"} exact component={ListLocations} />
           <Route path={"*"} exact component={NotFound}/>
+
         </Switch>
         <FooterComponent/>
         </BrowserRouter>

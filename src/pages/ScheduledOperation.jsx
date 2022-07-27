@@ -150,6 +150,32 @@ function ScheduledOperation(){
                     </>)
         })}
 
+        <h2 className="main-title my-5">Scheduled Operations</h2>
+        <div className=' mainCOn container p-5'>
+        <h3 className='me'>Surgical Message</h3>
+            <div className='container-fluid row' id='roo'>
+                <div className='col-4'>
+                <img src={require(`./images/dd.jpg`)} alt="" className='dd'/>
+                </div>
+                
+                <div className=' left col-4'>
+                    <p className='ll'>Animal Name</p>
+                    <p className='ll'>UserName</p>
+                    <p className='ll'>Age</p>
+                    
+                    
+                </div>
+                <div className=' right col-4'>
+                    <p className=' rr text-danger'>Date</p>
+                    <p className=' rr text-danger'>Price</p>
+                    <p className='rr text-danger'>Operation</p>
+                   
+                </div>
+                
+                
+                
+            </div>
+        </div>
         
         </>
     )

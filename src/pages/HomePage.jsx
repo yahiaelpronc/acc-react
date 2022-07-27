@@ -239,7 +239,7 @@ function Home() {
             <div className="img-holder"><img src={feature3} alt="" /></div>
             <h2>List Of All Animal Care Locations</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="#">More</Link>
+            <Link to="/listlocations">More</Link>
           </div>
         </div>
       </div>

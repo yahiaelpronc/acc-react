@@ -1,34 +1,50 @@
-.mainDiv{
-    background-color: aliceblue;
+.dd{
+    width: 100%;
 }
-label{
-    font-size: 18px;
-    color: black;
-    margin-bottom: 1%;
+.Form2{
+    background-color: azure;
 }
-.message{
-    border: 1px solid white;
-    background-color: #1787e0;
+#roo{
+    margin-left: 10%;
+}
+.left{
     margin-top: 8%;
-    border-radius: 20px;
 }
-.special label{
-    margin-left: 3%;
+.right{
+    margin-top: 8%;
+}
+.rr{
     font-weight: bold;
-    color: crimson;
+    margin-right: 50%;
 }
-.table{
-    background-color: aliceblue;
-    border: 2px solid #1787e0;
+.ll{
+    margin-left: 15%;
 }
-#dent1{
-    width: 50%;
-    margin-top: 2%;
-    margin-left: 49%;
+.mainCOn{
+margin-left: 20%;
+background-color: aliceblue;
+margin-bottom: 4%;
+height: 440px;
+width: 60%;
+border-radius: 20px;
+
 }
-.div2{
-    background-color: aliceblue;
+#btn2{
+    margin-right: 37%;
 }
+.me{
+    text-align: center;
+    margin-bottom: 4%;
 
 
-
+}
+.btn{
+    background-color: #1787e0;
+    color: white;
+}
+.btn:hover{
+    background-color:#1787e0 ;
+}
+#btn11{
+    margin-left: 13%;
+}

@@ -137,9 +137,10 @@ function RequestSur(){
 
     return(
         <>
-        <h2 className="main-title">Scheduled Operations</h2>
-        <div className=" mainDiv container">
-            <div className='container-fluid row'>
+        <h2 className="main-title my-5">Request Animal Operation</h2>
+        <div className=' mainCOn container p-5'>
+        <h3 className='me'>Surgical Message</h3>
+            <div className='container-fluid row' id='roo'>
                 <div className='col-4'>
                     <form action="">
                     <label htmlFor="">{Request.animalName}</label><br />
@@ -172,7 +173,25 @@ function RequestSur(){
                         <h3>{Request.message}</h3>
                     </div>
                     <img src={require(`./images/dental.jpg`)} alt="" id='dent1'/>
+                <img src={require(`./images/dd.jpg`)} alt="" className='dd'/>
                 </div>
+                
+                <div className=' left col-4'>
+                    <p className='ll'>Animal Name</p>
+                    <p className='ll'>UserName</p>
+                    <p className='ll'>Age</p>
+                    <button className='btn  my-5' id='btn11'> Accept Surgery</button>
+                    
+                </div>
+                <div className=' right col-4'>
+                    <p className=' rr text-danger'>Date</p>
+                    <p className=' rr text-danger'>Price</p>
+                    <p className='rr text-danger'>Operation</p>
+                    <button className='btn my-5' id='btn2'> Deny Surgery</button>
+                </div>
+                
+                
+                
             </div>
         </div>
         <div className=' div2 container'>

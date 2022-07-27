@@ -5,7 +5,9 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { changeCurrentLocation } from '../store/actions/action'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+
+
 function Locations() {
     const dispatch = useDispatch()
     const currentLocation = useSelector((state) => state.currentLocation);
@@ -45,6 +47,73 @@ function Locations() {
                     })}
                 </div>
             </div>
+        <div className="articles" id="articles">
+        <h2 className="main-title">Animal Care Locations</h2>
+        <div className="container">
+          <div className="box">
+            <img src={require(`./images/2.webp`)} alt="" />
+            <div className="content">
+              <h5>Animal Care Center</h5>
+              <p className="detail">Our Service</p>
+              <p className="detail">13th St-Cairo</p>
+            </div>
+            <div className="info">
+              <Link to="" className="de">Details</Link>
+              <i className="fas fa-long-arrow-alt-right"></i>
+            </div>
+          </div>
+          <div className="box">
+            <img src={require(`./images/dental.jpg`)} alt="" />
+            <div className="content">
+              <h5>Veterinary Hospital</h5>
+              <p className="detail">Our Service</p>
+              <p className="detail">13th St-Cairo</p>
+            </div>
+            <div className="info">
+              <Link to="" className="de">Details</Link>
+              <i className="fas fa-long-arrow-alt-right"></i>
+            </div>
+          </div>
+          <div className="box">
+            <img src={require(`./images/ss.jpg`)} alt="" />
+            <div className="content">
+              <h5>Animal Care Center</h5>
+              <p className="detail">Our Service</p>
+              <p className="detail">13th St-Cairo</p>
+            </div>
+            <div className="info">
+              <Link to="" className="de">Details</Link>
+              <i className="fas fa-long-arrow-alt-right"></i>
+            </div>
+          </div>
+          <div className="box">
+            <img src={require(`./images/dd.jpg`)} alt="" style={{height:'170px'}} />
+            <div className="content">
+              <h5>Animal Care Center</h5>
+              <p className="detail">Our Service</p>
+              <p className="detail">13th St-Cairo</p>
+            </div>
+            <div className="info">
+              <Link to="" className="de">Details</Link>
+              <i className="fas fa-long-arrow-alt-right"></i>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <div className="spikes"></div>
+
+
+
+
+            
+
+
+            
+
+
+                
         </>
     )
 }
