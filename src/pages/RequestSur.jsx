@@ -105,27 +105,43 @@ function RequestSur() {
         )
             .catch((err) => console.log(err))
 
+
+
+        updatestaus()
+
     }
 
     const updatestaus = async () => {
-        console.log("update Status")
-        let formdata = new FormData()
-        formdata.append("dismissVet", true)
-        // formdata.append("animalName",Request.animalName)
-        // formdata.append("vetName",Request.vetName)
-        // formdata.append("message",Request.message)
-        // formdata.append("user",Request.user)
-        console.log("yessssssssss")
-        console.log("id", myid)
+   
+        let formdata1 = new FormData()
+        formdata1.append("statusVet", "accepted")
         await axios({
             method: 'POST',
-            url: `http://localhost:8000/api/updateRequestStatus/${myid}/`,
-            data: formdata
+            url: `http://localhost:8000/api/updateRequestStatusVet/${myid}/`,
+            data: formdata1
+        })
+            .then((data) => 
+                console.log(data.data)
+            )
+            .catch((err) => console.log(err))
+    }
+
+    
+    const VetCancelRequest = async () => {
+   
+        let formdata2 = new FormData()
+        formdata2.append("statusVet", "declined")
+        await axios({
+            method: 'POST',
+            url: `http://localhost:8000/api/updateRequestStatusVet/${myid}/`,
+            data: formdata2
         })
             .then((data) => {
-                console.log(data.data)
-                history.push("/")
-            })
+            // history.push("/")
+            console.log(data.data)
+        console.log("done sir")}
+
+            )
             .catch((err) => console.log(err))
     }
 
@@ -176,19 +192,19 @@ function RequestSur() {
                     </div>
                 </div>
                 
-                <div className=' left col-4'>
+                {/* <div className=' left col-4'>
                     <p className='ll'>Animal Name</p>
                     <p className='ll'>UserName</p>
                     <p className='ll'>Age</p>
                     <button className='btn  my-5' id='btn11'> Accept Surgery</button>
                     
-                </div>
-                <div className=' right col-4'>
+                </div> */}
+                {/* <div className=' right col-4'>
                     <p className=' rr text-danger'>Date</p>
                     <p className=' rr text-danger'>Price</p>
                     <p className='rr text-danger'>Operation</p>
                     <button className='btn my-5' id='btn2'> Deny Surgery</button>
-                </div>
+                </div> */}
                 
                 
                 
@@ -232,7 +248,7 @@ function RequestSur() {
                     </table>
 
                 </div>
-                <button onClick={(e) => updatestaus(e)} className="btn btn-info mx-3 my-3"> Deny Surgery Request</button>
+                <button onClick={VetCancelRequest}  className="btn btn-info mx-3 my-3"> Deny Surgery Request</button>
             </div>
 
         </>

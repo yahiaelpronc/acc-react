@@ -36,8 +36,8 @@ function SurgeryRequest() {
             </div>
             {Requests.map(req => {
                 return (<>
-                    {req.dismissVet == false && (
-                        <RequestDiv details={`request/${req.id}`} status={req.status} message={req.message} OwnerName={req.user} AnimalName={req.animalName} />
+                    {req.statusVet !== "declined" && (
+                        <RequestDiv details={`request/${req.id}`} statusVet={req.statusVet} statusUser={req.statusUser} message={req.message} OwnerName={req.user} AnimalName={req.animalName} />
                     )}
                 </>)
             })}
