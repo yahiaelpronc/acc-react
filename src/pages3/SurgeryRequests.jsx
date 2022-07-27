@@ -10,50 +10,50 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 
-function SurgeryRequest(){
+function SurgeryRequest() {
     const loggedUser = useSelector((state) => state.loggedUser);
-    const [Requests,setRequests]=useState([])
+    const [Requests, setRequests] = useState([])
     console.log(loggedUser)
 
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get(`http://localhost:8000/api/getRequests/${loggedUser.username}/`)
-        .then((res)=> setRequests(res.data))
-        .catch((err)=> console.log(err))
+            .then((res) => setRequests(res.data))
+            .catch((err) => console.log(err))
 
-    },[])
+    }, [])
 
 
-    return(<>
+    return (<>
 
-            <div className='bg-light p-3'>
-                <div className='row p-2'>
-                    
-                    <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/schedule1.png`)}/>
-                    <div className='col-6 '>
-                       <center> <h2 className=' text-danger my-4 '>Surgery Requests</h2></center>
-                      
-                        <h4 className='  my-5 '>See Your Latest schedule For Surgeries</h4>
+        <div className='bg-light p-3'>
+            <div className='row p-2'>
 
-                    </div>
+                <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/schedule1.png`)} />
+                <div className='col-6 '>
+                    <center> <h2 className=' text-danger my-4 '>Surgery Requests</h2></center>
+
+                    <h4 className='  my-5 '>See Your Latest schedule For Surgeries</h4>
 
                 </div>
-                {Requests.map(req=>{
-                    return(<>
-                                <RequestDiv details={`request/${req.id}`} message={req.message} OwnerName={req.user} AnimalName={req.animalName}/>
-                        </>)
-                })}
-                
-
-
-
-
-
-
-
 
             </div>
-        </>)
+            {Requests.map(req => {
+                return (<>
+                    <RequestDiv details={`request/${req.id}`} message={req.message} OwnerName={req.user} AnimalName={req.animalName} />
+                </>)
+            })}
+
+
+
+
+
+
+
+
+
+        </div>
+    </>)
 
 }
 export default SurgeryRequest

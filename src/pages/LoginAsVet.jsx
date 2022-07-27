@@ -1,5 +1,6 @@
 import './PagesStatic/Login.css'
 import React from 'react'
+import './PagesStatic/LoginAsVet.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom"
@@ -59,29 +60,29 @@ function Login() {
         }
     }
     return <>
-        <div className="box2 my-5">
-            <div className="page">
-                <div className="header2">
-                    <Link id="login" className="active" to="#login">login</Link>
-                    <Link id="signup" to=".registerVet/.registervet.html">Register as Vet</Link>
-                    <Link id="signup" to=".register/.Register/.contact.html">Register as User</Link>
+        <div className="maxbox">
+            <div className="mybooox">
+                <div className="my2i2le">
+                    <Link id="login" className="my2i2le" to="#login">login</Link>
+                    {/* <Link id="signup" to=".registerVet/.registervet.html">Register as Vet</Link>
+                    <Link id="signup" to=".register/.Register/.contact.html">Register as User</Link> */}
                 </div>
                 <div id="errorMsg"></div>
-                <div className="content2 ">
-                    <div className="login" >
-                        <div className="frist">
-                            <label for="logName">Username</label>
-                            <input type="text" name="username" id="logName" placeholder="username" onChange={(e) => changeData(e)} onKeyDown={(e) => handleKeyDown(e)} />
+                <div className="contentbooox">
+                    <div className="logiiin" >
+                        <div className="myinf000">
+                            <label for="logName" className='req'>Username *</label>
+                            <input type="text" className='ansser' name="username" id="logName" placeholder="username" onChange={(e) => changeData(e)} onKeyDown={(e) => handleKeyDown(e)} />
                             <p className="text-danger" style={{ fontSize: "15px" }}>{usernameErr}</p>
                         </div>
-                        <div className="frist">
-                            <label for="logPassword">Password</label>
-                            <input type="password" name="password" id="logPassword" placeholder="password" onChange={(e) => changeData(e)} onKeyDown={(e) => handleKeyDown(e)} />
+                        <div className="myinf000">
+                            <label for="logPassword" className='req'>Password *</label>
+                            <input type="password" className='ansser' name="password" id="logPassword" placeholder="password" onChange={(e) => changeData(e)} onKeyDown={(e) => handleKeyDown(e)} />
                             <p className="text-danger" style={{ fontSize: "15px" }}>{passwordErr}</p>
                         </div>
-                        <div id="check">
-                            <input type="checkbox" id="remember" />
-                            <label for="remember" className="mx-4">Remember me</label>
+                        <div id="check" className='remmbermeee'>
+                            <input type="checkbox" id="remember" className='checkmeee' />
+                            <label for="remember" className="mylabel">Remember me</label>
                         </div>
                         <br /><br />
                         <input type="submit" value="Login" id="submitButton" onClick={(e) => loginUser(e)} />

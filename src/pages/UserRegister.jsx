@@ -138,48 +138,48 @@ function UserRegister() {
         <div className="containeruser">
 
             <div className="title">Registration for Users</div>
-            <form>
+            <form className="myform">
 
                 <div className="user-details">
-                    <div className="input-box">
-                        <span className="details">Username</span>
-                        <input type="text" className="form-control" placeholder="Username" aria-label="Username"
+                    <div className="iteeeemss">
+                        <span className="iteeem">Username</span>
+                        <input type="text" className="iteeemvalue" placeholder="Username" aria-label="Username"
                             aria-describedby="basic-addon1" onChange={(e) => changeData(e)} name="username" />
                     </div>
-                    <div className="input-box">
-                        <span className="details">First Name</span>
-                        <input type="text" name="firstname" placeholder="Enter Your fisrt Name" id="name" onChange={(e) => changeData(e)} />
+                    <div className="iteeeemss">
+                        <span className="iteeem">First Name</span>
+                        <input type="text" className="iteeemvalue" name="firstname" placeholder="Enter Your fisrt Name" id="name" onChange={(e) => changeData(e)} />
                         <p id="nameerr"></p>
                     </div>
-                    <div className="input-box">
-                        <span className="details">last Name</span>
-                        <input type="text" name="lastname" placeholder="Enter Your last Name" id="user" onChange={(e) => changeData(e)} />
+                    <div className="iteeeemss">
+                        <span className="iteeem">last Name</span>
+                        <input type="text" className="iteeemvalue" name="lastname" placeholder="Enter Your last Name" id="user" onChange={(e) => changeData(e)} />
                         <p id="usererr"></p>
                     </div>
-                    <div className="input-box">
-                        <span className="details">Email</span>
-                        <input type="text" name="email" placeholder="Enter Your Email" id="email" onChange={(e) => changeData(e)} />
+                    <div className="iteeeemss">
+                        <span className="iteeem">Email</span>
+                        <input type="text" className="iteeemvalue" name="email" placeholder="Enter Your Email" id="email" onChange={(e) => changeData(e)} />
                         <p id="emailerr"></p>
                     </div>
-                    <div className="input-box">
-                        <span className="details">Phone Number</span>
-                        <input type="number" name="phone" placeholder="Enter Your egyption PhoneNumber" id="phone" onChange={(e) => changeData(e)} />
+                    <div className="iteeeemss">
+                        <span className="iteeem">Phone Number</span>
+                        <input type="number" className="iteeemvalue" name="phone" placeholder="Enter Your egyption PhoneNumber" id="phone" onChange={(e) => changeData(e)} />
                         <p id="phoneerr"></p>
                     </div>
-                    <div className="input-box">
-                        <span className="details">Password</span>
-                        <input type="password" name="password" placeholder="Enter Your Password" id="pass1" onChange={(e) => changeData(e)} />
+                    <div className="iteeeemss">
+                        <span className="iteeem">Password</span>
+                        <input type="password" className="iteeemvalue" name="password" placeholder="Enter Your Password" id="pass1" onChange={(e) => changeData(e)} />
                         <p id="pass1err"></p>
                     </div>
 
-                    <div className="input-box">
-                        <span className="details">Confirm Password</span>
-                        <input type="password" name="confirmpassword" placeholder="Confirm Your Password" id="pass2" onChange={(e) => changeData(e)} />
+                    <div className="iteeeemss">
+                        <span className="iteeem">Confirm Password</span>
+                        <input type="password" className="iteeemvalue" name="confirmpassword" placeholder="Confirm Your Password" id="pass2" onChange={(e) => changeData(e)} />
                         <p id="pass2err"></p>
                     </div>
-                    <div className="input-box">
-                        <span className="details">City</span>
-                        <select className="form-select" name="city" aria-label="Default select example" onChange={(e) => changeData(e)}>
+                    <div className="iteeeemss">
+                        <span className="iteeem">City</span>
+                        <select className="iteeemvalue" name="city" aria-label="Default select example" onChange={(e) => changeData(e)}>
                             {governorates.map(gov => {
                                 return (<>
                                     <option value={gov}>{gov}</option>
@@ -188,12 +188,8 @@ function UserRegister() {
                         </select>
                     </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="bdate" className="form-label label1">Birth Date</label>
-                        <input type="date" className="form-control" id="bdate" aria-describedby="emailHelp"
-                            placeholder=" Birth Date" name="b_date" onChange={(e) => changeData(e)} />
-                    </div>
-                    <div className="my-2">
+
+                    <div className="piiiic">
                         <span className="details">upload a profile pic.</span>
                         <input type="file" placeholder="upload" id="file" onChange={(e) => setImage(e.target.files[0])} />
                         <p id="fileerr"></p>
@@ -203,29 +199,35 @@ function UserRegister() {
 
 
 
-                <div className="mt-3">
+                <div className="optionaaal">
                     <h5>* optional</h5>
+                </div>
+
+                <div className="extraaa">
+                    <label htmlFor="bdate" className="extrafeiiild">Birth Date</label>
+                    <input type="date" className="feiiildvalue" id="bdate" aria-describedby="emailHelp"
+                        placeholder=" Birth Date" name="b_date" onChange={(e) => changeData(e)} />
                 </div>
 
 
 
 
 
-                <div className="mb-3">
-                    <label htmlFor="Address" className="form-label label1">Address</label>
-                    <input type="text" className="form-control" id="Address" aria-describedby="emailHelp"
+                <div className="extraaa">
+                    <label htmlFor="Address" className="extrafeiiild">Address</label>
+                    <input type="text" className="feiiildvalue" id="Address" aria-describedby="emailHelp"
                         placeholder="Address" name="address" onChange={(e) => changeData(e)} />
                 </div>
 
 
-                <div className="mb-3">
-                    <label htmlFor="faceLink" className="form-label label1">Facebook Page</label>
-                    <input type="text" className="form-control" id="faceLink" aria-describedby="emailHelp"
+                <div className="extraaa">
+                    <label htmlFor="faceLink" className="extrafeiiild">Facebook Page</label>
+                    <input type="text" className="feiiildvalue" id="faceLink" aria-describedby="emailHelp"
                         placeholder="http//www.Facebook.com/fn.page" name="facebook" onChange={(e) => changeData(e)} />
                 </div>
 
 
-                <div className="button">
+                <div className="butt00n">
                     <input type="submit" value="Register" id="submitbtn" onClick={(e) => RegisterUser(e)} />
                 </div>
 
