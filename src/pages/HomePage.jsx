@@ -213,9 +213,9 @@ function Home() {
           </div>
           <div className="box time">
             <div className="img-holder"><img src={feature2} alt="" /></div>
-            <h2>Wellness Exams And Vaccinations</h2>
+            <h2>Add Animal</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="#">More</Link>
+            <Link to="/AddAnimal">More</Link>
           </div>
           <div className="box passion">
             <div className="img-holder"><img src={feature3} alt="" /></div>
