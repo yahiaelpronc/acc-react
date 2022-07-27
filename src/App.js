@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
+import ScheduledOperation from './pages/ScheduledOperation';
 import NotFound from './pages/NotFound'
 import NavbarComponent from './Components/NavbarComponent'
 import Myform from './Components/Myform';
@@ -33,7 +34,6 @@ import AddUserForm from './pages/AddUserForm';
 import Register from './pages/Register';
 import VetRegister from './pages/VetRegister';
 import UserRegister from './pages/UserRegister';
-import ScheduledOperation from './pages/ScheduledOperation';
 import RequestSur from './pages/RequestSur';
 import ServicesRequest from './pages3/ServicesRequest';
 function App() {
