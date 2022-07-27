@@ -17,7 +17,8 @@ function RequestDiv(props){
                     </div>
                     <div className='my-3'>
                     <h3 className='d-flex justify-content-start'>UserName  :<p className='ms-2 text-danger fw-bold'>{props.OwnerName}</p></h3>
-                    <h3 className='d-flex justify-content-start'>status  :<p className='ms-2 text-danger fw-bold'>{props.status}</p></h3>
+                    <h3 className='d-flex justify-content-start'>statusUser  :<p className='ms-2 text-danger fw-bold'>{props.statusUser}</p></h3>
+                    <h3 className='d-flex justify-content-start'>statusVet  :<p className='ms-2 text-danger fw-bold'>{props.statusVet}</p></h3>
 
                     </div>
 
