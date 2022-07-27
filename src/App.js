@@ -5,6 +5,7 @@ import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
 import ScheduledOperation from './pages/ScheduledOperation';
 // import NotFound from './pages/NotFound'
 import NavbarComponent from './Components/NavbarComponent'
+import Locations from './pages/ListLocations';
 import Myform from './Components/Myform';
 import VetForm2 from './pages3/VetForm';
 import ListLocations from './pages3/listlocations';
@@ -24,7 +25,6 @@ import MedicationAdmin2 from './pages/MedicationAdmin2';
 import AdminPage2 from './pages3/AdminPage';
 import Logout from './pages/Logout';
 import logoutVet from './pages/logoutVet';
-import Locations from './pages/ListLocations';
 import DetailsLocations from './pages/Details';
 import loginUsers from './pages/LoginUsers';
 import LoginAsUser from './pages/LoginAsUser';
@@ -67,13 +67,12 @@ function App() {
           <Route path={"/SendSurgeryUser/:vetUsername"} exact component={SendSurgeryUser} />
           <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
           <Route path={"/AddAnimal"} exact component={AddAnimal} />
+          <Route path={"/LocationDD"} exact component={ListLocations} />
           <Route path={"/logout"} exact component={Logout} />
           <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
           <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
-          <Route path={"/Loc"} exact component={ListLocations} />
           <Route path={"*"} exact component={NotFound}/>
-
         </Switch>
         <FooterComponent/>
         </BrowserRouter>
