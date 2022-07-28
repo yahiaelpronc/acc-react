@@ -1,9 +1,25 @@
 /* Start Locations CSS */
 .detail{
-  margin-right: 40% !important;
+  margin-right: 47% !important;
+  font-size: 14px;
+}
+.DivZZ{
+  border-radius: 20px;
 }
 .de{
   margin-left: 8%;
+  font-size: 14px;
+}
+#serv444{
+  margin-left: 3%;
+  font-size: 14px;
+}
+#gov{
+  margin-right: 50%;
+  font-size: 14px;
+}
+.fil{
+  margin-left: 20%;
 }
 /* End Locations CSS*/
 /*    Start Details Locations Css*/

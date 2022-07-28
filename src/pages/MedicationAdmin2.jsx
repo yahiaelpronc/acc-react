@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeUser, changeVet, changeLogged, changeLoggedType, changeCurrentUser } from '../store/actions/action'
 
-
 function MedicationAdmin2() {
     const dispatch = useDispatch()
     const loggedUser = useSelector((state) => state.loggedUser);
