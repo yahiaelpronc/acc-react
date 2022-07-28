@@ -6,15 +6,15 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import ServicesRequestsDiv from '../components3/ServicesRequestsDiv'
+import ServicesResponsesDiv from '../components3/ServicesResponsesDiv'
 
-function ServicesRequest(){
+function UserServiceResponses(){
     const loggedUser = useSelector((state) => state.loggedUser);
     const [Requests,setRequests]=useState([])
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/getServicesRequests/${loggedUser.username}/`)
+        axios.get(`http://localhost:8000/api/getServicesResponses/${loggedUser.username}/`)
         .then((res)=> setRequests(res.data))
         .catch((Err)=> console.log(Err))
 
@@ -29,9 +29,9 @@ function ServicesRequest(){
                     
                     <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/animalsurgery1.jpg`)}/>
                     <div className='col-6 '>
-                       <center> <h2 className=' text-danger my-4 '>Services Requests </h2></center>
+                       <center> <h2 className=' text-danger my-4 '>Services Responses </h2></center>
                       
-                        <h4 className='  my-5 '>See Your Latest schedule For Services Requests</h4>
+                        <h4 className='  my-5 '>See Your Latest schedule For Services Responses</h4>
 
                     </div>
 
@@ -39,8 +39,11 @@ function ServicesRequest(){
 
                 {Requests.map(req=>{
                     return(<>
-                                 <ServicesRequestsDiv AnimalType={req.AnimalType} animalOwner={req.animalOwner} serviceName={req.serviceName} price={req.price}
-                                    date={req.date} time={req.time} statusUser={req.statusUser} timePeriod={req.timePeriod} id={req.id} />
+                    {req.statusUser !== "declined" && (
+                                                         <ServicesResponsesDiv AnimalType={req.AnimalType} animalOwner={req.animalOwner} serviceName={req.serviceName} price={req.price}
+                                                         id={req.id} date={req.date} time={req.time} timePeriod={req.timePeriod} statusUser={req.statusUser} statusOwner={req.statusOwner} />
+                    )}
+
 
                             </>)
                 })}
@@ -58,4 +61,4 @@ function ServicesRequest(){
         </>)
 
 }
-export default ServicesRequest
+export default UserServiceResponses

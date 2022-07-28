@@ -14,6 +14,10 @@ function SendSurgeryUser(){
     const currentVet = useParams()
     const [animalname1,setanimalname1]=useState("")
     const [message,setmessage]=useState("")
+    const [errdata,seterrdata]=useState({
+        messageerr:"",
+        selecterr:""
+    })
 
     const [animals,setanimals]=useState([])
     useEffect(()=>{
@@ -41,6 +45,23 @@ function SendSurgeryUser(){
         .catch((err) => console.log(err))
     }
 
+    const messagereg=/^[a-zA-Z0-9_'-]/
+    const changedata=(e)=>{
+        if(e.target.name === "message"){
+            setmessage(e.target.value)
+            seterrdata({
+                ...errdata,
+                messageerr:messagereg.test(e.target.value)?"":"message must be btw 1, 300 char"
+            })
+        }else if(e.target.name === "animalname1"){
+            setanimalname1(e.target.value)
+            seterrdata({
+                ...errdata,
+                selecterr:e.target.value === "" ? "choose an option please":""
+            })
+        }
+    }
+
     return (<>
             <div className='p-5  my-2 bg-light '>
                 <div className='d-flex justify-content-center'>
@@ -52,8 +73,8 @@ function SendSurgeryUser(){
                 <div className='row my-4'>
                     <h4 className='col-2 text-danger'>{loggedUser.username}</h4>
                     <div className='col-4'>
-                    <select class="form-select" aria-label="Default select example" value={animalname1} onChange={(e) => setanimalname1(e.target.value)} name='animalname1'>
-                            <option selected>Choose Animal</option>
+                    <select class="form-select" aria-label="Default select example" value={animalname1} onChange={(e) => changedata(e)} name='animalname1'>
+                            <option value="" selected>Choose Animal</option>
                             {animals.map(animal => {
                                 return(<>
                             <option value={animal.animalName}>{animal.animalName}</option>
@@ -61,14 +82,17 @@ function SendSurgeryUser(){
                                     </>)
                             })}
                     </select>
+                    <p className="text-danger">{errdata.selecterr}</p>
+
                     </div>
 
                 </div>
 
                 <div className='row my-3'>
                     <div class="form-floating">
-                         <textarea class="form-control" placeholder="Leave a comment here" name='message' onChange={(e) => setmessage(e.target.value)} value={message} id="floatingTextarea"></textarea>
+                         <textarea class="form-control" placeholder="Leave a comment here" name='message' onChange={(e) => changedata(e)} value={message} id="floatingTextarea"></textarea>
                          <label for="floatingTextarea">Message</label>
+                         <p className="text-danger">{errdata.messageerr}</p>
                     </div>
 
                 </div>

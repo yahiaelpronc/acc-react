@@ -5,35 +5,19 @@ import { useEffect } from 'react'
 
 
 
-function ServicesRequestsDiv(props){
+function ServicesResponsesDiv(props){
     const [showdata,setshowdata]=useState("block")
 
 
-    const acceptStatus = async () => {
-   
-        let formdata2 = new FormData()
-        formdata2.append("statusOwner", "accepted")
-        await axios({
-            method: 'POST',
-            url: `http://localhost:8000/api/updateSrviceStatusOwner/${props.id}/`,
-            data: formdata2
-        })
-            .then((data) => {
-            // history.push("/")
-            console.log(data.data)
-        console.log("done sir")}
 
-            )
-            .catch((err) => console.log(err))
-    }
     
     const declineStatus = async () => {
    
         let formdata2 = new FormData()
-        formdata2.append("statusOwner", "declined")
+        formdata2.append("statusUser", "declined")
         await axios({
             method: 'POST',
-            url: `http://localhost:8000/api/updateSrviceStatusOwner/${props.id}/`,
+            url: `http://localhost:8000/api/updateSrviceStatusUser/${props.id}/`,
             data: formdata2
         })
             .then((data) => {
@@ -62,12 +46,13 @@ function ServicesRequestsDiv(props){
 
                     <div className='col-2'>
                         <h3 className='fw-bold my-2'>{props.serviceName}</h3>
-                        <h3 className='fw-bold mt-5'>statusUser: {props.statusUser}</h3>
+                        <h3 className='fw-bold mt-5'>statusOwner: {props.statusOwner}</h3>
 
 
                     </div>
                     <div className= 'd-flex align-items-center col-2'>
                         <h3 className='fw-bold my-2'>{props.date}</h3>
+                        <h3 className='fw-bold my-2'>{props.price}</h3>
                         
 
 
@@ -82,7 +67,6 @@ function ServicesRequestsDiv(props){
 
                     <div className='d-flex my-3 justify-content-end'>
 
-                        <button onClick={(e)=> acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button>
                         <button onClick={(e)=> declineStatus(e)} className='btn btn-danger mx-2'>decline</button>
                         <button className='btn btn-danger mx-2'>chat</button>
                     </div>
@@ -95,4 +79,4 @@ function ServicesRequestsDiv(props){
             </div>
             </>)
 }
-export default ServicesRequestsDiv
+export default ServicesResponsesDiv
