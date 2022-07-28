@@ -4,7 +4,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
-
+import './PagesStatic/AddAnimal.css';
 
 import { useHistory } from "react-router-dom";
 
@@ -136,12 +136,13 @@ function AddAnimal() {
 
     return (<>
 
-        <div className='bg-light p-3'>
-            <div className='row p-2 my-2'>
+        <div className='MyAnimal'>
+            <div className='Maaain'>
 
-                <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/addanimal1.jpg`)} />
-                <div className='col-6 d-flex align-items-center justify-content-center '>
-                    <h2 className=' text-danger my-4 '>Add New Animal</h2>
+                <img className='animalpiiic' src={require(`./myimages/addanimal1.jpg`)} />
+                <div className='my2iii2le'>
+                    <i className="ic0nn"></i>
+                    <h2 className='texxxt'>Add New Animal</h2>
 
 
 
@@ -153,16 +154,18 @@ function AddAnimal() {
 
             <div className='row my-2 p-2'>
 
-                <div class="form-group mx-5 col-4">
-
-                    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="animalname" value={animalname} required aria-describedby="emailHelp" placeholder="Enter Animal Name" />
-                    <p className='text-danger'>{errdata.animalnameerr}</p>
-
-                </div>
                 <div class="form-group col-4">
 
                     <input type="text" class="form-control" onChange={(e) => changedata(e)} name='ownerusername' value={ownerusername} required aria-describedby="emailHelp" placeholder="Enter owner username" />
                     <p className='text-danger'>{errdata.errusername}</p>
+
+                </div>
+
+
+                <div class="form-group mx-5 col-4">
+
+                    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="animalname" value={animalname} required aria-describedby="emailHelp" placeholder="Enter Animal Name" />
+                    <p className='text-danger'>{errdata.animalnameerr}</p>
 
                 </div>
 
