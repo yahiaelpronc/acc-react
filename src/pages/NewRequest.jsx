@@ -10,7 +10,7 @@ function NewRequest(){
     return(
         <>
         <div className="container-fluid ">
-        <img src={require(`./images/ccc.jpg`)} alt="" id="image22"/>
+        <img src={require(`./images/dog.webp`)} alt="" id="image22"/>
         </div>
         <h2 className="main-title">Request Surgery</h2>
         <div className=" mid container">
