@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import './PagesStatic/MedicationAdmin2.css';
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -98,44 +99,41 @@ function MedicationAdmin2() {
             .catch((err) => console.log(err))
     }
     return (<>
-        <div className='bg-light p-3'>
-            <div className='row p-2 my-2'>
-                <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/prescription2.webp`)} />
-                <div className='col-6 d-flex align-items-center justify-content-center '>
-                    <h2 className=' text-danger my-4 '>Medication Adminstration</h2>
-                </div>
-            </div>
-            <div className='row my-2 p-3'>
-                <div className='col-4'>
-                    <select class="form-select" aria-label="Default select example"
-                        value={userData.animalName} name="animalName" onChange={(e) => changeData(e)}>
-                        <option selected="" required>Choose Animal</option>
-                        {animals.map(animal => {
-                            return (<>
-                                <option value={animal.animalName}>{animal.animalName}</option>
-                            </>)
-                        }
-                        )}
-                    </select>
-                </div>
+        <div className='MAXcontainerr'>
+            <h2 className='main-title'>Medication Adminstration</h2>
+            {/* <div className='medicationPIC'>
+                <img src={require(`./myimages/prescription2.webp`)} />
+            </div> */}
+
+            <div className='col-4 animalNAME'>
+                <select class="form-select" aria-label="Default select example"
+                    value={userData.animalName} name="animalName" onChange={(e) => changeData(e)}>
+                    <option selected="" required>Choose Animal</option>
+                    {animals.map(animal => {
+                        return (<>
+                            <option value={animal.animalName}>{animal.animalName}</option>
+                        </>)
+                    }
+                    )}
+                </select>
             </div>
             <div className='row'>
                 <div className='col-5'>
-                    <div class="col-auto my-3">
+                    <div class="col-auto MEDdetailz">
                         <input type="text" value={userData.medicationName} name="medicationName" onChange={(e) => changeData(e)}
                             className="form-control" placeholder='Medication Name' aria-describedby="passwordHelpInline" />
                     </div>
-                    <div class="col-auto my-3">
+                    <div class="col-auto MEDdetailz">
                         <input type="number" value={userData.dosage} name="dosage" onChange={(e) => changeData(e)}
                             className="form-control" placeholder='Dosage' aria-describedby="passwordHelpInline" />
                     </div>
                 </div>
                 <div className='col-5'>
-                    <div class="col-auto my-3">
+                    <div class="col-auto MEDdetailz">
                         <input type="number" value={userData.dosageInterval} name="dosageInterval" onChange={(e) => changeData(e)}
                             className="form-control" placeholder='Dosage Interval In Minutes' aria-describedby="passwordHelpInline" />
                     </div>
-                    <div>
+                    <div className='MEDdetailz'>
                         <select class="form-select" value={userData.adminstrationRoute} name="adminstrationRoute" onChange={(e) => changeData(e)}
                             aria-label="Default select example">
                             <option selected value="">Adminstration Route</option>
@@ -147,8 +145,8 @@ function MedicationAdmin2() {
                 </div>
             </div>
             <div className='my-3 p-3'>
-                <h4><strong>Medication History</strong></h4>
-                <table class="table table-success table-striped table-hover ">
+                <h4 className='TEXT'><strong>Medication History</strong></h4>
+                <table class="table table-striped table-hover ">
                     <thead>
                         <tr>
                             <th scope="col">Animal Name</th>
@@ -181,7 +179,7 @@ function MedicationAdmin2() {
                 </table>
             </div>
             <div className='d-flex justify-content-end me-4 my-2 p-2'>
-                <button className='btn btn-danger' onClick={(e) => { inserMedication(e) }}>Adminster Medication</button>
+                <button className='buttoooon' onClick={(e) => { inserMedication(e) }}>Adminster Medication</button>
             </div>
         </div>
     </>

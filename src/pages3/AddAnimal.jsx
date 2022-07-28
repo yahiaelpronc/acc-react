@@ -138,8 +138,8 @@ function AddAnimal() {
 
                 <img className='animalpiiic' src={require(`./myimages/addanimal1.jpg`)} />
                 <div className='my2iii2le'>
-                    <h2 className='texxxt'>Vet Patient Informations</h2>
-                    <span className='subtexxxt' >Add new animal and all details about it</span>
+                    <h2 className='main-title'>Vet Patient Informations</h2>
+                    {/* <span className='subtexxxt' >Add new animal and all details about it</span> */}
                 </div>
 
             </div>
