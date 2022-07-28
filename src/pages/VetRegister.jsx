@@ -11,6 +11,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 function UserRegister() {
     const history = useHistory()
+    const emailRegex = /\S+@\S+\.\S+/;
+    const phonereg = /^(010|011|012|015)\d{8}$/
     const [governorates, setGovernorates] = useState(
         ["Alexandria", "Aswan", "Asyut", "Beheira", "Beni Suef", "Cairo", "Dakahlia", "Damietta", "Faiyum",
             "Gharbia", "Giza", "Ismailia", "Kafr El Sheikh", "Luxor", "Matruh", "Minya", "Monufia", "New Valley",
@@ -138,10 +140,10 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "password") {
-            if (e.target.value.length < 3 || e.target.value.length > 30) {
+            if (e.target.value.length < 6 || e.target.value.length > 30) {
                 seterrdata({
                     ...errdata,
-                    passwordErr: "This Field Has To Be 3 to 30 Characters Long"
+                    passwordErr: "This Field Has To Be 6 to 30 Characters Long"
                 })
                 seterrdataB({
                     ...errdataB,
@@ -213,10 +215,10 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "email") {
-            if (e.target.value.length < 3 || e.target.value.length > 30) {
+            if (emailRegex.test(e.target.value) === false) {
                 seterrdata({
                     ...errdata,
-                    emailErr: "This Field Has To Be 3 to 30 Characters Long"
+                    emailErr: "Please Write A Correct Email"
                 })
                 seterrdataB({
                     ...errdataB,
@@ -238,10 +240,10 @@ function UserRegister() {
             }
         }
         else if (e.target.name === "phone") {
-            if (e.target.value.length < 3 || e.target.value.length > 30) {
+            if (phonereg.test(e.target.value) == false) {
                 seterrdata({
                     ...errdata,
-                    phoneErr: "This Field Has To Be 3 to 30 Characters Long"
+                    phoneErr: "Phone should start with 01 and be 11 digits long"
                 })
                 seterrdataB({
                     ...errdataB,
@@ -468,15 +470,16 @@ function UserRegister() {
                         <input type="text" className="itemvalue" name="email" placeholder="Enter Your Email" id="email" onChange={(e) => changeData(e)} />
                         <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.emailErr}</p>
                     </div>
-                    <div className="iteems">
-                        <span className="item">Phone Number</span>
-                        <input type="number" className="itemvalue" name="phone" placeholder="Enter Your egyption PhoneNumber" id="phone" onChange={(e) => changeData(e)} />
-                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.phoneErr}</p>
-                    </div>
+
                     <div className="iteems">
                         <span className="item">Password</span>
                         <input type="password" className="itemvalue" name="password" placeholder="Enter Your Password" id="pass1" onChange={(e) => changeData(e)} />
                         <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.passwordErr}</p>
+                    </div>
+                    <div className="iteems">
+                        <span className="item">Phone Number</span>
+                        <input type="number" className="itemvalue" name="phone" placeholder="Enter Your egyption PhoneNumber" id="phone" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.phoneErr}</p>
                     </div>
                     <div className="iteems">
                         <span className="item">Confirm Password</span>

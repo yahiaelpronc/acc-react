@@ -18,7 +18,9 @@ function Login() {
     const [password, setPassword] = useState("")
     const [usernameErr, setUsernameErr] = useState("")
     const [passwordErr, setPasswordErr] = useState("")
+    const [resend, setResend] = useState(false)
     const [submitErr, setSubmitErr] = useState("")
+    const [resendErr, setResendErr] = useState("")
     function handleKeyDown(e) {
         if (e.key === 'Enter') {
             e.preventDefault()
@@ -30,6 +32,10 @@ function Login() {
         axios.get(`http://localhost:8000/api/loginVet/${username}/${password}`)
             .then((res) => {
                 if (res.data === "Incorrect Credintials") {
+                    setSubmitErr(res.data)
+                }
+                else if (res.data === "Please Activate Your Account") {
+                    setResend(true)
                     setSubmitErr(res.data)
                 }
                 else {
@@ -65,6 +71,19 @@ function Login() {
             }
         }
     }
+    function resendEmail(e) {
+        axios.get(`http://localhost:8000/api/resendEmail/${username}`)
+            .then((res) => {
+                console.log(res.data)
+                if (res.data === "Email Sent") {
+                    setResend(false)
+                    setSubmitErr("")
+                    setResendErr(res.data)
+                }
+            }
+            )
+            .catch((err) => console.log(err))
+    }
     return <>
         <div className="maxbox">
             <div className="mybooox">
@@ -86,12 +105,17 @@ function Login() {
                             <input type="password" className='ansser' name="password" id="logPassword" placeholder="password" onChange={(e) => changeData(e)} onKeyDown={(e) => handleKeyDown(e)} />
                             <p className="text-danger" style={{ fontSize: "15px" }}>{passwordErr}</p>
                         </div>
-                        <div id="check" className='remmbermeee'>
+                        {/* <div id="check" className='remmbermeee'>
                             <input type="checkbox" id="remember" className='checkmeee' />
                             <label for="remember" className="mylabel">Remember me</label>
-                        </div>
+                        </div> */}
                         <br /><br />
-                        <p className="text-danger" style={{ fontSize: "17px" }}>{submitErr}</p>
+                        <p className="text-danger" style={{ fontSize: "17px" }}>{submitErr}
+                            {resend &&
+                                <Link onClick={(e) => resendEmail(e)}>  Resend Email</Link>
+                            }
+                        </p>
+                        <p className="text-success" style={{ fontSize: "17px" }}><strong>{resendErr}</strong></p>
                         <input type="submit" value="Login" id="submitButton" onClick={(e) => loginUser(e)} />
                     </div>
                 </div>

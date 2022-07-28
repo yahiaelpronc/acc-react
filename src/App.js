@@ -52,6 +52,7 @@ function App() {
           <Route path={"/NewRe"} exact component={NewRequest}/>
           <Route path={"/NewDe"} exact component={NewDetails}/>
           <Route path={"/Filter"} exact component={LocationFilter}/>
+          {/* <Route path={"/NewDe"} exact component={NewDetails}/> */}
           <Route path={"/VetRegister"} exact component={VetRegister}/>
           <Route path={"/UserRegister"} exact component={UserRegister}/>
           <Route path={"/Register"} exact component={Register}/>
@@ -63,7 +64,7 @@ function App() {
           <Route path={"/emergency"} exact component={Emergency}/>
           <Route path={"/myform"} exact component={Myform}/>
           <Route path={"/vetform2"} exact component={VetForm2}/>
-          <Route path={"/detailslocations/:locationName"} exact component={DetailsLocations} />
+          <Route path={"/detailslocations/:locationName"} exact component={NewDetails} />
           <Route path={"/listlocations"} exact component={Locations} />
           <Route path={"/details/:id"} exact component={LocationDetails} />
           <Route path={"/listusers"} exact component={ListUsers} />
