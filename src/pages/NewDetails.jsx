@@ -9,7 +9,7 @@ function NewDetails(){
 
     return(
         <>
-        <h3>Hello Details</h3>
+        <h2 className="main-title">Details Of Animal Care Location</h2>
         </>
     )
 }
