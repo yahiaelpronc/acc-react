@@ -156,9 +156,9 @@ function NavbarComponent() {
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
                   <li><Link to="/listlocations">List locations</Link></li>
-                  {/* <li><Link to="/ServicesRequest">Services Request</Link></li> */}
-                  {/* <li><Link to="/SurgicalOperationsUser">Surgical Operations User</Link></li> */}
-                  {/* <li><Link to="/UserServiceResponses">Services Responses User</Link></li> */}
+                  <li><Link to="/ServicesRequest">Services Request</Link></li>
+                  <li><Link to="/SurgicalOperationsUser">Surgical Operations User</Link></li>
+                  <li><Link to="/UserServiceResponses">Services Responses User</Link></li>
                   {currentPage !== "emergency" &&
                     <>
                       <li>
@@ -167,10 +167,8 @@ function NavbarComponent() {
                             Messages
                           </Link>
                           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            {/* <li><Link className="dropdown-item" id={Associated[0]}>{Associated[0]}</Link></li> */}
                             {GotAssociated &&
                               <>
-                                {/* <p>{typeof (withoutDuplicates)}</p> */}
                                 {Object.keys(withoutDuplicates).map((key) => (
                                   <>
                                     {withoutDuplicates[key] !== loggedUser.username && <>
@@ -194,19 +192,17 @@ function NavbarComponent() {
                 <>
                   <li><Link to={`/SurgeryRequest`}>SurgeryRequest</Link></li>
                   <li><Link to={`/TableOfSurgries`}>Table Of Surgries </Link></li>
-                  {/* <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li> */}
-                  {/* <li><Link to="/listlocations">List locations</Link></li> */}
-                  {/* <li><Link to="/ServicesRequest">Services Request</Link></li> */}
+                  <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li>
+                  <li><Link to="/listlocations">List locations</Link></li>
+                  <li><Link to="/ServicesRequest">Services Request</Link></li>
                   <li>
                     <div className="col-2 dropdown">
                       <Link class="btn dropdown-toggle" to="#" role="button" id="linkDrop" data-bs-toggle="dropdown">
                         Messages
                       </Link>
                       <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        {/* <li><Link className="dropdown-item" id={Associated[0]}>{Associated[0]}</Link></li> */}
                         {GotAssociated &&
                           <>
-                            {/* <p>{typeof (withoutDuplicates)}</p> */}
                             {Object.keys(withoutDuplicates).map((key) => (
                               <>
                                 {withoutDuplicates[key] !== loggedUser.username && <>
@@ -227,7 +223,7 @@ function NavbarComponent() {
             </>
           }
         </ul>
-        {currentPage !== "emergency" &&
+        {currentPage === "" &&
           <div style={{ zIndex: "3" }}>
             <div className="pad">
               <div className="row d-flex justify-content-center chats">
