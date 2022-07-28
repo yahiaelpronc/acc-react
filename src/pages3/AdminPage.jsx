@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useHistory } from "react-router-dom";
+import './page3Static/Admin.css';
 
 function AdminPage2() {
 
@@ -129,229 +130,229 @@ function AdminPage2() {
 
 
     return (<>
-        <div className='p-3 bg-light'>
-            <div class="bg-danger p-5 d-flex justify-content-center">
+        
 
-                <h1>Welcome Admin</h1>
+            <h2 className="main-title my-5">Welcome Admin</h2>
+
+        
+
+
+        <div className=" p-5 bg-light my-3">
+
+            <div className="row p-3 d-flex justify-content-between">
+
+                <div className="col-2">
+                    <i style={{ fontSize: "4rem" }} className="fa-solid fa-lock" id='dd1'></i>
+
+                </div>
+
+                <div className="col-2">
+                    <i style={{ fontSize: "4rem" }} className="fa-solid fa-screwdriver-wrench " id='dd'></i>
+
+                </div>
 
             </div>
 
         </div>
 
-        <div class=" p-5 bg-light my-3">
-
-            <div class="row p-3 d-flex justify-content-between">
-
-                <div class="col-2">
-                    <i style={{ fontSize: "4rem" }} class="fa-solid fa-lock text-danger"></i>
-
-                </div>
-
-                <div class="col-2">
-                    <i style={{ fontSize: "4rem" }} class="fa-solid fa-screwdriver-wrench text-danger"></i>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <ul class="nav nav-tabs p-3 my-3">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Add Location</a>
+       <div className='page33'>
+       <ul className="nav nav-tabs p-3 my-3">
+            <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#" id='add'>Add Location</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Add 5 Projcts</a>
+            <li className="nav-item">
+                <a className="nav-link" href="">Add 5 Projcts</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Comments Reports</a>
+            <li className="nav-item">
+                <a className="nav-link" href="">Comments Reports</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="" >Projcts Reports</a>
+            <li className="nav-item">
+                <a className="nav-link" href="" >Projcts Reports</a>
             </li>
         </ul>
+       </div>
 
 
         <div className='row p-2 my-2'>
 
             <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/adminlocation2.jpg`)} />
             <div className='col-6 d-flex align-items-center justify-content-center '>
-                <h2 className=' text-danger my-4 '>Add New Location</h2>
+            <h2 className="main-title my-5">Add New Animal Location</h2>
 
 
 
             </div>
 
         </div>
-
-
+        <div className='containpppp'>
         <div className='row my-2 p-2'>
 
-            <div class="form-group mx-5 col-4">
+<div class="form-group mx-5 col-4">
 
-                <input type="text" class="form-control" onChange={(e) => changedata(e)} name="name" value={name} required aria-describedby="emailHelp" placeholder="Enter location Name" />
-                <p className='text-danger'>{errdata.nameerr}</p>
+    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="name" value={name} required aria-describedby="emailHelp" placeholder="Enter location Name" />
+    <p className='text-danger'>{errdata.nameerr}</p>
 
-            </div>
-            <div class="form-group col-4">
+</div>
+<div class="form-group col-4">
 
-                <input type="email" class="form-control" onChange={(e) => changedata(e)} name='email' value={email} required aria-describedby="emailHelp" placeholder="Enter location email" />
-                <p className='text-danger'>{errdata.emailerr}</p>
+    <input type="email" class="form-control" onChange={(e) => changedata(e)} name='email' value={email} required aria-describedby="emailHelp" placeholder="Enter location email" />
+    <p className='text-danger'>{errdata.emailerr}</p>
 
-            </div>
+</div>
+
+
+</div>
+
+<div className='row my-2 p-2'>
+
+<div class="form-group mx-5 col-4">
+
+    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="address" value={address} required aria-describedby="emailHelp" placeholder="Enter location address" />
+    <p className='text-danger'>{errdata.addresserr}</p>
+
+</div>
+<div class="form-group col-4">
+
+    <select required value={governorate} name="governorate" onChange={(e) => setgovernorate(e.target.value)} class="form-select" aria-label="Default select example">
+        <option selected value="">Choose Governorate</option>
+        <option value="Ad Daqahliyah">Ad Daqahliyah</option>
+        <option value="Al Bahr al Ahmar">Al Bahr al Ahmar</option>
+        <option value="Al Buhayrah">Al Buhayrah</option>
+        <option value="Al Fayyum">Al Fayyum</option>
+        <option value="Al Gharbiyah">Al Gharbiyah</option>
+        <option value="Al Iskandariyah">Al Iskandariyah</option>
+        <option value="Al Isma'iliyah">Al Isma'iliyah</option>
+        <option value="Al Jizah">Al Jizah</option>
+        <option value="Al Minufiyah">Al Minufiyah</option>
+        <option value="Al Minya">Al Minya</option>
+        <option value="Al Qahirah">Al Qahirah</option>
+        <option value="Al Qalyubiyah">Al Qalyubiyah</option>
+        <option value="Al Wadi al Jadid">Al Wadi al Jadid</option>
+        <option value="Ash Sharqiyah">Ash Sharqiyah</option>
+        <option value="As Suways">As Suways</option>
+        <option value="Aswan">Aswan</option>
+        <option value="Asyut">Asyut</option>
+        <option value="Bani Suwayf">Bani Suwayf</option>
+        <option value="Bur Sa'id">Bur Sa'id</option>
+        <option value="Dumyat">Dumyat</option>
+        <option value="Janub Sina'">Janub Sina'</option>
+        <option value="Kafr ash Shaykh">Kafr ash Shaykh</option>
+        <option value="Matruh">Matruh</option>
+        <option value="Qina">Qina</option>
+        <option value="Shamal Sina'">Shamal Sina'</option>
+        <option value="Suhaj">Suhaj</option>
+
+    </select>
+
+
+
+</div>
+
+
+</div>
+
+<div className='row my-2 p-2'>
+
+<div class="form-group mx-5 col-4">
+
+    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="mobile" value={mobile} required aria-describedby="emailHelp" placeholder="Enter location mobile" />
+    <p className='text-danger'>{errdata.mobileerr}</p>
+
+</div>
+<div class="form-group col-4">
+
+    <input type="text" class="form-control" onChange={(e) => setwebsite_link(e.target.value)} name='website_link' value={website_link} required aria-describedby="emailHelp" placeholder="Enter location website_link" />
+
+
+</div>
+
+
+</div>
+<div className='row my-2 p-2'>
+
+<div class="form-group mx-5 col-4">
+
+    <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_start" value={work_hours_start} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
+    <p className='text-danger'>{errdata.work_hours_starterr}</p>
+
+</div>
+<div class="form-group col-4">
+
+    <select required value={work_hours_start_period} onChange={(e) => setwork_hours_start_period(e.target.value)} name="work_hours_start_period" class="form-select" aria-label="Default select example">
+        <option selected value="">Choose Period</option>
+        <option value="am">AM</option>
+        <option value="pm">PM</option>
+
+    </select>
+
+
+</div>
+
+
+
+</div>
+<div className='row my-2 p-2'>
+
+<div class="form-group mx-5 col-4">
+
+    <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_end" value={work_hours_end} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
+    <p className='text-danger'>{errdata.work_hours_enderr}</p>
+
+</div>
+<div class="form-group col-4">
+
+    <select required value={work_hours_end_period} name="work_hours_end_period" onChange={(e) => setwork_hours_end_period(e.target.value)} class="form-select" aria-label="Default select example">
+        <option selected value="">Choose Period</option>
+        <option value="am">AM</option>
+        <option value="pm">PM</option>
+
+    </select>
+
+
+</div>
+
+
+</div>
+<div class="form-group col-4">
+
+<select required value={service} onChange={(e) => setservice(e.target.value)} name="service" class="form-select" aria-label="Default select example" id='seee'>
+    <option selected value="">Services</option>
+    <option value='Wellness Exams & Vaccinations'>Wellness Exams & Vaccinations</option>
+    <option value='Boarding & Grooming Services'>Boarding & Grooming Services</option>
+    <option value='Animal Emergency Services'>Animal Emergency Services</option>
+
+
+</select>
+
+
+</div>
+<div className='row my-2 p-2'>
+
+<div class="form-group ms-2 col-5"  >
+
+    <span class="details">upload a profile pic.</span>
+    <input type="file" placeholder="upload" required id="file" name="profile_pic" onChange={(e) => setimage(e.target.files[0])} />
+    <p id="fileerr"></p>
+
+
+
+
+</div>
+</div>
+<div class="form-group col-4">
+
+<textarea id="w3review" name="description" rows="4" cols="50"
+    onChange={(e) => setdescription(e.target.value)} value={description} required aria-describedby="emailHelp" placeholder="Describe Your Services" />
+</div>
+<p className='text-danger'>{submitErr}</p>
+<button onClick={Registerlocation} type="submit" disabled={errdata.nameerr || errdata.emailerr || errdata.mobileerr || errdata.addresserr || errdata.work_hours_starterr || errdata.work_hours_enderr} className='btn  my-4 p-2' id='sub'>Submit</button>
+
 
 
         </div>
 
-        <div className='row my-2 p-2'>
 
-            <div class="form-group mx-5 col-4">
-
-                <input type="text" class="form-control" onChange={(e) => changedata(e)} name="address" value={address} required aria-describedby="emailHelp" placeholder="Enter location address" />
-                <p className='text-danger'>{errdata.addresserr}</p>
-
-            </div>
-            <div class="form-group col-4">
-
-                <select required value={governorate} name="governorate" onChange={(e) => setgovernorate(e.target.value)} class="form-select" aria-label="Default select example">
-                    <option selected value="">Choose Governorate</option>
-                    <option value="Ad Daqahliyah">Ad Daqahliyah</option>
-                    <option value="Al Bahr al Ahmar">Al Bahr al Ahmar</option>
-                    <option value="Al Buhayrah">Al Buhayrah</option>
-                    <option value="Al Fayyum">Al Fayyum</option>
-                    <option value="Al Gharbiyah">Al Gharbiyah</option>
-                    <option value="Al Iskandariyah">Al Iskandariyah</option>
-                    <option value="Al Isma'iliyah">Al Isma'iliyah</option>
-                    <option value="Al Jizah">Al Jizah</option>
-                    <option value="Al Minufiyah">Al Minufiyah</option>
-                    <option value="Al Minya">Al Minya</option>
-                    <option value="Al Qahirah">Al Qahirah</option>
-                    <option value="Al Qalyubiyah">Al Qalyubiyah</option>
-                    <option value="Al Wadi al Jadid">Al Wadi al Jadid</option>
-                    <option value="Ash Sharqiyah">Ash Sharqiyah</option>
-                    <option value="As Suways">As Suways</option>
-                    <option value="Aswan">Aswan</option>
-                    <option value="Asyut">Asyut</option>
-                    <option value="Bani Suwayf">Bani Suwayf</option>
-                    <option value="Bur Sa'id">Bur Sa'id</option>
-                    <option value="Dumyat">Dumyat</option>
-                    <option value="Janub Sina'">Janub Sina'</option>
-                    <option value="Kafr ash Shaykh">Kafr ash Shaykh</option>
-                    <option value="Matruh">Matruh</option>
-                    <option value="Qina">Qina</option>
-                    <option value="Shamal Sina'">Shamal Sina'</option>
-                    <option value="Suhaj">Suhaj</option>
-
-                </select>
-
-
-
-            </div>
-
-
-        </div>
-
-        <div className='row my-2 p-2'>
-
-            <div class="form-group mx-5 col-4">
-
-                <input type="text" class="form-control" onChange={(e) => changedata(e)} name="mobile" value={mobile} required aria-describedby="emailHelp" placeholder="Enter location mobile" />
-                <p className='text-danger'>{errdata.mobileerr}</p>
-
-            </div>
-            <div class="form-group col-4">
-
-                <input type="text" class="form-control" onChange={(e) => setwebsite_link(e.target.value)} name='website_link' value={website_link} required aria-describedby="emailHelp" placeholder="Enter location website_link" />
-
-
-            </div>
-
-
-        </div>
-        <div className='row my-2 p-2'>
-
-            <div class="form-group mx-5 col-4">
-
-                <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_start" value={work_hours_start} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
-                <p className='text-danger'>{errdata.work_hours_starterr}</p>
-
-            </div>
-            <div class="form-group col-4">
-
-                <select required value={work_hours_start_period} onChange={(e) => setwork_hours_start_period(e.target.value)} name="work_hours_start_period" class="form-select" aria-label="Default select example">
-                    <option selected value="">Choose Period</option>
-                    <option value="am">AM</option>
-                    <option value="pm">PM</option>
-
-                </select>
-
-
-            </div>
-
-
-
-        </div>
-        <div className='row my-2 p-2'>
-
-            <div class="form-group mx-5 col-4">
-
-                <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_end" value={work_hours_end} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
-                <p className='text-danger'>{errdata.work_hours_enderr}</p>
-
-            </div>
-            <div class="form-group col-4">
-
-                <select required value={work_hours_end_period} name="work_hours_end_period" onChange={(e) => setwork_hours_end_period(e.target.value)} class="form-select" aria-label="Default select example">
-                    <option selected value="">Choose Period</option>
-                    <option value="am">AM</option>
-                    <option value="pm">PM</option>
-
-                </select>
-
-
-            </div>
-
-
-        </div>
-        <div class="form-group col-4">
-
-            <select required value={service} onChange={(e) => setservice(e.target.value)} name="service" class="form-select" aria-label="Default select example">
-                <option selected value="">Services</option>
-                <option value='Wellness Exams & Vaccinations'>Wellness Exams & Vaccinations</option>
-                <option value='Boarding & Grooming Services'>Boarding & Grooming Services</option>
-                <option value='Animal Emergency Services'>Animal Emergency Services</option>
-
-
-            </select>
-
-
-        </div>
-        <div className='row my-2 p-2'>
-
-            <div class="form-group ms-2 col-5"  >
-
-                <span class="details">upload a profile pic.</span>
-                <input type="file" placeholder="upload" required id="file" name="profile_pic" onChange={(e) => setimage(e.target.files[0])} />
-                <p id="fileerr"></p>
-
-
-
-
-            </div>
-        </div>
-        <div class="form-group col-4">
-
-            <textarea id="w3review" name="description" rows="4" cols="50"
-                onChange={(e) => setdescription(e.target.value)} value={description} required aria-describedby="emailHelp" placeholder="Describe Your Services" />
-        </div>
-        <p className='text-danger'>{submitErr}</p>
-        <button onClick={Registerlocation} type="submit" disabled={errdata.nameerr || errdata.emailerr || errdata.mobileerr || errdata.addresserr || errdata.work_hours_starterr || errdata.work_hours_enderr} className='btn btn-danger my-4 p-2'>Submit</button>
-
-
-
-
-
-
+        
     </>)
 
 }
