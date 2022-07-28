@@ -159,7 +159,7 @@ function NavbarComponent() {
                   <li><Link to="/ServicesRequest">Services Request</Link></li>
                   <li><Link to="/SurgicalOperationsUser">Surgical Operations User</Link></li>
                   <li><Link to="/UserServiceResponses">Services Responses User</Link></li>
-                  {currentPage !== "emergency" &&
+                  {currentPage === "" &&
                     <>
                       <li>
                         <div className="col-2 dropdown">
