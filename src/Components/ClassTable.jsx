@@ -9,7 +9,7 @@ class Table extends React.Component{
     render(){
         return <>
     <div className='my-3 p-3'>
-                    <table class="table table-success table-striped table-hover ">
+                    <table class="table  table-striped table-hover ">
                         <thead>
                             <tr>
                                 <th scope="col">Animal Name</th>
