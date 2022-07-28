@@ -1,3 +1,9 @@
+export const changcurrentPage = (payload) => {
+    return {
+        payload,
+        type: "CHANGE_CURRENT_PAGE"
+    }
+}
 export const changeUser = (payload) => {
     return {
         payload,

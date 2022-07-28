@@ -449,10 +449,11 @@ function UserRegister() {
                         <select className="iteeemvalue" name="city" aria-label="Default select example" onChange={(e) => changeData(e)}>
                             {governorates.map(gov => {
                                 return (<>
-                                    {gov === "Cairo" &&
+                                    {gov === "Qena" ?
                                         <option selected value={gov}>{gov}</option>
+                                        :
+                                        <option value={gov}>{gov}</option>
                                     }
-                                    <option value={gov}>{gov}</option>
                                 </>)
                             })}
                         </select>

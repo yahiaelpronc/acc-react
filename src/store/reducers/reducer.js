@@ -4,7 +4,8 @@ const INITIAL_VALUE = {
     currentUser:"",
     currentLocation:"",
     logged:false,
-    type:""
+    type:"",
+    currentPage:"",
 }
 export default function UserReducer(state=INITIAL_VALUE,action){
     switch(action.type){
@@ -12,6 +13,11 @@ export default function UserReducer(state=INITIAL_VALUE,action){
             return{
                 ...state,
                 loggedUser : action.payload
+            };
+        case "CHANGE_CURRENT_PAGE":
+            return{
+                ...state,
+                currentPage : action.payload
             };
         case "CHANGE_VET":
             return{

@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 // import { Helmet } from "react-helmet";
 import './PagesStatic/EmergencyCSS.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { changeUser, changeVet, changeLogged, changeLoggedType } from '../store/actions/action'
+import { changeUser, changeVet, changeLogged, changeLoggedType, changcurrentPage } from '../store/actions/action'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 function Emergency() {
     const loggedUser = useSelector((state) => state.loggedUser);
     const currentVet = useSelector((state) => state.currentVet);
+    const currentPage = useSelector((state) => state.currentPage);
     const [governorates, setGovernorates] = useState(
         ["Alexandria", "Aswan", "Asyut", "Beheira", "Beni Suef", "Cairo", "Dakahlia", "Damietta", "Faiyum",
             "Gharbia", "Giza", "Ismailia", "Kafr El Sheikh", "Luxor", "Matruh", "Minya", "Monufia", "New Valley",
@@ -30,6 +31,7 @@ function Emergency() {
     const [scrollNeeded, setscrollNeeded] = useState(true)
     const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
     const dispatch = useDispatch()
+    useEffect(() => () => dispatch(changcurrentPage("")), []);
     useEffect(() => {
         axios.get(`http://localhost:8000/api/findvet/${currentVet}/`)
             .then((res) => {
@@ -45,6 +47,7 @@ function Emergency() {
         }
     }, [messages])
     useEffect(() => {
+        dispatch(changcurrentPage("emergency"))
         axios.get("http://localhost:8000/api/listvets/")
             .then((res) => {
                 console.log(res.data)
@@ -161,7 +164,7 @@ function Emergency() {
                         {DidGetLocations &&
                             locations.map(location => {
                                 return (<>
-                                    {selectedCity === location.governorate &&
+                                    {(selectedCity === location.governorate && location.service === "Animal Emergency Services") &&
                                         <Link to={`detailslocations/${location.id}`} style={{ textDecoration: "none", color: "black" }}>
                                             <div className="card1 p-2" style={{ height: "fitContent", width: "fitContent" }}>
                                                 {(location.picture === null | location === undefined) ?
@@ -230,7 +233,7 @@ function Emergency() {
 
 
                 {/* CHAT */}
-                <div className="col-md-4 mb-5">
+                <div className="col-md-4 mb-5" style={{ zIndex: "5" }}>
                     <div className="pad">
                         <div className="row d-flex justify-content-center chats">
                             <div className="col-md-12">
