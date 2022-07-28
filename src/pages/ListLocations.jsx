@@ -73,8 +73,8 @@ function Locations() {
 
         <div className="articles" id="articles">
         <div className="container">
-          <div className="box" style={{height:"400px"}}>
-            <img src={require(`./images/ccc.jpg`)} alt="" />
+          <div className=" box" style={{height:"360px"}}>
+            <img src={require(`./images/ccc.jpg`)} alt="" style={{height:"170px"}} />
             <div className="content">
               <h5>Animal Care Center</h5>
               <p className="detail">Our Service</p>
@@ -85,7 +85,7 @@ function Locations() {
               <i className="fas fa-long-arrow-alt-right"></i>
             </div>
           </div>
-          <div className="box" style={{height:"400px"}}>
+          <div className=" box" style={{height:"360px"}}>
             <img src={require(`./images/2.webp`)} alt="" />
             <div className="content">
               <h5>Veterinary Hospital</h5>
@@ -97,7 +97,7 @@ function Locations() {
               <i className="fas fa-long-arrow-alt-right"></i>
             </div>
           </div>
-          <div className="box" style={{height:"400px"}}>
+          <div className="box" style={{height:"360px"}}>
             <img src={require(`./images/dental.jpg`)} alt="" />
             <div className="content">
               <h5>Animal Care Center</h5>
@@ -109,7 +109,7 @@ function Locations() {
               <i className="fas fa-long-arrow-alt-right"></i>
             </div>
           </div>
-          <div className="box" style={{height:"400px"}}>
+          <div className="box" style={{height:"360px"}}>
             <img src={require(`./images/dd.jpg`)} alt="" style={{height:'170px'}} />
             <div className="content">
               <h5>Animal Care Center</h5>
