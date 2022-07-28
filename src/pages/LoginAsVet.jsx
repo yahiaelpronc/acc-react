@@ -69,7 +69,7 @@ function Login() {
         <div className="maxbox">
             <div className="mybooox">
                 <div className="my2i2le">
-                    <Link id="login" className="my2i2le" to="#login">login</Link>
+                    <Link id="login" style={{color:"white"}} className="my2i2le" to="#login">login</Link>
                     {/* <Link id="signup" to=".registerVet/.registervet.html">Register as Vet</Link>
                     <Link id="signup" to=".register/.Register/.contact.html">Register as User</Link> */}
                 </div>

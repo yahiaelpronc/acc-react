@@ -37,7 +37,7 @@ function NavbarComponent() {
                 :
                 <>
                   <li><Link to={`/SurgeryRequest`}>SurgeryRequest</Link></li>
-                  <li><Link to={`/operation`}>Scheduled Surgery</Link></li>
+                  <li><Link to={`/TableOfSurgries`}>Table Of Surgries </Link></li>
                   <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li>
                   <li><Link to="/listlocations">List locations</Link></li>
                   <li><Link to="/ServicesRequest">Services Request</Link></li>

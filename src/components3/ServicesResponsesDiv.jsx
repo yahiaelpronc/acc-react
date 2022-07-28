@@ -14,7 +14,7 @@ function ServicesResponsesDiv(props){
     const declineStatus = async () => {
    
         let formdata2 = new FormData()
-        formdata2.append("statusUser", "declined")
+        formdata2.append("statusUser","declined")
         await axios({
             method: 'POST',
             url: `http://localhost:8000/api/updateSrviceStatusUser/${props.id}/`,

@@ -40,6 +40,7 @@ import LocationFilter from './pages/LocationFilter';
 import UserRegister from './pages/UserRegister';
 import RequestSur from './pages/RequestSur';
 import ServicesRequest from './pages3/ServicesRequest';
+import TableOfSurgries from './pages3/tableOfSurgeries';
 import NotFound from './pages/NotFound';
 function App() {
     return (
@@ -48,7 +49,7 @@ function App() {
         <NavbarComponent/>
         <Switch>
           <Route path={"/"} exact component={Home}/>
-          <Route path={"/NewSc"} exact component={NewSchedule}/>
+          <Route path={"/NewSc/:id"} exact component={NewSchedule}/>
           <Route path={"/NewRe"} exact component={NewRequest}/>
           <Route path={"/NewDe"} exact component={NewDetails}/>
           <Route path={"/Filter"} exact component={LocationFilter}/>
@@ -80,6 +81,7 @@ function App() {
           <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
           <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
+          <Route path={"/TableOfSurgries"} exact component={TableOfSurgries} />
           <Route path={"*"} exact component={NotFound}/>
         </Switch>
         <FooterComponent/>
