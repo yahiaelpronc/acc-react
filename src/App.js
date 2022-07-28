@@ -36,6 +36,7 @@ import VetRegister from './pages/VetRegister';
 import NewSchedule from './pages/NewSchedule';
 import NewRequest from './pages/NewRequest';
 import NewDetails from './pages/NewDetails';
+import LocationFilter from './pages/LocationFilter';
 import UserRegister from './pages/UserRegister';
 import RequestSur from './pages/RequestSur';
 import ServicesRequest from './pages3/ServicesRequest';
@@ -50,6 +51,7 @@ function App() {
           <Route path={"/NewSc"} exact component={NewSchedule}/>
           <Route path={"/NewRe"} exact component={NewRequest}/>
           <Route path={"/NewDe"} exact component={NewDetails}/>
+          <Route path={"/Filter"} exact component={LocationFilter}/>
           <Route path={"/VetRegister"} exact component={VetRegister}/>
           <Route path={"/UserRegister"} exact component={UserRegister}/>
           <Route path={"/Register"} exact component={Register}/>
