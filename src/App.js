@@ -33,6 +33,8 @@ import AddAnimal from './pages3/AddAnimal';
 import AddUserForm from './pages/AddUserForm';
 import Register from './pages/Register';
 import VetRegister from './pages/VetRegister';
+import NewSchedule from './pages/NewSchedule';
+import NewRequest from './pages/NewRequest';
 import UserRegister from './pages/UserRegister';
 import RequestSur from './pages/RequestSur';
 import ServicesRequest from './pages3/ServicesRequest';
@@ -44,6 +46,8 @@ function App() {
         <NavbarComponent/>
         <Switch>
           <Route path={"/"} exact component={Home}/>
+          <Route path={"/NewSc"} exact component={NewSchedule}/>
+          <Route path={"/NewRe"} exact component={NewRequest}/>
           <Route path={"/VetRegister"} exact component={VetRegister}/>
           <Route path={"/UserRegister"} exact component={UserRegister}/>
           <Route path={"/Register"} exact component={Register}/>
