@@ -51,7 +51,7 @@ function TableOfSurgries() {
 
     if (Surgeries.length > 0 && Finished) {
         for (let i = 0; i < length; i++) {
-            axios.get(`http://localhost:8000/api/findSpecificAnimal/${Surgeries[i].owner}/${Surgeries[i].animalName}/`)
+            axios.get(`http://localhost:8000/api/findSpecificAnimal/${Surgeries[i].owner}/${Surgeries[i].animalName}_${Surgeries[i].owner}/`)
                 .then((res) => {
                     setWeights(current => [...current, res.data.weight]);
                     setSpecies(current => [...current, res.data.species]);
@@ -63,7 +63,7 @@ function TableOfSurgries() {
     }
     console.log("Weights Res Data : ", Weights)
 
-    const [agedata,setagedata]=useState("")
+    const [agedata, setagedata] = useState("")
     const getAge = (b_date) => {
         const mydate = new Date()
         const myYear = mydate.getFullYear()
@@ -80,12 +80,13 @@ function TableOfSurgries() {
         console.log(myYear)
         console.log("birth date", animalB_Date)
         setagedata(AnimalAgeY + " years " + AnimalAgeM + "months " + AnimalAgeD + " days ")
-        
+
 
     }
-    const [showdata,setshowdata]=useState("block")
+    const [showdata, setshowdata] = useState("block")
 
-    const dismissSurgery=async (id) =>{
+    const dismissSurgery = async (e) => {
+        let id = e.target.id
         let formdata2 = new FormData()
         formdata2.append("statusVet", "declined")
         await axios({
@@ -94,11 +95,11 @@ function TableOfSurgries() {
             data: formdata2
         })
             .then((data) => {
-            // history.push("/")
-            console.log(data.data)
-            setshowdata("block")
-        console.log("done sir")}
-
+                // history.push("/")
+                console.log(data.data)
+                setshowdata("block")
+                console.log("done sir")
+            }
             )
             .catch((err) => console.log(err))
     }
@@ -109,81 +110,83 @@ function TableOfSurgries() {
         <>
             <h2 className="main-title">Scheduled Operations</h2>
             <div className=" mid container">
-                    <div className="container-fluid row">
-                            <div>
-                                <h5 id="head2">Surgical Operation Message</h5>
-                            </div>
+                <div className="container-fluid row">
+                    <div>
+                        <h5 id="head2">Surgical Operation Message</h5>
                     </div>
                 </div>
+            </div>
 
 
 
             {Surgeries.map((sur, index) => {
-                                            
 
-                
+
+
                 return (<>
                     {sur.statusVet !== "declined" && (
+                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded">
 
- 
-                            <div  className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded">
+                            <div className="col-6">
+                                <div className=" cc card">
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="span22">Animal Name: </label>
+                                            <span className="span22">{sur.animalName}</span>
 
-                                        <div className="col-6">
-                                            <div className=" cc card">
-                                                    <ul className="list-group list-group-flush">
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor="span22">Animal Name: </label>
-                                                            <span className="span22">{sur.animalName}</span>
-                                                            
-                                                        </li>
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor="">owner Name:</label>
-                                                            <span className="span22">{sur.owner}</span>
-                                                        </li>
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor=""> Animal Weight:</label>
-                                                            <span className="span22">{Weights[index]} kg</span>
-                                                        </li>
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor=""> Animal Gender:</label>
-                                                            <span className="span22">{Species[index]}</span>
-                                                        </li>
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor=""> Animal Age:</label>
-                                                            <span className="span22">{agedata}</span>
-                                                                
-                                                        </li>
-                                                        
-                                                    </ul>
-                                            </div>
-                                        </div>
-                    
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="">owner Name:</label>
+                                            <span className="span22">{sur.owner}</span>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor=""> Animal Weight:</label>
+                                            <span className="span22">{Weights[index]} kg</span>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor=""> Animal Gender:</label>
+                                            <span className="span22">{Species[index]}</span>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor=""> Animal Age:</label>
+                                            <span className="span22">{agedata}</span>
 
-                                        <div className="col-6">
-                                            <div className=" cc card">
-                                                    <ul className="list-group list-group-flush">
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor="span22">Operation date: </label>
-                                                            <span className="span22">{sur.date}</span>
-                                                            
-                                                        </li>
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor="">Operation Name:</label>
-                                                            <span className="span22">{sur.operationName}</span>
-                                                        </li>
-                                                        <li className="list-group-item">
-                                                            <label className="labels" htmlFor=""> Operation Price:</label>
-                                                            <span className="span22">{sur.price} $</span>
-                                                        </li>
+                                        </li>
 
-                                                        
-                                                    </ul>
-                                            </div>
-                                            <button onClick={dismissSurgery(sur.id)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
-                                            <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button>
-
-                                        </div>
+                                    </ul>
+                                </div>
                             </div>
+
+
+                            <div className="col-6">
+                                <div className=" cc card">
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="span22">Operation date: </label>
+                                            <span className="span22">{sur.date}</span>
+
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="">Operation Name:</label>
+                                            <span className="span22">{sur.operationName}</span>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor=""> Operation Price:</label>
+                                            <span className="span22">{sur.price} $</span>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor=""> statusUser:</label>
+                                            <span className="span22">{sur.statusUser} $</span>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button>
+
+                            </div>
+                        </div>
                     )}
                 </>)
             })}
