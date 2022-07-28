@@ -9,10 +9,7 @@ function NewSchedule(){
 
     return(
         <>
-        <div className="container-fluid ">
-        <img src={require(`./images/dog.webp`)} alt="" id="image22"/>
-        </div>
-        <h2 className="main-title">Scheduled Operations</h2>
+        <h2 className="main-title my-4">Scheduled Operations</h2>
         <div className=" mid container">
             <div className="container-fluid row">
                 <div>
@@ -68,6 +65,10 @@ function NewSchedule(){
             </div>
         </div>
         <Table/>
+        <div className="buttons">
+            <button className="btn bb ">Accept Surgery</button>
+            <button className="btn bb">Deny Surgery</button>
+        </div>
         
         </>
     )

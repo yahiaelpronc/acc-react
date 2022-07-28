@@ -33,7 +33,7 @@ function SurgicalOperationsUser(){
                     
                     <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/animalsurgery1.jpg`)}/>
                     <div className='col-6 '>
-                       <center> <h2 className=' text-danger my-4 '>Surgerical Operations </h2></center>
+                    <h2 className="main-title">Surgical Operations</h2>
                       
                         <h4 className='  my-5 '>See Your Latest schedule For Surgeries</h4>
 
