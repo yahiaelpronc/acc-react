@@ -14,11 +14,11 @@ function SendSurgeryUser() {
     const loggedUser = useSelector((state) => state.loggedUser);
     const currentVet = useParams()
 
-    const [animalname1,setanimalname1]=useState("")
-    const [message,setmessage]=useState("")
-    const [errdata,seterrdata]=useState({
-        messageerr:"",
-        selecterr:""
+    const [animalname1, setanimalname1] = useState("")
+    const [message, setmessage] = useState("")
+    const [errdata, seterrdata] = useState({
+        messageerr: "",
+        selecterr: ""
     })
 
 
@@ -48,19 +48,19 @@ function SendSurgeryUser() {
             .catch((err) => console.log(err))
     }
 
-    const messagereg=/^[a-zA-Z0-9_'-]/
-    const changedata=(e)=>{
-        if(e.target.name === "message"){
+    const messagereg = /^[a-zA-Z0-9_'-]/
+    const changedata = (e) => {
+        if (e.target.name === "message") {
             setmessage(e.target.value)
             seterrdata({
                 ...errdata,
-                messageerr:messagereg.test(e.target.value)?"":"message must be btw 1, 300 char"
+                messageerr: messagereg.test(e.target.value) ? "" : "message must be btw 1, 300 char"
             })
-        }else if(e.target.name === "animalname1"){
+        } else if (e.target.name === "animalname1") {
             setanimalname1(e.target.value)
             seterrdata({
                 ...errdata,
-                selecterr:e.target.value === "" ? "choose an option please":""
+                selecterr: e.target.value === "" ? "choose an option please" : ""
             })
         }
     }
@@ -111,7 +111,7 @@ function SendSurgeryUser() {
         <div className='MyMaxBox'>
             <div className='Ze2i2le'>
                 {/* <i class="ic00n fa-solid  fa-calendar-days"></i> */}
-                <h2 className='TEXT'>Send Surgery Request</h2>
+                <h2 className='main-title'>Send Surgery Request</h2>
 
 
             </div>

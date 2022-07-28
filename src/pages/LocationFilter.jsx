@@ -14,7 +14,9 @@ function LocationFilter(){
         <h2 className="main-title">Animal Care Locations</h2>
         <div>
         </div>
+        <p>Filter</p>
         <div className="container">
+
           <div className="box" style={{height:"400px"}}>
             <img src={require(`./images/ccc.jpg`)} alt="" />
             <div className="content">

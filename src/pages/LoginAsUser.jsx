@@ -18,7 +18,9 @@ function Login() {
     const [password, setPassword] = useState("")
     const [usernameErr, setUsernameErr] = useState("")
     const [passwordErr, setPasswordErr] = useState("")
+    const [resend, setResend] = useState(false)
     const [submitErr, setSubmitErr] = useState("")
+    const [resendErr, setResendErr] = useState("")
     function handleKeyDown(e) {
         if (e.key === 'Enter') {
             e.preventDefault()
@@ -30,6 +32,13 @@ function Login() {
         axios.get(`http://localhost:8000/api/loginUser/${username}/${password}`)
             .then((res) => {
                 if (res.data === "Incorrect Credintials") {
+                    setResendErr("")
+                    setResend(false)
+                    setSubmitErr(res.data)
+                }
+                else if (res.data === "Please Activate Your Account") {
+                    setResendErr("")
+                    setResend(true)
                     setSubmitErr(res.data)
                 }
                 else {
@@ -65,11 +74,24 @@ function Login() {
             }
         }
     }
+    function resendEmail(e) {
+        axios.get(`http://localhost:8000/api/resendEmail/${username}`)
+            .then((res) => {
+                console.log(res.data)
+                if (res.data === "Email Sent") {
+                    setResend(false)
+                    setSubmitErr("")
+                    setResendErr(res.data)
+                }
+            }
+            )
+            .catch((err) => console.log(err))
+    }
     return <>
         <div className="maxb000x">
             <div className="myb000x">
                 <div className="myTiTle">
-                    <Link id="login" style={{color:"white"}} className="active" to="#login">login</Link>
+                    <Link id="login" className="active" to="#" style={{ color: "white" }}>login</Link>
                     {/* <Link id="signup" to=".registerVet/.registervet.html">Register as Vet</Link>
                     <Link id="signup" to=".register/.Register/.contact.html">Register as User</Link> */}
                 </div>
@@ -86,12 +108,17 @@ function Login() {
                             <input type="password" className='Ansssr' name="password" id="logPassword" placeholder="password" onChange={(e) => changeData(e)} onKeyDown={(e) => handleKeyDown(e)} />
                             <p className="text-danger" style={{ fontSize: "15px" }}>{passwordErr}</p>
                         </div>
-                        <div id="check" className='rememeee'>
+                        {/* <div id="check" className='rememeee'>
                             <input type="checkbox" id="remember" className='CHECKmeee' />
                             <label for="remember" className="Mylabelll">Remember me</label>
-                        </div>
+                        </div> */}
                         <br /><br />
-                        <p className="text-danger" style={{ fontSize: "17px" }}>{submitErr}</p>
+                        <p className="text-danger" style={{ fontSize: "17px" }}>{submitErr}
+                            {resend &&
+                                <Link onClick={(e) => resendEmail(e)}>  Resend Email</Link>
+                            }
+                        </p>
+                        <p className="text-success" style={{ fontSize: "17px" }}><strong>{resendErr}</strong></p>
                         <input type="submit" value="Login" id="submitButton" onClick={(e) => loginUser(e)} />
                     </div>
                 </div>

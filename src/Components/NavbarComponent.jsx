@@ -4,7 +4,9 @@ import Myform from './Myform';
 import { useSelector } from 'react-redux';
 import { changeUser, changeVet, changeLogged, changeLoggedType } from '../store/actions/action'
 import './ComponentStatic/navbar.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function NavbarComponent() {
+
   const loggedUser = useSelector((state) => state.loggedUser);
   const currentVet = useSelector((state) => state.currentVet);
   const userType = useSelector((state) => state.type);
@@ -15,13 +17,24 @@ function NavbarComponent() {
           <img src={require(`../pages/images/ACC Logo (1).png`)} alt="Navbar Logo" className="logo" />
           <p className="mt-3 mx-3">ACC</p>
         </Link>
-        <ul className="main-nav">
+        <ul className="main-nav" id='nav22'>
           {loggedUser.length < 1 ?
             <>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
               <li><Link to="/AdminPage2">Add location</Link></li>
               <li><Link to="/listlocations">List locations</Link></li>
+              <div className="col-2 dropdown">
+  <Link class="btn dropdown-toggle" href="#" role="button" id="linkDrop" data-bs-toggle="dropdown">
+    Messages
+  </Link>
+
+  <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a className="dropdown-item" href="#">Action</a></li>
+    <li><a className="dropdown-item" href="#">Another action</a></li>
+    <li><a className="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
             </>
             :
             <>
@@ -42,13 +55,20 @@ function NavbarComponent() {
                   <li><Link to="/listlocations">List locations</Link></li>
                   <li><Link to="/ServicesRequest">Services Request</Link></li>
                   <li><Link to={`/logoutVet`}>Logout</Link></li>
+
                 </>
+                
               }
+              
+              
             </>
+           
           }
         </ul>
       </div>
+      
     </div>
+    
   </>
   )
 }

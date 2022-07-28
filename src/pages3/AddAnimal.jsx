@@ -131,9 +131,6 @@ function AddAnimal() {
 
     }
 
-
-
-
     return (<>
 
         <div className='MyAnimal'>
@@ -141,8 +138,8 @@ function AddAnimal() {
 
                 <img className='animalpiiic' src={require(`./myimages/addanimal1.jpg`)} />
                 <div className='my2iii2le'>
-                    <h2 className='texxxt'>Vet Patient Informations</h2>
-                    <span className='subtexxxt' >Add new animal and all details about it</span>
+                    <h2 className='main-title'>Vet Patient Informations</h2>
+                    {/* <span className='subtexxxt' >Add new animal and all details about it</span> */}
                 </div>
 
             </div>
@@ -227,35 +224,23 @@ function AddAnimal() {
 
 
             </div>
-
+            <div class="detaaa">
+                <span className="detaillls">Female Status</span>
+                <select required value={female_state} className='detaaalz' style={{ display: displayFemaleState ? "block" : "none" }} name="female_state" onChange={(e) => setfemalestate(e.target.value)} class="form-select" aria-label="Default select example">
+                    <option selected value="">Choose  female_state</option>
+                    <option value="immature">immature</option>
+                    <option value="mature&married">mature & married</option>
+                    <option value="pregnant">pregnant</option>
+                    <option value="lactating">lactating</option>
+                </select>
+            </div>
 
             <div className='daaata'>
-
                 <div className="picturr"  >
-
                     <span className="detailsss">upload a profile pic.</span>
                     <input type="file" placeholder="upload" required id="file" name="profile_pic" onChange={(e) => setimage(e.target.files[0])} />
                     <p id="fileerr"></p>
-
-
-
-
                 </div>
-
-                <div class="detaaa">
-
-                    <span className="detaillls">Female Status</span>
-                    <select required value={female_state} className='detaaalz' style={{ display: displayFemaleState ? "block" : "none" }} name="female_state" onChange={(e) => setfemalestate(e.target.value)} class="form-select" aria-label="Default select example">
-                        <option selected value="">Choose  female_state</option>
-                        <option value="immature">immature</option>
-                        <option value="mature&married">mature & married</option>
-                        <option value="pregnant">pregnant</option>
-                        <option value="lactating">lactating</option>
-
-                    </select>
-                </div>
-
-
             </div>
             <p className='text-danger'>{submitErr}</p>
             <button onClick={RegisterAnimal} type="submit" className="buttoooon" disabled={errdata.animalnameerr || errdata.errusername || errdata.errweight || errdata.errb_date}>Submit</button>
