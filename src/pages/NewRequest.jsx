@@ -51,15 +51,15 @@ function NewRequest(){
             </li>
             <li className="list-group-item">
                 <label className="labels" htmlFor="">  Operation Date:</label>
-                <span className="span22">Female</span>
+                <span className="span22">22/10</span>
             </li>
             <li className="list-group-item">
                 <label className="labels" htmlFor=""> Operation Price:</label>
-                <span className="span22">Female</span>
+                <span className="span22">50000LE</span>
             </li>
             <li className="list-group-item">
                 <label className="labels" htmlFor=""> Operation Name:</label>
-                <span className="span22">Female</span>
+                <span className="span22">Surgery</span>
             </li>
             
         </ul>

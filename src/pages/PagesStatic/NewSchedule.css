@@ -52,6 +52,7 @@
     font-size: 14px;
 }
 /* End New Schedule Css**/
+/* New Request Start*/
 .buttons{
     margin-left: 37%;
     margin-bottom: 3%;
@@ -60,4 +61,41 @@
     background-color: #1787e0;
     margin-left: 2%;
     
+}
+/* New Request Ends Css*/
+/*New Details Start */
+#lists{
+    margin-top: 3%;
+}
+.dogDev{
+  margin-bottom: 3%;
+  width: 100%;
+}
+#newsPhoto{
+    height: 100%;
+    width: 100%;
+}
+.phSpan{
+    margin-right: 50%;
+    margin-left: 5%;
+    font-size: 14px;
+}
+#qqq{
+    color: #1787e0;
+}
+.kk{
+    padding: 4%;
+}
+#bill,#serv{
+    color: #1787e0;
+}
+.colll{
+    margin-top: 3%;
+}
+.det{
+    margin-bottom: 7%;
+}
+#book{
+    margin-top: 4%;
+    margin-left: 73%;
 }
