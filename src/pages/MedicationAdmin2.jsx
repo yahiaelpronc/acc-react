@@ -136,9 +136,13 @@ function MedicationAdmin2() {
                         <select class="form-select" value={userData.adminstrationRoute} name="adminstrationRoute" onChange={(e) => changeData(e)}
                             aria-label="Default select example">
                             <option selected value="">Adminstration Route</option>
-                            <option value="route1">Route 1</option>
-                            <option value="route2">Route 2</option>
-                            <option value="route2">Route 3</option>
+                            <option value="Intramascular">Intramascular</option>
+                            <option value="Intravenous">Intravenous </option>
+                            <option value="Oral">Oral </option>
+                            <option value="Sublingual">Sublingual </option>
+                            <option value="Topical">Topical </option>
+                            <option value="Ocular">Ocular </option>
+                            <option value="Subcutaneous">Subcutaneous </option>
                         </select>
                     </div>
                 </div>
@@ -151,7 +155,7 @@ function MedicationAdmin2() {
                             <th scope="col">Animal Name</th>
                             <th scope="col">Vet Name</th>
                             <th scope="col">Medication Name</th>
-                            <th scope="col">Dosage</th>
+                            <th scope="col" className='mb-2'>Dosage</th>
                             <th scope="col">Dosage Interval </th>
                             <th scope="col">Adminstration Route</th>
                             <th scope="col">Date</th>

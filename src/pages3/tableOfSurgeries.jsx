@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Table from '../Components/ClassTable';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 
 import '../pages/PagesStatic/NewSchedule.css'
 
@@ -20,6 +20,7 @@ function TableOfSurgries() {
     const [Medication, setMedication] = useState([])
     const [Animals, setAnimals] = useState([])
     const [Weights, setWeights] = useState([])
+    const [genders, setGenders] = useState([])
     const [Species, setSpecies] = useState([])
     const [b_date, setbdate] = useState([])
     const [length, setlength] = useState([])
@@ -51,20 +52,22 @@ function TableOfSurgries() {
 
     if (Surgeries.length > 0 && Finished) {
         for (let i = 0; i < length; i++) {
-            axios.get(`http://localhost:8000/api/findSpecificAnimal/${Surgeries[i].owner}/${Surgeries[i].animalName}_${Surgeries[i].owner}/`)
+            axios.get(`http://localhost:8000/api/findSpecificAnimal/${Surgeries[i].animalName}/`)
                 .then((res) => {
                     setWeights(current => [...current, res.data.weight]);
                     setSpecies(current => [...current, res.data.species]);
                     setbdate(current => [...current, res.data.b_date]);
+                    setGenders(current => [...current, res.data.gender]);
                 })
                 .catch((err) => console.log(err))
         }
+
         setFinished(false)
     }
     console.log("Weights Res Data : ", Weights)
 
-    const [agedata, setagedata] = useState("")
-    const getAge = (b_date) => {
+    const [agedata, setagedata] = useState([])
+    const getAge = () => {
         const mydate = new Date()
         const myYear = mydate.getFullYear()
 
@@ -83,7 +86,7 @@ function TableOfSurgries() {
 
 
     }
-    const [showdata, setshowdata] = useState("block")
+    const [showdata, setshowdata] = useState("flex")
 
     const dismissSurgery = async (e) => {
         let id = e.target.id
@@ -97,7 +100,7 @@ function TableOfSurgries() {
             .then((data) => {
                 // history.push("/")
                 console.log(data.data)
-                setshowdata("block")
+                setshowdata("none")
                 console.log("done sir")
             }
             )
@@ -125,7 +128,7 @@ function TableOfSurgries() {
 
                 return (<>
                     {sur.statusVet !== "declined" && (
-                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded">
+                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{display:showdata}}>
 
                             <div className="col-6">
                                 <div className=" cc card">
@@ -144,12 +147,12 @@ function TableOfSurgries() {
                                             <span className="span22">{Weights[index]} kg</span>
                                         </li>
                                         <li className="list-group-item">
-                                            <label className="labels" htmlFor=""> Animal Gender:</label>
+                                            <label className="labels" htmlFor=""> Animal Type:</label>
                                             <span className="span22">{Species[index]}</span>
                                         </li>
                                         <li className="list-group-item">
-                                            <label className="labels" htmlFor=""> Animal Age:</label>
-                                            <span className="span22">{agedata}</span>
+                                            <label className="labels" htmlFor=""> Animal Gender:</label>
+                                            <span className="span22">{genders[index]}</span>
 
                                         </li>
 
@@ -176,7 +179,7 @@ function TableOfSurgries() {
                                         </li>
                                         <li className="list-group-item">
                                             <label className="labels" htmlFor=""> statusUser:</label>
-                                            <span className="span22">{sur.statusUser} $</span>
+                                            <span className="span22">{sur.statusUser} </span>
                                         </li>
 
 
