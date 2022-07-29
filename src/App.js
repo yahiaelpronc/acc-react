@@ -41,6 +41,7 @@ import UserRegister from './pages/UserRegister';
 import RequestSur from './pages/RequestSur';
 import ServicesRequest from './pages3/ServicesRequest';
 import TableOfSurgries from './pages3/tableOfSurgeries';
+import UserServiceResponses from './pages3/UserServiceResponses';
 import NotFound from './pages/NotFound';
 function App() {
     return (
@@ -82,6 +83,7 @@ function App() {
           <Route path={"/logoutVet"} exact component={logoutVet} />
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
           <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
+          <Route path={"/UserServiceResponses"} exact component={UserServiceResponses} />
           <Route path={"/TableOfSurgries"} exact component={TableOfSurgries} />
           <Route path={"*"} exact component={NotFound}/>
         </Switch>

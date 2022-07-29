@@ -39,27 +39,35 @@ function ServicesResponsesDiv(props){
 
 
                     <div className='col-3'>
-                        <h3 className='fw-bold my-2'>{props.AnimalType}</h3>
-                        <h3 className='fw-bold mt-5'>{props.animalOwner}</h3>
+                        <p className='fw-bold my-2 text-danger'>AnimalType :<span className='text-dark'>{props.AnimalType}</span></p>
+                        <p className='fw-bold mt-5 text-danger'>animalOwner :<span className='text-dark'>{props.animalOwner}</span></p>
 
                     </div>
 
                     <div className='col-2'>
-                        <h3 className='fw-bold my-2'>{props.serviceName}</h3>
-                        <h3 className='fw-bold mt-5'>statusOwner: {props.statusOwner}</h3>
+                        <p className='fw-bold my-2 text-danger'>service type:<span className='text-dark'>{props.serviceName}</span></p>
+                        <p className='fw-bold mt-5 text-danger'>statusOwner :<span className='text-dark'>{props.statusOwner}</span></p>
 
 
                     </div>
                     <div className= 'd-flex align-items-center col-2'>
-                        <h3 className='fw-bold my-2'>{props.date}</h3>
-                        <h3 className='fw-bold my-2'>{props.price}</h3>
+                        <p className='fw-bold my-2 mx-3 text-danger'>date :<span className='text-dark'>{props.date}</span></p>
+                    
+                        
+
+
+                    </div>
+                    <div className= 'd-flex align-items-center col-2'>
+                    <p className='fw-bold my-2 text-danger '>price :<span className='text-dark'>{props.price}</span></p>
+
+                    
                         
 
 
                     </div>
 
                     <div className=' d-flex align-items-center col-1'>
-                    <h3 className='fw-bold my-2 text-danger'> {props.time} {props.timePeriod}</h3>
+                    <p className='fw-bold my-2 text-danger'>time: <span className='text-dark'>{props.time} {props.timePeriod}</span></p>
                 
 
 

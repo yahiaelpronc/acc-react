@@ -50,7 +50,7 @@ function NewSchedule(){
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/findSpecificAnimal/${Request.user}/${Request.animalName}/`)
+        axios.get(`http://localhost:8000/api/findSpecificAnimal/${Request.animalName}/`)
             .then((res) => {
                 setMyAnimal(res.data)
                 getAge()
@@ -107,7 +107,7 @@ function NewSchedule(){
             url: 'http://127.0.0.1:8000/api/insertSurgry/',
             data: dataField
         }).then((res) =>
-            history.push("/")
+            history.push("/SurgeryRequest")
         )
             .catch((err) => console.log(err))
 
@@ -143,7 +143,7 @@ function NewSchedule(){
             data: formdata2
         })
             .then((data) => {
-                // history.push("/")
+                history.push("/SurgeryRequest")
                 console.log(data.data)
                 console.log("done sir")
             }
@@ -163,6 +163,7 @@ function NewSchedule(){
             <div className="container-fluid row">
                 <div>
                     <h5 id="head2">Surgical Operation Message</h5>
+                    <p id="head2">{Request.message}</p>
                 </div>
                 <div className="col-6">
                 <div className=" cc card">
@@ -185,8 +186,8 @@ function NewSchedule(){
                 <span className="span22">{MyAnimal.gender}</span>
             </li>
             <li className="list-group-item">
-                <label className="labels" htmlFor=""> Animal Age:</label>
-                <span className="span22">{agedata}</span>
+                <label className="labels" htmlFor=""> Animal Type:</label>
+                <span className="span22">{MyAnimal.species}</span>
             </li>
             
         </ul>

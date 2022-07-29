@@ -43,8 +43,12 @@ function SurgicalOperationsUser(){
                 
                 {Responses.map(response=>{
                     return(<>
+                    {response.statusUser !== "declined" && (
                                  <SurgericalResponseDiv operationName={response.operationName} vetName={response.vetName} animalName={response.animalName} price={response.price}
-                                    date={response.date} id={response.id}  />
+                                 date={response.date} id={response.id} statusVet={response.statusVet}  />
+
+                    )}
+                        
 
                             </>)
                 })}
