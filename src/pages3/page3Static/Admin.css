@@ -2,7 +2,8 @@
     color: rgb(0, 112, 205);
 }
 .page33{
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 300;
 }
 #add{
     font-weight: bold;
@@ -25,4 +26,68 @@
 .details{
     font-size: 16px;
     margin-left: 6%;
+}
+
+
+/* MY NEEEEW STYLLLE */
+
+.MAXbooox {
+    border: 1px solid rgb(224, 224, 224);
+    background: white;
+    border-radius: 22px;
+    box-shadow: rgb(0 0 0 / 29%) 0px 6px 18px 0px;
+    margin: 30px auto;
+    padding: 35px ;
+    
+    max-width: 1600px;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    direction: ltr;
+}
+
+i {
+    color: #2196f3 !important;
+}
+
+.headerrr {
+    justify-content: space-between;
+    padding: 50px;
+    
+}
+
+.pageIMG {
+    border-radius: 20px;
+    width: 500px;
+    height: 250px;
+}
+
+.daaata {
+    margin: 15px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+
+.detaaa {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 300px;
+    direction: ltr;
+}
+
+.detaaalz {
+    display: inline-block;
+    height: 35px;
+    width: 80%;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #ced4dc;
+    padding: 6px 12px;
+    margin: 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
