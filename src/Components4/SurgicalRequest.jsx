@@ -7,6 +7,7 @@ class SurgicalRequest extends React.Component {
     render() {
         return (
             <>
+                <h2 className="main-title my-4">Surgical Requests</h2>
                 <div className=" container surContainer">
                     <div className='MESSAG row p-3 my-3'>
                         <p className='messagesss fw-bold'></p>
