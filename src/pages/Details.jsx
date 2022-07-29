@@ -20,6 +20,7 @@ function DetailsLocations() {
       return location
     }
   }
+
   return (
     <>
       <h2 className="main-title">Detailed Locations</h2>

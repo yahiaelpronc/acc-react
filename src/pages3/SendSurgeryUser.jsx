@@ -44,7 +44,7 @@ function SendSurgeryUser() {
             method: 'post',
             url: 'http://127.0.0.1:8000/api/insertRequest/',
             data: fielddata
-        }).then((res) => history.push("/"))
+        }).then((res) => history.push("/SurgicalOperationsUser"))
             .catch((err) => console.log(err))
     }
 
@@ -67,7 +67,7 @@ function SendSurgeryUser() {
 
     return (<>
 
-            {/* <div className='p-5  my-2 bg-light '>
+        {/* <div className='p-5  my-2 bg-light '>
                 <div className='d-flex justify-content-center'>
                     <i class="fa-solid  fa-calendar-days fs-5 p-2"></i>
                     <h2 className='ms-5 text-danger'>Surgery Schedule</h2>

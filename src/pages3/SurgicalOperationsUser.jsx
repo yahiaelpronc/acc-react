@@ -9,63 +9,38 @@ import SurgericalResponseDiv from '../components3/SurgicalResponseDiv'
 import { useSelector, useDispatch } from 'react-redux'
 
 
-function SurgicalOperationsUser(){
+function SurgicalOperationsUser() {
     const loggedUser = useSelector((state) => state.loggedUser);
-    const [Responses,setResponses]=useState([])
-
-
-    
-
-
-
-    useEffect(()=>{
+    const [Responses, setResponses] = useState([])
+    const [Opartions, setOperations] = useState([])
+    useEffect(() => {
         axios.get(`http://localhost:8000/api/getSurgicalResponses/${loggedUser.username}/`)
-        .then((res)=> setResponses(res.data))
-        .catch((Err)=> console.log(Err))
-
-    },[])
-
-
-    return(<>
-
-            <div className='bg-light p-3'>
-                <div className='row p-2'>
-                    
-                    <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/animalsurgery1.jpg`)}/>
-                    <div className='col-6 '>
+            .then((res) => setResponses(res.data))
+            .catch((Err) => console.log(Err))
+    }, [])
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/getSurgicalOperations/${loggedUser.username}/`)
+            .then((res) => setOperations(res.data))
+            .catch((Err) => console.log(Err))
+    }, [])
+    return (<>
+        <div className='bg-light p-3'>
+            <div className='row p-2'>
+                <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/animalsurgery1.jpg`)} />
+                <div className='col-6 '>
                     <h2 className="main-title">Surgical Operations</h2>
-                      
-                        <h4 className='  my-5 '>See Your Latest schedule For Surgeries</h4>
-
-                    </div>
-
+                    <h4 className='  my-5 '>See Your Latest schedule For Surgeries</h4>
                 </div>
-                
-                {Responses.map(response=>{
-                    return(<>
-                    {response.statusUser !== "declined" && (
-                                 <SurgericalResponseDiv operationName={response.operationName} vetName={response.vetName} animalName={response.animalName} price={response.price}
-                                 date={response.date} id={response.id} statusVet={response.statusVet}  />
-
-                    )}
-                        
-
-                            </>)
-                })}
-
-
-           
-            
-
-
-
-
-
-
-
-
             </div>
-        </>)
-
+            {Responses.map(response => {
+                return (<>
+                    {response.statusUser !== "declined" && (
+                        <SurgericalResponseDiv operationName={response.operationName} vetName={response.vetName} animalName={response.animalName} price={response.price}
+                            date={response.date} id={response.id} statusVet={response.statusVet} />
+                    )}
+                </>)
+            })}
+        </div>
+    </>)
 }
 export default SurgicalOperationsUser
