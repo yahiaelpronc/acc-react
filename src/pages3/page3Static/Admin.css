@@ -13,19 +13,20 @@
     margin-left: 12%;
     margin-top: 2%;
 }
-#seee{
+/* #seee{
     margin-left: 10%;
-}
-#sub{
+} */
+/* #sub{
     margin-left: 50%;
     font-size: 24px;
-}
+} */
 #w3review{
     margin-left: 24%;
 }
 .details{
     font-size: 16px;
-    margin-left: 6%;
+    margin-left: 0;
+    padding-left: 0px !important;
 }
 
 
@@ -57,10 +58,20 @@ i {
     
 }
 
+.exxxtra {
+    padding: 30px;
+}
+
 .pageIMG {
     border-radius: 20px;
     width: 500px;
     height: 250px;
+}
+
+.MINIcontainerr {
+    margin: 0px 60px;
+    padding: 45px;
+    width: 90%;
 }
 
 .daaata {
@@ -68,20 +79,20 @@ i {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    
+    width: 100%;
 }
 
 .detaaa {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 150px;
+    width: 50%;
     direction: ltr;
 }
 
-.detaaalz {
-    height: 35px;
-    width: 80%;
+.detaaalzzz {
+    height: 45px;
+    width: 90%;
     outline: none;
     border-radius: 4px;
     border: 1px solid #ced4dc;
@@ -89,4 +100,28 @@ i {
     margin: 15px;
     font-size: 14px;
     transition: all 0.3s ease;
+}
+
+.detailz {
+    height: 45px;
+    width: 86%;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #ced4dc;
+    padding: 6px 12px;
+    margin: 15px 15px 15px 25px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.picc {
+    margin: 8px 0px;
+    justify-items: left !important;
+    justify-content: flex-start !important;
+    width: 50% !important; 
+    padding-left: 0px;
+}
+
+.w3review {
+    width: 50%;
 }

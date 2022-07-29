@@ -176,26 +176,26 @@ function AdminPage2() {
             <div className='headerrr row p-2 my-2'>
 
                 <img className='pageIMG col-5' src={require(`./myimages/adminlocation2.jpg`)} />
-                <div className='col-4 d-flex align-items-center justify-content-center '>
-                    <h2 className="main-title my-5">Add New Animal Location</h2>
+                <div className='col-7 d-flex align-items-center justify-content-center '>
+                    <h2 className="main-title exxxtra">Add New Animal Location</h2>
 
 
 
                 </div>
 
             </div>
-            <div className='containpppp'>
-                <div className='daaata row my-2 p-2'>
+            <div className='MINIcontainerr'>
+                <div className='daaata row'>
 
-                    <div class="detaaa form-group mx-5 col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="text" className="detaaalz form-control" onChange={(e) => changedata(e)} name="name" value={name} required aria-describedby="emailHelp" placeholder="Enter location Name" />
+                        <input type="text" className="detaaalzzz" onChange={(e) => changedata(e)} name="name" value={name} required aria-describedby="emailHelp" placeholder="Enter location Name" />
                         <p className='text-danger'>{errdata.nameerr}</p>
 
                     </div>
-                    <div class="detaaa form-group col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="email" className="detaaalz form-control" onChange={(e) => changedata(e)} name='email' value={email} required aria-describedby="emailHelp" placeholder="Enter location email" />
+                        <input type="email" className="detaaalzzz" onChange={(e) => changedata(e)} name='email' value={email} required aria-describedby="emailHelp" placeholder="Enter location email" />
                         <p className='text-danger'>{errdata.emailerr}</p>
 
                     </div>
@@ -203,17 +203,17 @@ function AdminPage2() {
 
                 </div>
 
-                <div className='daaata row my-2 p-2'>
+                <div className='daaata row'>
 
-                    <div class="detaaa form-group mx-5 col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="text" className="detaaalz form-control" onChange={(e) => changedata(e)} name="address" value={address} required aria-describedby="emailHelp" placeholder="Enter location address" />
+                        <input type="text" className="detaaalzzz" onChange={(e) => changedata(e)} name="address" value={address} required aria-describedby="emailHelp" placeholder="Enter location address" />
                         <p className='text-danger'>{errdata.addresserr}</p>
 
                     </div>
-                    <div class="detaaa form-group col-4">
+                    <div class="detaaa col-5">
 
-                        <select required value={governorate} className="detaaalz" name="governorate" onChange={(e) => setgovernorate(e.target.value)} class="form-select" aria-label="Default select example">
+                        <select required value={governorate} className="detaaalzzz" name="governorate" onChange={(e) => setgovernorate(e.target.value)} aria-label="Default select example">
                             <option selected value="">Choose Governorate</option>
                             <option value="Ad Daqahliyah">Ad Daqahliyah</option>
                             <option value="Al Bahr al Ahmar">Al Bahr al Ahmar</option>
@@ -251,34 +251,34 @@ function AdminPage2() {
 
                 </div>
 
-                <div className='daaata row my-2 p-2'>
+                <div className='daaata row '>
 
-                    <div class="detaaa form-group mx-5 col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="text" className="detaaalz form-control" onChange={(e) => changedata(e)} name="mobile" value={mobile} required aria-describedby="emailHelp" placeholder="Enter location mobile" />
+                        <input type="text" className="detaaalzzz" onChange={(e) => changedata(e)} name="mobile" value={mobile} required aria-describedby="emailHelp" placeholder="Enter location mobile" />
                         <p className='text-danger'>{errdata.mobileerr}</p>
 
                     </div>
-                    <div class="detaaa form-group col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="text" className="detaaalz form-control" onChange={(e) => setwebsite_link(e.target.value)} name='website_link' value={website_link} required aria-describedby="emailHelp" placeholder="Enter location website_link" />
+                        <input type="text" className="detaaalzzz" onChange={(e) => setwebsite_link(e.target.value)} name='website_link' value={website_link} required aria-describedby="emailHelp" placeholder="Enter location website_link" />
 
 
                     </div>
 
 
                 </div>
-                <div className='daaata row my-2 p-2'>
+                <div className='daaata row '>
 
-                    <div class="detaaa form-group mx-5 col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_start" value={work_hours_start} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
+                        <input type="number" class="detaaalzzz" onChange={(e) => changedata(e)} name="work_hours_start" value={work_hours_start} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
                         <p className='text-danger'>{errdata.work_hours_starterr}</p>
 
                     </div>
-                    <div class="detaaa form-group col-4">
+                    <div class="detaaa col-5">
 
-                        <select required value={work_hours_start_period} onChange={(e) => setwork_hours_start_period(e.target.value)} name="work_hours_start_period" class="form-select" aria-label="Default select example">
+                        <select required value={work_hours_start_period} class="detaaalzzz" onChange={(e) => setwork_hours_start_period(e.target.value)} name="work_hours_start_period" aria-label="Default select example">
                             <option selected value="">Choose Period</option>
                             <option value="am">AM</option>
                             <option value="pm">PM</option>
@@ -291,17 +291,17 @@ function AdminPage2() {
 
 
                 </div>
-                <div className='daaata row my-2 p-2'>
+                <div className='daaata row '>
 
-                    <div class="detaaa form-group mx-5 col-4">
+                    <div class="detaaa col-5">
 
-                        <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_end" value={work_hours_end} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
+                        <input type="number" class="detaaalzzz" onChange={(e) => changedata(e)} name="work_hours_end" value={work_hours_end} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
                         <p className='text-danger'>{errdata.work_hours_enderr}</p>
 
                     </div>
-                    <div class="detaaa form-group col-4">
+                    <div class="detaaa col-5">
 
-                        <select required value={work_hours_end_period} name="work_hours_end_period" onChange={(e) => setwork_hours_end_period(e.target.value)} class="form-select" aria-label="Default select example">
+                        <select required value={work_hours_end_period} class="detaaalzzz" name="work_hours_end_period" onChange={(e) => setwork_hours_end_period(e.target.value)} aria-label="Default select example">
                             <option selected value="">Choose Period</option>
                             <option value="am">AM</option>
                             <option value="pm">PM</option>
@@ -313,9 +313,9 @@ function AdminPage2() {
 
 
                 </div>
-                <div class="detaaa form-group col-4">
+                <div class="detaaa col-5">
 
-                    <select required value={service} onChange={(e) => setservice(e.target.value)} name="service" class="form-select" aria-label="Default select example" id='seee'>
+                    <select required value={service} class="detailz" onChange={(e) => setservice(e.target.value)} name="service" aria-label="Default select example" id='seee'>
                         <option selected value="">Services</option>
                         <option value='Wellness Exams & Vaccinations'>Wellness Exams & Vaccinations</option>
                         <option value='Boarding & Grooming Services'>Boarding & Grooming Services</option>
@@ -326,9 +326,9 @@ function AdminPage2() {
 
 
                 </div>
-                <div className='ch row my-2 p-2'>
+                <div className='row'>
 
-                    <div class="form-group ms-2 col-5"  >
+                    <div class="picc col-5"  >
 
                         <span class="details">upload a profile pic.</span>
                         <input type="file" placeholder="upload" required id="file" name="profile_pic" onChange={(e) => setimage(e.target.files[0])} />
@@ -339,13 +339,13 @@ function AdminPage2() {
 
                     </div>
                 </div>
-                <div class="detaaa form-group col-4">
+                <div class="detaaa col-7">
 
-                    <textarea id="w3review" className='animalReq' name="description" rows="4" cols="50"
+                    <textarea id="w3review" className='w3review' name="description" rows="4" cols="50"
                         onChange={(e) => setdescription(e.target.value)} value={description} required aria-describedby="emailHelp" placeholder="Describe Your Services" />
                 </div>
                 <p className='text-danger'>{submitErr}</p>
-                <button onClick={Registerlocation} type="submit" disabled={errdata.nameerr || errdata.emailerr || errdata.mobileerr || errdata.addresserr || errdata.work_hours_starterr || errdata.work_hours_enderr} className='SUBMIT btn  my-4 p-2' id='sub'>Submit</button>
+                <button onClick={Registerlocation} type="submit" disabled={errdata.nameerr || errdata.emailerr || errdata.mobileerr || errdata.addresserr || errdata.work_hours_starterr || errdata.work_hours_enderr} className='buttoooon' id='sub'>Submit</button>
 
 
 
