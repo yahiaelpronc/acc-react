@@ -38,7 +38,7 @@
     box-shadow: rgb(0 0 0 / 29%) 0px 6px 18px 0px;
     margin: 30px auto;
     padding: 35px ;
-    
+
     max-width: 1600px;
     width: 100%;
     background: #fff;
@@ -64,7 +64,7 @@ i {
 }
 
 .daaata {
-    margin: 15px 0px;
+    margin: 0px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -75,12 +75,11 @@ i {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 300px;
+    width: 150px;
     direction: ltr;
 }
 
 .detaaalz {
-    display: inline-block;
     height: 35px;
     width: 80%;
     outline: none;
