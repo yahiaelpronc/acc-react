@@ -7,9 +7,8 @@ class AnimalOperation extends React.Component {
     render() {
        return(
         <>
-         
-         <div className=" container surContainer">
          <h2 className="main-title my-4">Surgical Operation</h2>
+         <div className=" container surContainer">
          <div className='ffff row'>
             <div className='col-5'>
                 <div className='card mmCard'>
@@ -26,6 +25,11 @@ class AnimalOperation extends React.Component {
             <li className="list-group-item">
                 <label className="labels" htmlFor=""> Service:</label>
                 <span className="span22"></span>
+            </li>
+            <li className="list-group-item">
+                <label className="labels" htmlFor="span22">Animal Name: </label>
+                <span className="span22"></span>
+                
             </li>
             
         </ul>
@@ -48,6 +52,11 @@ class AnimalOperation extends React.Component {
                 <label className="labels" htmlFor=""> Time:</label>
                 <span className="span22"></span>
             </li>
+            <li className="list-group-item">
+                <label className="labels" htmlFor=""> Time:</label>
+                <span className="span22"></span>
+            </li>
+           
             
         </ul>
             </div>
@@ -62,6 +71,8 @@ class AnimalOperation extends React.Component {
         </div>
        
     </div>
+    
+    
         
         </>
        )

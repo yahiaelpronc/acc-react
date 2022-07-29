@@ -18,5 +18,11 @@
 }
 .but{
     margin-top: 5%;
-    margin-left: 2%;
+    margin-right: 3%;
+}
+.LabelCon{
+    font-size: 14px;
+}
+.Change{
+    margin-right: 80%;
 }
