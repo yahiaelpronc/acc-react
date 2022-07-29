@@ -36,6 +36,7 @@ import VetRegister from './pages/VetRegister';
 import NewSchedule from './pages/NewSchedule';
 import NewRequest from './pages/NewRequest';
 import NewDetails from './pages/NewDetails';
+import SurgicalOp from './pages/SurgicalOp';
 import LocationFilter from './pages/LocationFilter';
 import UserRegister from './pages/UserRegister';
 import RequestSur from './pages/RequestSur';
@@ -51,6 +52,7 @@ function App() {
           <Route path={"/"} exact component={Home}/>
           <Route path={"/NewSc/:id"} exact component={NewSchedule}/>
           <Route path={"/NewRe"} exact component={NewRequest}/>
+          <Route path={"/SurOp"} exact component={SurgicalOp}/>
           <Route path={"/NewDe"} exact component={NewDetails}/>
           <Route path={"/Filter"} exact component={LocationFilter}/>
           {/* <Route path={"/NewDe"} exact component={NewDetails}/> */}
