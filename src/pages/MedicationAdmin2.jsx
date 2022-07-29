@@ -5,8 +5,10 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeUser, changeVet, changeLogged, changeLoggedType, changeCurrentUser } from '../store/actions/action'
+import { useHistory } from "react-router-dom"
 
 function MedicationAdmin2() {
+    const history2 = useHistory()
     const dispatch = useDispatch()
     const loggedUser = useSelector((state) => state.loggedUser);
     const currentUser = useSelector((state) => state.currentUser);
@@ -94,7 +96,7 @@ function MedicationAdmin2() {
             method: 'post',
             url: 'http://127.0.0.1:8000/api/addMedication/',
             data: formField
-        }).then((response) => console.log(response.data))
+        }).then((response) => history2.push("/"))
             .catch((err) => console.log(err))
     }
     return (<>

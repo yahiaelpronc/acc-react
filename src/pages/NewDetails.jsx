@@ -4,12 +4,19 @@ import './PagesStatic/NewSchedule.css';
 import { changeCurrentLocation } from '../store/actions/action'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import axios from "axios"
 
 
 function NewDetails() {
-
+    const history = useHistory()
+    const loggedUser = useSelector((state) => state.loggedUser);
     const [currentLocationDetails, setCurrentLocationDetails] = useState([])
+    const [reqDate, setreqDate] = useState("")
+    const [reqTime, setreqTime] = useState("")
+    const [reqType, setreqType] = useState("")
+    const [submitErr, setsubmitErr] = useState("")
+    const [reqPeriod, setreqPeriod] = useState("")
     useEffect(() => {
         console.log(window.location.href.split("/")[4])
         axios.get(`http://127.0.0.1:8000/api/locationDetails/${window.location.href.split("/")[4]}/`)
@@ -22,6 +29,77 @@ function NewDetails() {
         } else {
             return location
         }
+    }
+    const [errdata, seterrdata] = useState({
+        reqdateerr: "",
+        reqtimeerr: "",
+        reqperioderr: "",
+    })
+    function isInTheFuture(date) {
+        let today = new Date();
+        // 👇️ OPTIONAL!
+        // This line sets the time of the current date to the
+        // last millisecond, so the comparison returns `true` only if
+        // date is at least tomorrow
+        today.setHours(23, 59, 59, 998);
+        console.log(date)
+        return date < today;
+    }
+    function changeData(e) {
+        if (e.target.name === "date") {
+            if (isInTheFuture(new Date(String(e.target.value)))) {
+                seterrdata({
+                    ...errdata,
+                    reqdateerr: "Please Choose A Correct Date"
+                })
+                setreqDate("")
+            } else {
+                seterrdata({
+                    ...errdata,
+                    reqdateerr: ""
+                })
+                setreqDate(e.target.value)
+            }
+        }
+        else if (e.target.name === "time") {
+            setreqTime(e.target.value)
+            seterrdata({
+                reqtimeerr: e.target.value > 12 ? "Hours Must Be Less Than 12" : ""
+            })
+        }
+        else if (e.target.name === "type") {
+            setreqType(e.target.value)
+        }
+        else {
+            setreqPeriod(e.target.value)
+        }
+    }
+    const insertServiceRequest = async (e) => {
+        e.preventDefault()
+        let formField = new FormData()
+        formField.append("locationName", currentLocationDetails.name)
+        formField.append("serviceName", currentLocationDetails.service)
+        formField.append("locationOwner", currentLocationDetails.owner)
+        formField.append("animalOwner", loggedUser.username)
+        formField.append("price", currentLocationDetails.price)
+        formField.append("date", reqDate)
+        formField.append("time", reqTime)
+        formField.append("timePeriod", reqPeriod)
+        formField.append("AnimalType", reqType)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertServiceRequest/',
+            data: formField
+        }).then((res) => {
+            if (res.data === "Please Choose Animal Type" | res.data === "Please Choose Time Period") {
+                setsubmitErr(res.data)
+            }
+            else {
+                console.log(res.data)
+                history.push("/")
+            }
+        })
+            .catch((err) => console.log(err))
     }
     return (
         <>
@@ -54,7 +132,7 @@ function NewDetails() {
                             </li>
                             <li className=" kk list-group-item">
                                 <i class="fa-solid fa-money-bill-wave" id="bill"></i>
-                                <span className="phSpan">Price Range</span>
+                                <span className="phSpan">Price Range : {currentLocationDetails.price}$</span>
 
                             </li>
                             <li className=" kk list-group-item">
@@ -67,15 +145,29 @@ function NewDetails() {
                         </ul>
                     </div>
                     <div className=" colll col-xl-4">
-                        <div className="input-group mb-3">
-                            <input type="text" className=" det form-control" placeholder="Enter Desired Date" aria-label="Username" aria-describedby="basic-addon1" />
+                        <div className="input-group">
+                            <input type="date" value={reqDate} onChange={(e) => changeData(e)} name="date"
+                                className="det form-control" placeholder="Enter Desired Date" aria-label="date" aria-describedby="basic-addon1" />
                         </div>
-                        <div className="input-group mb-3">
-                            <input type="text" className="det form-control" placeholder="Enter Desired Time" aria-label="Username" aria-describedby="basic-addon1" />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.reqdateerr}</p>
+                        <div className="input-group">
+                            <input type="number" value={reqTime} onChange={(e) => changeData(e)} name="time"
+                                className="det form-control" placeholder="Enter Desired Time" aria-label="time" aria-describedby="basic-addon1" />
                         </div>
-                        <button className="btn " id="book">Book Service</button>
-
-
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.reqtimeerr}</p>
+                        <select required value={reqPeriod} onChange={(e) => changeData(e)} name="period" class="form-select mb-5" aria-label="Default select example">
+                            <option selected value="">Choose Period</option>
+                            <option value="am">AM</option>
+                            <option value="pm">PM</option>
+                        </select>
+                        <select required value={reqType} onChange={(e) => changeData(e)} name="type" class="form-select" aria-label="Default select example">
+                            <option selected value="">Animal Type</option>
+                            <option value="cat">cat</option>
+                            <option value="dog">dog</option>
+                        </select>
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{submitErr}</p>
+                        <button className="btn" id="book" disabled={errdata.reqtimeerr || errdata.reqdateerr}
+                            onClick={(e) => insertServiceRequest(e)}>Book Service</button>
                     </div>
                 </div>
             </div>

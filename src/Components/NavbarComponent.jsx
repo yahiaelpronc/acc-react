@@ -147,7 +147,6 @@ function NavbarComponent() {
             <>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
-              <li><Link to="/AdminPage2">Add location</Link></li>
               <li><Link to="/listlocations">List locations</Link></li>
             </>
             :
@@ -155,8 +154,11 @@ function NavbarComponent() {
               {userType === "user" ?
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
+                  <li><Link to="/ServicesRequest">Services Request</Link></li>
+                  {loggedUser.isAdmin &&
+                    <li><Link to="/AdminPage2">Add location</Link></li>
+                  }
                   <li><Link to="/listlocations">List locations</Link></li>
-            
                   <li><Link to="/SurgicalOperationsUser">Surgical Operations User</Link></li>
                   <li><Link to="/UserServiceResponses">Services Responses User</Link></li>
                   {currentPage === "" &&
@@ -194,7 +196,6 @@ function NavbarComponent() {
                   <li><Link to={`/TableOfSurgries`}>My Surgries</Link></li>
                   {/* <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li> */}
                   <li><Link to="/listlocations">List locations</Link></li>
-                  <li><Link to="/ServicesRequest">Services Request</Link></li>
                   <li>
                     <div className="col-2 dropdown">
                       <Link class="btn dropdown-toggle" to="#" role="button" id="linkDrop" data-bs-toggle="dropdown">
@@ -235,7 +236,7 @@ function NavbarComponent() {
                       {userType === "user" ?
                         <Link className="btn btn-xs btn-secondary" to={`SendSurgeryUser/${currentVet1}`} data-abc="true">Request Surgery</Link>
                         :
-                        <Link className="btn btn-xs btn-secondary" to={`SendSurgeryUser/${currentVet1}`} data-abc="true">Schedule Surgery</Link>
+                        <Link className="btn btn-xs btn-secondary" to="MedicationAdmin2" data-abc="true">Prescribe Medication</Link>
                       }
                       <button type="button" className="btn-close" aria-label="Close" onClick={(e) => closeWindow(e)}>
                       </button>
