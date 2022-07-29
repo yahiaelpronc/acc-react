@@ -8,7 +8,6 @@ import { changeCurrentLocation } from '../store/actions/action'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 
-
 function Locations() {
   const dispatch = useDispatch()
   const currentLocation = useSelector((state) => state.currentLocation);
