@@ -110,7 +110,7 @@ function NewDetails() {
                     <div className="col-xl-4">
                         <img src={require(`../media/profileImages${o(currentLocationDetails.picture)}`)} alt="" id="newsPhoto" />
                     </div>
-                    <div className="col-xl-4">
+                    <div className="col-xl-4" id="det">
                         <ul className="list-group list-group-flush" id="ull">
                             <li className="list-group-item">
                                 <h5 id="qqq">{currentLocationDetails.name}</h5>

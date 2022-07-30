@@ -10,7 +10,7 @@ function LoginUsers() {
         <>
             <h2 className="main-title mt-5">Login</h2>
             <div className=" contain container mb-5 ">
-                <div className=" container row">
+                <div className=" conCards row">
                     <div className="  col-lg-6">
                         <div className="card" style={{ width: '18rem' }}>
                             <Link to="/LoginAsUser/" className="hh">
