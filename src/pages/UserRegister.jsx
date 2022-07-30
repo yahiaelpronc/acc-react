@@ -393,7 +393,19 @@ function UserRegister() {
                 })
                 setSubmitErr(res.data)
             }
+            else if (res.data === "Please Choose A City") {
+                seterrdata({
+                    ...errdata,
+                    cityErr: res.data
+                })
+                setSubmitErr(res.data)
+            }
+            else if (res.data === "Email Not Valid") {
+                console.log("email err")
+                setSubmitErr(res.data)
+            }
             else {
+                console.log("login")
                 console.log(res.data)
                 history.push("/login")
             }
@@ -447,38 +459,35 @@ function UserRegister() {
                     <div className="iteeeemss">
                         <span className="iteeem">City</span>
                         <select className="iteeemvalue" name="city" aria-label="Default select example" onChange={(e) => changeData(e)}>
+                            <option selected value="">Select City</option>
                             {governorates.map(gov => {
                                 return (<>
-                                    {gov === "Qena" ?
-                                        <option selected value={gov}>{gov}</option>
-                                        :
-                                        <option value={gov}>{gov}</option>
-                                    }
+                                    <option value={gov}>{gov}</option>
                                 </>)
                             })}
                         </select>
                         <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.cityErr}</p>
                     </div>
+                    <div className="extraaa">
+                        <label htmlFor="bdate" className="extrafeiiild">Birth Date</label>
+                        <input type="date" className="feiiildvalue" id="bdate" aria-describedby="emailHelp"
+                            placeholder=" Birth Date" name="b_date" onChange={(e) => changeData(e)} />
+                        <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.b_dateErr}</p>
+                    </div>
 
+
+
+
+
+
+                    <div className="optionaaal">
+                        <h5>* optional</h5>
+                    </div>
 
                     <div className="piiiic">
                         <span className="details">upload a profile pic.</span>
                         <input type="file" placeholder="upload" id="file" onChange={(e) => setImage(e.target.files[0])} />
                     </div>
-                </div>
-
-
-
-
-                <div className="optionaaal">
-                    <h5>* optional</h5>
-                </div>
-
-                <div className="extraaa">
-                    <label htmlFor="bdate" className="extrafeiiild">Birth Date</label>
-                    <input type="date" className="feiiildvalue" id="bdate" aria-describedby="emailHelp"
-                        placeholder=" Birth Date" name="b_date" onChange={(e) => changeData(e)} />
-                    <p className="text-danger" style={{ fontSize: "13px" }}>{errdata.b_dateErr}</p>
                 </div>
 
 
