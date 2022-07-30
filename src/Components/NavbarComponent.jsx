@@ -37,16 +37,29 @@ function NavbarComponent() {
       .catch((err) => console.log(err))
   }, [loggedUser]);
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/findvet/${currentVet1}/`)
-      .then((res) => {
-        setvetFullData1(res.data)
-        console.log(res.data)
-      }
-      )
-      .catch((err) => console.log(err))
+    if (userType === "user") {
+      axios.get(`http://localhost:8000/api/findvet/${currentVet1}/`)
+        .then((res) => {
+          setvetFullData1(res.data)
+          console.log(res.data)
+        }
+        )
+        .catch((err) => console.log(err))
+    }
+    else {
+      axios.get(`http://localhost:8000/api/finduser/${currentVet1}/`)
+        .then((res) => {
+          setvetFullData1(res.data)
+          console.log(res.data)
+        }
+        )
+        .catch((err) => console.log(err))
+    }
     if (vetFullData1.isOnline) {
+      console.log("VFD", vetFullData1)
       setisOnlineColor1("rgba(52, 183, 0, 0.6)")
     } else {
+      console.log("VFD", vetFullData1)
       setisOnlineColor1("rgba(187, 187, 187, 0.6)")
     }
   }, [messages1])
@@ -197,12 +210,12 @@ function NavbarComponent() {
                   {currentPage === "" &&
                     <>
                       <li>
-                        {/* <Link to=""></Link> */}
-                        <div className="col-2 dropdown">
+                        {/* <Link to=""> */}
+                        <div>
                           <Link className="btn dropdown-toggle" to="#" role="button" id="butNav" data-bs-toggle="dropdown">
                             Messages
                           </Link>
-                          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
                             {GotAssociated &&
                               <>
                                 {Object.keys(withoutDuplicates).map((key) => (
@@ -218,6 +231,7 @@ function NavbarComponent() {
                             }
                           </ul>
                         </div>
+                        {/* </Link> */}
                       </li>
                     </>
                   }
