@@ -26,7 +26,7 @@ function NewSchedule(){
 
 
     const myid = useParams().id
-    const [Request, setRequest] = useState({})
+    const [mySurgery, setmySurgery] = useState({})
     const [MyAnimal, setMyAnimal] = useState({})
     const [dataCame, setDataCame] = useState(false)
     const [price, setPrice] = useState()
@@ -34,13 +34,10 @@ function NewSchedule(){
     const [Surgery_Operation, setSurgery_Operation] = useState()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/findRequest/${myid}/`)
+        axios.get(`http://localhost:8000/api/findSurgery/${myid}/`)
             .then((res) => {
-                setRequest(res.data)
+                setmySurgery(res.data)
                 setDataCame(true)
-                console.log(dataCame)
-                console.log(Request.user)
-                console.log(Request.animalName)
             }
 
             )
@@ -50,7 +47,7 @@ function NewSchedule(){
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/findSpecificAnimal/${Request.animalName}/`)
+        axios.get(`http://localhost:8000/api/findSpecificAnimal/${mySurgery.animalName}/`)
             .then((res) => {
                 setMyAnimal(res.data)
                 getAge()
@@ -84,7 +81,7 @@ function NewSchedule(){
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/getMedication/${Request.animalName}/`)
+        axios.get(`http://localhost:8000/api/getMedication/${mySurgery.animalName}/`)
             .then((res) => setMedication(res.data))
             .catch((err) => console.log(err))
     }, [dataCame])
@@ -93,57 +90,44 @@ function NewSchedule(){
 
 
 
-    const addnewSurgery = async (e) => {
+    const updateSurgery = async (e) => {
         e.preventDefault()
         const dataField = new FormData()
-        dataField.append("animalName", MyAnimal.animalName)
-        dataField.append("vetName", CurrentVet.username)
+        dataField.append("statusVet","accepted")
+        
         dataField.append("operationName", Surgery_Operation)
         dataField.append("price", price)
         dataField.append("date", date)
-        dataField.append("owner", Request.user)
+        
         await axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/api/insertSurgry/',
+            url: `http://127.0.0.1:8000/api/SurVetUpdates/${myid}/`,
             data: dataField
         }).then((res) =>
-            history.push("/SurgeryRequest")
+            history.push("/TableOfSurgries")
         )
             .catch((err) => console.log(err))
 
 
 
-        updatestaus(e)
+        
 
     }
 
-    const updatestaus = async (e) => {
-        e.preventDefault()
-        let formdata1 = new FormData()
-        formdata1.append("statusVet", "accepted")
-        await axios({
-            method: 'POST',
-            url: `http://localhost:8000/api/updateRequestStatusVet/${myid}/`,
-            data: formdata1
-        })
-            .then((data) =>
-                console.log(data.data)
-            )
-            .catch((err) => console.log(err))
-    }
 
 
-    const VetCancelRequest = async (e) => {
+
+    const VetCancelSurgery = async (e) => {
         e.preventDefault()
         let formdata2 = new FormData()
         formdata2.append("statusVet", "declined")
         await axios({
             method: 'POST',
-            url: `http://localhost:8000/api/updateRequestStatusVet/${myid}/`,
+            url: `http://localhost:8000/api/updateOperationStatusVet/${myid}/`,
             data: formdata2
         })
             .then((data) => {
-                history.push("/SurgeryRequest")
+                history.push("/TableOfSurgries")
                 console.log(data.data)
                 console.log("done sir")
             }
@@ -163,19 +147,19 @@ function NewSchedule(){
             <div className="container-fluid row">
                 <div>
                     <h5 id="head2">Surgical Operation Message</h5>
-                    <p id="head2">{Request.message}</p>
+                    <p id="head2">{mySurgery.message}</p>
                 </div>
                 <div className="col-6">
                 <div className=" cc card">
         <ul className="list-group list-group-flush">
             <li className="list-group-item">
                 <label className="labels" htmlFor="span22">Animal Name: </label>
-                <span className="span22">{Request.animalName}</span>
+                <span className="span22">{mySurgery.animalName}</span>
                 
             </li>
             <li className="list-group-item">
-                <label className="labels" htmlFor="">User Name:</label>
-                <span className="span22">{Request.user}</span>
+                <label className="labels" htmlFor="">owner Name:</label>
+                <span className="span22">{mySurgery.owner}</span>
             </li>
             <li className="list-group-item">
                 <label className="labels" htmlFor=""> Animal Weight:</label>
@@ -216,8 +200,8 @@ function NewSchedule(){
         </div>
         <Table medications={medication}/>
         <div className="buttons">
-            <button onClick={(e) => addnewSurgery(e)} className="btn bb ">Accept Surgery</button>
-            <button onClick={(e) => VetCancelRequest(e)} className="btn bb">Deny Surgery</button>
+            <button onClick={(e) => updateSurgery(e)} className="btn bb ">Accept Surgery</button>
+            <button onClick={(e) => VetCancelSurgery(e)} className="btn bb">Deny Surgery</button>
         </div>
         
         </>

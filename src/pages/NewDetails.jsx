@@ -1,4 +1,4 @@
-import React from "react";
+////////////////////////////.;i9998import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PagesStatic/NewSchedule.css';
 import { changeCurrentLocation } from '../store/actions/action'
