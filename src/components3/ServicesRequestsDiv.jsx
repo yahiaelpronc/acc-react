@@ -101,7 +101,7 @@ function ServicesRequestsDiv(props) {
                             <button onClick={(e) => acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button>
                         }
                         <button onClick={(e) => declineStatus(e)} className='btn btn-danger mx-2'>decline</button>
-                        <button className='btn btn-danger mx-2'>chat</button>
+                        {/* <button className='btn btn-danger mx-2'>chat</button> */}
                     </div>
                 </div>
             </div>
