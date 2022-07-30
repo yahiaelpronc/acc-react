@@ -1,4 +1,15 @@
-
+#butNav{
+  border: 1px solid white;
+  margin-top: 19%;
+ background-color: white;
+ font-size: 18px;
+ margin-left: 2%;
+ color: black;
+}
+#butNav:hover{
+  background-color: white;
+  color: #1787e0;
+}
 .header {
     background-color: whitesmoke;
     position: relative;

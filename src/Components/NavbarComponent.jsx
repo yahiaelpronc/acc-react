@@ -148,6 +148,7 @@ function NavbarComponent() {
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
               <li><Link to="/listlocations">List locations</Link></li>
+              
             </>
             :
             <>
@@ -165,7 +166,7 @@ function NavbarComponent() {
                     <>
                       <li>
                         <div className="col-2 dropdown">
-                          <Link class="btn dropdown-toggle" to="#" role="button" id="linkDrop" data-bs-toggle="dropdown">
+                          <Link className="btn dropdown-toggle" to="#" role="button" id="butNav" data-bs-toggle="dropdown">
                             Messages
                           </Link>
                           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
