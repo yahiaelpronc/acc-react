@@ -124,7 +124,7 @@ function TableOfSurgries() {
 
                 return (<>
                     {sur.statusVet !== "declined" && (
-                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{display:showdata}}>
+                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
 
                             <div className="col-12 p-3 fs-4 text-danger">{sur.message}</div>
 
@@ -164,45 +164,45 @@ function TableOfSurgries() {
                                     <ul className="list-group list-group-flush">
                                         {sur.price === 0 ? (<>
                                             <li className="list-group-item">
-                                            <label className="labels" htmlFor=""> statusUser:</label>
-                                            <span className="span22">{sur.statusUser} </span>
-                                        </li>
+                                                <label className="labels" htmlFor=""> User's Status :</label>
+                                                <span className="span22">{sur.statusUser} </span>
+                                            </li>
 
-                                        </>):(<>
+                                        </>) : (<>
 
-                                        <li className="list-group-item">
-                                            <label className="labels" htmlFor="span22">Operation date: </label>
-                                            <span className="span22">{sur.date}</span>
+                                            <li className="list-group-item">
+                                                <label className="labels" htmlFor="span22">Operation date: </label>
+                                                <span className="span22">{sur.date}</span>
 
-                                        </li>
-                                        <li className="list-group-item">
-                                            <label className="labels" htmlFor="">Operation Name:</label>
-                                            <span className="span22">{sur.operationName}</span>
-                                        </li>
-                                        <li className="list-group-item">
-                                            <label className="labels" htmlFor=""> Operation Price:</label>
-                                            <span className="span22">{sur.price} $</span>
-                                        </li>
-                                        <li className="list-group-item">
-                                            <label className="labels" htmlFor=""> statusUser:</label>
-                                            <span className="span22">{sur.statusUser} </span>
-                                        </li>
+                                            </li>
+                                            <li className="list-group-item">
+                                                <label className="labels" htmlFor="">Operation Name:</label>
+                                                <span className="span22">{sur.operationName}</span>
+                                            </li>
+                                            <li className="list-group-item">
+                                                <label className="labels" htmlFor=""> Operation Price:</label>
+                                                <span className="span22">{sur.price} $</span>
+                                            </li>
+                                            <li className="list-group-item">
+                                                <label className="labels" htmlFor=""> User's Status:</label>
+                                                <span className="span22">{sur.statusUser} </span>
+                                            </li>
                                         </>)}
 
 
 
                                     </ul>
                                 </div>
-                                {sur.price === 0 ?(<>
-                                  <Link to={`/NewSc/${sur.id}`}>  <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Details</button></Link>
+                                {sur.price === 0 ? (<>
+                                    <Link to={`/NewSc/${sur.id}`}>  <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Details</button></Link>
 
                                     <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
-                                <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button>
+                                    {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
 
-                                </>):(<>
+                                </>) : (<>
 
-                                <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
-                                <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button>
+                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
                                 </>)}
 
                             </div>

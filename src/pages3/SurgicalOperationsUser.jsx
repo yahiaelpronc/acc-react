@@ -21,7 +21,7 @@ function SurgicalOperationsUser() {
     const [Opartions, setOperations] = useState([])
     const [showdata, setshowdata] = useState("flex")
     const [disapear, setdisapear] = useState("flex")
-    const history=useHistory()
+    const history = useHistory()
 
 
     useEffect(() => {
@@ -62,8 +62,8 @@ function SurgicalOperationsUser() {
             .then((data) => {
                 history.push("/SurgicalOperationsUser")
                 console.log(data.data)
-                e.target.style.display="none";
-                
+                e.target.style.display = "none";
+
                 console.log("done sir")
             }
             )
@@ -82,51 +82,51 @@ function SurgicalOperationsUser() {
 
 
             {/* my div */}
-        
+
             {Opartions.map(opartion => {
                 return (<>
                     {opartion.statusUser !== "declined" && (
-          
-                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{display:showdata}}>
+
+                        <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
 
                             <div className="col-12 p-3 fs-4 text-danger">{opartion.message}</div>
 
-                                <div className="col-6">
-                                    <div className=" cc card">
-                                        <ul className="list-group list-group-flush">
-                                            <li className="list-group-item">
-                                                <label className="labels" htmlFor="span22">Animal Name: </label>
-                                                <span className="span22">{opartion.animalName}</span>
+                            <div className="col-6">
+                                <div className=" cc card">
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="span22">Animal Name: </label>
+                                            <span className="span22">{opartion.animalName}</span>
 
-                                            </li>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="">owner Name:</label>
+                                            <span className="span22">{opartion.owner}</span>
+                                        </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor=""> vet Name:</label>
+                                            <span className="span22">{opartion.vetName} </span>
+                                        </li>
+                                        {opartion.statusVet !== "declined" && (<>
                                             <li className="list-group-item">
-                                                <label className="labels" htmlFor="">owner Name:</label>
-                                                <span className="span22">{opartion.owner}</span>
-                                            </li>
-                                            <li className="list-group-item">
-                                                <label className="labels" htmlFor=""> vet Name:</label>
-                                                <span className="span22">{opartion.vetName} </span>
-                                            </li>
-                                            {opartion.statusVet !== "declined" && (<>
-                                                <li className="list-group-item">
                                                 <label className="labels" htmlFor=""> operation Name:</label>
                                                 <span className="span22">{opartion.operationName}</span>
 
                                             </li>
 
-                                            </>)}
+                                        </>)}
 
 
-                                        </ul>
-                                    </div>
+                                    </ul>
                                 </div>
-                                <div className="col-6">
-                                    <div className=" cc card">
-                                        <ul className="list-group list-group-flush">
-                                            {opartion.statusVet !== "declined" &&(<>
-                                                <li className="list-group-item">
+                            </div>
+                            <div className="col-6">
+                                <div className=" cc card">
+                                    <ul className="list-group list-group-flush">
+                                        {opartion.statusVet !== "declined" && (<>
+                                            <li className="list-group-item">
                                                 <label className="labels" htmlFor="span22">price : </label>
-                                                <span className="span22">{opartion.price}</span>
+                                                <span className="span22">{opartion.price}$</span>
 
                                             </li>
                                             <li className="list-group-item">
@@ -134,34 +134,37 @@ function SurgicalOperationsUser() {
                                                 <span className="span22">{opartion.date}</span>
                                             </li>
 
-                                            </>)}
+                                        </>)}
 
-                                            <li className="list-group-item">
-                                                <label className="labels" htmlFor=""> status Vet :</label>
-                                                <span className="span22">{opartion.statusVet}</span>
-                                            </li>
+                                        <li className="list-group-item">
+                                            <label className="labels" htmlFor="">Vet's Response :</label>
+                                            <span className="span22">{opartion.statusVet}</span>
+                                        </li>
 
-                                        </ul>
-                                    </div>
-                                    {opartion.statusVet === "declined" ?(<>
-                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
-                                <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button>
-
-                                </>):(<>
-
-                                {opartion.statusUser !== "accepted" && (<>
-                                    <button  id={opartion.id} onClick={(e) => AcceptSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Accept</button>
-
-                                
-                                </>)}
-
-                                <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
-                                <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button>
-                                </>)}
+                                    </ul>
                                 </div>
+                                {opartion.statusVet === "declined" ? (<>
+                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
+
+                                </>) : (<>
+                                    {opartion.price !== 0 &&
+                                        <>
+                                            {opartion.statusUser !== "accepted" && (<>
+                                                <button id={opartion.id} onClick={(e) => AcceptSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Accept</button>
+                                            </>)}
+                                        </>
+                                    }
+
+
+
+                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
+                                </>)}
                             </div>
-                            
-                        
+                        </div>
+
+
                     )}
                 </>)
             })}

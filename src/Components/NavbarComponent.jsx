@@ -147,25 +147,57 @@ function NavbarComponent() {
             <>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
-              <li><Link to="/listlocations">List locations</Link></li>
-              
             </>
             :
             <>
               {userType === "user" ?
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
-                  <li><Link to="/ServicesRequest">My Services </Link></li>
+                  <li><a href="#Services">Our Services</a></li>
                   {loggedUser.isAdmin &&
                     <li><Link to="/AdminPage2">Add location</Link></li>
                   }
-                  <li><Link to="/listlocations">List locations</Link></li>
-                  <li><Link to="/SurgicalOperationsUser">My Surgeries</Link></li>
-                  
-                  <li><Link to="/UserServiceResponses">Services Responses</Link></li>
+                  {loggedUser.isOwner &&
+                    <li><Link to="/ServicesRequest">My Location's Services </Link></li>
+                  }
                   {currentPage === "" &&
                     <>
                       <li>
+                        {/* <Link to=""> */}
+                        <div>
+                          <Link className="btn dropdown-toggle" to="#" role="button" id="butNav" data-bs-toggle="dropdown">
+                            Messages
+                          </Link>
+                          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                            {GotAssociated &&
+                              <>
+                                {Object.keys(withoutDuplicates).map((key) => (
+                                  <>
+                                    {withoutDuplicates[key] !== loggedUser.username && <>
+                                      <Link className="dropdown-item" onClick={(e) => myFunction(e)}
+                                        id={withoutDuplicates[key]}>
+                                        {withoutDuplicates[key]}</Link>
+                                    </>}
+                                  </>
+                                ))}
+                              </>
+                            }
+                          </ul>
+                        </div>
+                        {/* </Link> */}
+                      </li>
+                    </>
+                  }
+
+                  <li><Link to={`/logout`}>Logout</Link></li>
+                </>
+                :
+                <>
+                  <li><Link to="#Services">Our Services</Link></li>
+                  {currentPage === "" &&
+                    <>
+                      <li>
+                        {/* <Link to=""></Link> */}
                         <div className="col-2 dropdown">
                           <Link className="btn dropdown-toggle" to="#" role="button" id="butNav" data-bs-toggle="dropdown">
                             Messages
@@ -189,44 +221,12 @@ function NavbarComponent() {
                       </li>
                     </>
                   }
-
-                  <li><Link to={`/logout`}>Logout</Link></li>
-                </>
-                :
-                <>
-                  <li><Link to={`/SurgeryRequest`}>SurgeryRequest</Link></li>
-                  <li><Link to={`/TableOfSurgries`}>My Surgries</Link></li>
-                  <li><Link to="/ServicesRequest">My Services</Link></li>
-
-                  {/* <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li> */}
-                  <li><Link to="/listlocations">List locations</Link></li>
-                  <li>
-                    <div className="col-2 dropdown">
-                      <Link class="btn dropdown-toggle" to="#" role="button" id="linkDrop" data-bs-toggle="dropdown">
-                        Messages
-                      </Link>
-                      <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        {GotAssociated &&
-                          <>
-                            {Object.keys(withoutDuplicates).map((key) => (
-                              <>
-                                {withoutDuplicates[key] !== loggedUser.username && <>
-                                  <Link className="dropdown-item" onClick={(e) => myFunction(e)}
-                                    id={withoutDuplicates[key]}>
-                                    {withoutDuplicates[key]}</Link>
-                                </>}
-                              </>
-                            ))}
-                          </>
-                        }
-                      </ul>
-                    </div>
-                  </li>
                   <li><Link to={`/logoutVet`}>Logout</Link></li>
                 </>
               }
             </>
           }
+          {/* END OF NAV , START OF CHAT */}
         </ul>
         {currentPage === "" &&
           <div style={{ zIndex: "3" }}>
@@ -276,13 +276,13 @@ function NavbarComponent() {
                       </div>
                     </div>
                     <div className="publisher bt-1 border-light">
-                      <form action="">
-                        <input className="publisher-input" type="text" placeholder="Write something"
-                          id="Message" onChange={(e) => changeMessage(e)} value={sentMessage1} onKeyDown={(e) => handleKeyDown(e)} />
-                        <Link className="publisher-btn text-info" data-abc="true">
-                          <i className="fa fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
-                        </Link>
-                      </form>
+                      {/* <form action=""> */}
+                      <input className="publisher-input" type="text" placeholder="Write something"
+                        id="Message" onChange={(e) => changeMessage(e)} value={sentMessage1} onKeyDown={(e) => handleKeyDown(e)} />
+                      <Link className="publisher-btn text-info" data-abc="true">
+                        <i className="fa fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
+                      </Link>
+                      {/* </form> */}
                     </div>
                   </div>
                 </div>

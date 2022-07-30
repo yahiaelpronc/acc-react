@@ -276,13 +276,13 @@ function Emergency() {
                                         </div>
                                     </div>
                                     <div className="publisher bt-1 border-light">
-                                        <form action="">
-                                            <input className="publisher-input" type="text" placeholder="Write something"
-                                                id="Message" onChange={(e) => changeMessage(e)} value={sentMessage} onKeyDown={(e) => handleKeyDown(e)} />
-                                            <Link className="publisher-btn text-info" data-abc="true">
-                                                <i className="fa fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
-                                            </Link>
-                                        </form>
+                                        {/* <form action=""> */}
+                                        <input className="publisher-input" type="text" placeholder="Write something"
+                                            id="Message" onChange={(e) => changeMessage(e)} value={sentMessage} onKeyDown={(e) => handleKeyDown(e)} />
+                                        <Link className="publisher-btn text-info" data-abc="true">
+                                            <i className="fa fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
+                                        </Link>
+                                        {/* </form> */}
                                     </div>
                                 </div>
                             </div>

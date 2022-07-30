@@ -36,9 +36,32 @@ import work3 from './images/work-steps-2.png';
 import work4 from './images/work-steps-3.png';
 import event from './images/events.png';
 import discount from './images/discount.png';
+import { changeCurrentLocation } from '../store/actions/action'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState } from "react"
+import axios from "axios"
 function Home() {
+  const [locations, setlocation] = useState([])
+  const [Vets, setVets] = useState([])
+  const [Users, setUsers] = useState([])
+  const [Services, setServices] = useState([])
+  const userType = useSelector((state) => state.type);
 
 
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8000/api/listlocation/")
+      .then((res) => setlocation(res.data))
+      .catch((err) => console.log(err))
+    axios.get("http://127.0.0.1:8000/api/listvets/")
+      .then((res) => setVets(res.data))
+      .catch((err) => console.log(err))
+    axios.get("http://127.0.0.1:8000/api/listusers/")
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err))
+    axios.get("http://127.0.0.1:8000/api/listservices/")
+      .then((res) => setServices(res.data))
+      .catch((err) => console.log(err))
+  }, [])
 
 
 
@@ -50,7 +73,7 @@ function Home() {
           <div className="text">
             <h1 className="d-flex justify-self-start">Welcome, To Animal Care Center</h1>
             <p>Your local veterinarians in Egypt.
-              We are pleased to provide a wide variety of animal veterinary services in Qena Governorate.</p>
+              We Are Pleased To Provide A Nation-Wide Variety Of Animal Care Services.</p>
           </div>
           <div className="image col-4">
             <img src={require(`./images/ACC Logo (1).png`)} alt="Website Logo" className="smallImg1" />
@@ -63,7 +86,7 @@ function Home() {
       {/*End Landing */}
 
       {/* Start Articles */}
-      <div className="articles" id="articles">
+      {/* <div className="articles" id="articles">
         <h2 className="main-title">Articles</h2>
         <div className="container">
           <div className="box">
@@ -155,7 +178,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="spikes"></div>
 
 
@@ -163,7 +186,7 @@ function Home() {
       {/* End Articles */}
       {/* Start Gallery */}
 
-      <div className="gallery" id="gallery">
+      {/* <div className="gallery" id="gallery">
         <h2 className="main-title">
           Animal Care Website
         </h2>
@@ -199,47 +222,54 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/*   End Gallery  */}
       {/* Start Features */}
-      <div className="features" id="features">
-        <h2 className="main-title">Features</h2>
+      <div className="features" >
+        <h2 className="main-title" id="Services">Services</h2>
         <div className="container">
           <div className="box quality">
             <div className="img-holder"><img src={feature1} alt="" /></div>
-            <h2>Medication Volume Calculator</h2>
+            <h2>List Of All Trusted Locations</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="#">More</Link>
+            <Link to="/listlocations">More</Link>
           </div>
-          <div className="box time">
-            <div className="img-holder"><img src={feature2} alt="" /></div>
-            <h2>Add Animal</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="/AddAnimal">More</Link>
-          </div>
-          <div className="box passion">
-            <div className="img-holder"><img src={feature3} alt="" /></div>
-            <h2>Surgery Scheduling Service</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="#">More</Link>
-          </div>
+          {userType === "user" &&
+            <div className="box passion">
+              <div className="img-holder"><img src={feature3} alt="" /></div>
+              <h2>List Of All Animal Care Locations</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+              <Link to="/listlocations">More</Link>
+            </div>
+          }
           <div className="box quality">
             <div className="img-holder"><img src={feature1} alt="" /></div>
-            <h2>Boarding & Grooming Service</h2>
+            <h2>Booked Services</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="#">More</Link>
+            <Link to="/UserServiceResponses">More</Link>
           </div>
+
+          {userType === "user" ?
+            <div className="box passion">
+              <div className="img-holder"><img src={feature3} alt="" /></div>
+              <h2>Your Scheduled Surgeries</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+              <Link to="/SurgicalOperationsUser">More</Link>
+            </div>
+            :
+            <div className="box passion">
+              <div className="img-holder"><img src={feature3} alt="" /></div>
+              <h2>Your Scheduled Surgeries</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+              <Link to="/TableOfSurgries">More</Link>
+            </div>
+          }
+
           <div className="box time">
             <div className="img-holder"><img src={feature2} alt="" /></div>
             <h2>Animal Emergency Service</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="#">More</Link>
-          </div>
-          <div className="box passion">
-            <div className="img-holder"><img src={feature3} alt="" /></div>
-            <h2>List Of All Animal Care Locations</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="/listlocations">More</Link>
+            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+            <Link to="/emergency">More</Link>
           </div>
         </div>
       </div>
@@ -247,7 +277,7 @@ function Home() {
       {/* End Features */}
 
       {/* Start Testmonials */}
-      <div className="testimonials" id="testimonials">
+      {/* <div className="testimonials" id="testimonials">
         <h2 className="main-title">Meet Our Doctors</h2>
         <div className="container">
           <div className="box">
@@ -347,11 +377,137 @@ function Home() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* End Testmonials */}
 
+
+
+      {/* Start Services */}
+      {/* <div className="services" id="services">
+        <h2 className="main-title">Services</h2>
+        <div className="container">
+          <div className="box">
+            <i className="fas fa-user-shield fa-4x"></i>
+            <h3>WELLNESS EXAMS & VACCINATIONS</h3>
+            <div className="info">
+              <Link to="#">Details</Link>
+            </div>
+          </div>
+          <div className="box">
+            <i className="fas fa-tools fa-4x"></i>
+            <h3>BOARDING & GROOMING SERVICES</h3>
+            <div className="info">
+              <Link to="#">Details</Link>
+            </div>
+          </div>
+          <div className="box">
+            <i className="fas fa-map-marked-alt fa-4x"></i>
+            <h3>MEDICATION VOLUME CALCULATOR</h3>
+            <div className="info">
+              <Link to="#">Details</Link>
+            </div>
+          </div>
+          <div className="box">
+            <i className="fas fa-laptop-code fa-4x"></i>
+            <h3>SURGERY</h3>
+            <div className="info">
+              <Link to="#">Details</Link>
+            </div>
+          </div>
+          <div className="box">
+            <i className="fas fa-palette fa-4x"></i>
+            <h3>ANIMAL EMERGENCY</h3>
+            <div className="info">
+              <Link to="Emergency Animal.html">Design</Link>
+            </div>
+          </div>
+          <div className="box">
+            <i className="fas fa-bullhorn fa-4x"></i>
+            <h3>ANIMAL CARE LOCATIONS</h3>
+            <div className="info">
+              <Link to="#">Details</Link>
+            </div>
+          </div>
+        </div>
+      </div> */}
+      {/* End Services */}
+      <div className="spikes"></div>
+
+      {/* Start Skills */}
+      {/* <div className="our-skills" id="our-skills">
+        <h2 className="main-title">Our Skills</h2>
+        <div className="container">
+          <img src={skills} alt="" />
+          <div className="skills">
+            <div className="skill">
+              <h3>HTML <span>80%</span></h3>
+              <div className="the-progress">
+                <span style={{ width: '0%', width: '80%' }}></span>
+              </div>
+            </div>
+            <div className="skill">
+              <h3>CSS <span>85%</span></h3>
+              <div className="the-progress">
+                <span style={{ width: '0%', width: '85%' }}></span>
+              </div>
+            </div>
+            <div className="skill">
+              <h3>JavaScript <span>70%</span></h3>
+              <div className="the-progress">
+                <span style={{ width: '0%', width: '70%' }}></span>
+              </div>
+            </div>
+            <div className="skill">
+              <h3>Python <span>80%</span></h3>
+              <div className="the-progress">
+                <span style={{ width: '0%', width: '80%' }}></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+      {/* End Skills */}
+
+      {/*Start Work Steps */}
+      <div className="work-steps" id="work-steps">
+        <h2 className="main-title">How The Website Works ?</h2>
+        <div className="container">
+          <img src={work1} alt="" className="image" />
+          <div className="info">
+            <div className="box">
+              <img src={work2} alt="" />
+              <div className="text">
+                <h3>Latest Technologies</h3>
+                <p>
+                  We Use Our Reliable Backend Technologies To Connect You To Your Closest Locations And Your Favorite Vets
+                </p>
+              </div>
+            </div>
+            <div className="box">
+              <img src={work3} alt="" />
+              <div className="text">
+                <h3>Register And Login</h3>
+                <p>
+                  You Can Start Your Journey On ACC By Registering An Account And Logging In To Unlock Awesome Animal Care Services
+                </p>
+              </div>
+            </div>
+            <div className="box">
+              <img src={work4} alt="" />
+              <div className="text">
+                <h3>Our Services</h3>
+                <p>
+                  Log In And Enjoy A Variety Of Services Provided By Our Trusted Animal Care Locations And Registered Vets
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* End Work Steps */}
       {/* Start Team  */}
-      <div className="team" id="team">
+      {/* <div className="team" id="team">
         <h2 className="main-title">Team work Members</h2>
         <div className="container">
           <div className="box">
@@ -470,140 +626,12 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="spikes"></div>
+      </div> */}
 
 
       {/* End Team */}
-
-      {/* Start Services */}
-      <div className="services" id="services">
-        <h2 className="main-title">Services</h2>
-        <div className="container">
-          <div className="box">
-            <i className="fas fa-user-shield fa-4x"></i>
-            <h3>WELLNESS EXAMS & VACCINATIONS</h3>
-            <div className="info">
-              <Link to="#">Details</Link>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-tools fa-4x"></i>
-            <h3>BOARDING & GROOMING SERVICES</h3>
-            <div className="info">
-              <Link to="#">Details</Link>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-map-marked-alt fa-4x"></i>
-            <h3>MEDICATION VOLUME CALCULATOR</h3>
-            <div className="info">
-              <Link to="#">Details</Link>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-laptop-code fa-4x"></i>
-            <h3>SURGERY</h3>
-            <div className="info">
-              <Link to="#">Details</Link>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-palette fa-4x"></i>
-            <h3>ANIMAL EMERGENCY</h3>
-            <div className="info">
-              <Link to="Emergency Animal.html">Design</Link>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-bullhorn fa-4x"></i>
-            <h3>ANIMAL CARE LOCATIONS</h3>
-            <div className="info">
-              <Link to="#">Details</Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Services */}
-      {/* Start Skills */}
-      <div className="our-skills" id="our-skills">
-        <h2 className="main-title">Our Skills</h2>
-        <div className="container">
-          <img src={skills} alt="" />
-          <div className="skills">
-            <div className="skill">
-              <h3>HTML <span>80%</span></h3>
-              <div className="the-progress">
-                <span style={{ width: '0%', width: '80%' }}></span>
-              </div>
-            </div>
-            <div className="skill">
-              <h3>CSS <span>85%</span></h3>
-              <div className="the-progress">
-                <span style={{ width: '0%', width: '85%' }}></span>
-              </div>
-            </div>
-            <div className="skill">
-              <h3>JavaScript <span>70%</span></h3>
-              <div className="the-progress">
-                <span style={{ width: '0%', width: '70%' }}></span>
-              </div>
-            </div>
-            <div className="skill">
-              <h3>Python <span>80%</span></h3>
-              <div className="the-progress">
-                <span style={{ width: '0%', width: '80%' }}></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Skills */}
-
-      {/*Start Work Steps */}
-      <div className="work-steps" id="work-steps">
-        <h2 className="main-title">How It Works ?</h2>
-        <div className="container">
-          <img src={work1} alt="" className="image" />
-          <div className="info">
-            <div className="box">
-              <img src={work2} alt="" />
-              <div className="text">
-                <h3>Business Analysis</h3>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam quis laborum
-                  recusandae debitis vel
-                </p>
-              </div>
-            </div>
-            <div className="box">
-              <img src={work3} alt="" />
-              <div className="text">
-                <h3>Architecture</h3>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam quis laborum
-                  recusandae debitis vel
-                </p>
-              </div>
-            </div>
-            <div className="box">
-              <img src={work4} alt="" />
-              <div className="text">
-                <h3>Developement</h3>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam quis laborum
-                  recusandae debitis vel
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* End Work Steps */}
-
       {/* Start Events */}
-      <div className="events" id="events">
+      {/* <div className="events" id="events">
         <div className="dots dots-up"></div>
         <div className="dots dots-down"></div>
         <h2 className="main-title">Latest Events</h2>
@@ -641,7 +669,7 @@ function Home() {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
       {/* End Events */}
@@ -652,30 +680,30 @@ function Home() {
         <div className="container">
           <div className="box">
             <i className="far fa-user fa-2x fa-fw"></i>
-            <span className="number" data-goal="150">0</span>
-            <span className="text">Clients</span>
+            <span className="number" data-goal="150">{Users.length}</span>
+            <span className="text">Registered Users</span>
           </div>
           <div className="box">
-            <i className="fas fa-code fa-2x fa-fw"></i>
-            <span className="number" data-goal="135">0</span>
-            <span className="text">Projects</span>
+            <i className="far fa-user fa-2x fa-fw"></i>
+            <span className="number" data-goal="135">{Vets.length}</span>
+            <span className="text">Registered Vets</span>
           </div>
           <div className="box">
             <i className="fas fa-globe-asia fa-2x fa-fw"></i>
-            <span className="number" data-goal="50">0</span>
-            <span className="text">Countries</span>
+            <span className="number" data-goal="50">{locations.length}</span>
+            <span className="text">Trusted Locations</span>
           </div>
           <div className="box">
             <i className="far fa-money-bill-alt fa-2x fa-fw"></i>
-            <span className="number" data-goal="500">0</span>
-            <span className="text">Money</span>
+            <span className="number" data-goal="500">{Services.length}</span>
+            <span className="text">Services Booked</span>
           </div>
         </div>
       </div>
 
       {/* End Stats */}
       {/* Start Discount */}
-      <div className="discount" id="discount">
+      {/* <div className="discount" id="discount">
         <div className="image">
           <div className="content">
             <h2>We Have A Discount</h2>
@@ -699,7 +727,7 @@ function Home() {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* End Discount */}
 
