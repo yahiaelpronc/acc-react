@@ -96,7 +96,7 @@ function NewDetails() {
             }
             else {
                 console.log(res.data)
-                history.push("/")
+                history.push("/UserServiceResponses")
             }
         })
             .catch((err) => console.log(err))

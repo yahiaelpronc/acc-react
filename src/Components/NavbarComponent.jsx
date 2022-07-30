@@ -28,6 +28,8 @@ function NavbarComponent() {
   const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
   const dispatch = useDispatch()
   useEffect(() => {
+    setAssociated([])
+    setMessages1([])
     axios.get(`http://localhost:8000/api/getAllMessagesAssociated/${loggedUser.username}/`)
       .then((res) => {
         console.log("Messages : ", res.data)
@@ -206,7 +208,7 @@ function NavbarComponent() {
                 </>
                 :
                 <>
-                  <li><Link to="#Services">Our Services</Link></li>
+                  <li><a href="#Services">Our Services</a></li>
                   {currentPage === "" &&
                     <>
                       <li>

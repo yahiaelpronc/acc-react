@@ -40,7 +40,7 @@ function SurgicalOperationsUser() {
             data: formdata2
         })
             .then((data) => {
-                history.push("/")
+                // history.push("/SurgicalOperationsUser")
                 console.log(data.data)
                 setshowdata("none")
                 console.log("done sir")
@@ -144,7 +144,7 @@ function SurgicalOperationsUser() {
                                     </ul>
                                 </div>
                                 {opartion.statusVet === "declined" ? (<>
-                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
 
                                 </>) : (<>
@@ -158,7 +158,7 @@ function SurgicalOperationsUser() {
 
 
 
-                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
                                 </>)}
                             </div>

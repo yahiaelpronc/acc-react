@@ -196,12 +196,12 @@ function TableOfSurgries() {
                                 {sur.price === 0 ? (<>
                                     <Link to={`/NewSc/${sur.id}`}>  <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Details</button></Link>
 
-                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
 
                                 </>) : (<>
 
-                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Dismiss</button>
+                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
                                 </>)}
 

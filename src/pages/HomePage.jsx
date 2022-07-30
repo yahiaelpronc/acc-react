@@ -228,49 +228,52 @@ function Home() {
       <div className="features" >
         <h2 className="main-title" id="Services">Services</h2>
         <div className="container">
-          <div className="box quality">
-            <div className="img-holder"><img src={feature1} alt="" /></div>
-            <h2>List Of All Trusted Locations</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="/listlocations">More</Link>
-          </div>
           {userType === "user" &&
             <div className="box passion">
               <div className="img-holder"><img src={feature3} alt="" /></div>
               <h2>List Of All Animal Care Locations</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+              <p>Animal Care Locations Trusted By This Site</p>
               <Link to="/listlocations">More</Link>
             </div>
           }
           <div className="box quality">
             <div className="img-holder"><img src={feature1} alt="" /></div>
-            <h2>Booked Services</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
+            <h2>Your Booked Services</h2>
+            <p>View All Your Booked Services From Here</p>
             <Link to="/UserServiceResponses">More</Link>
           </div>
 
           {userType === "user" ?
-            <div className="box passion">
-              <div className="img-holder"><img src={feature3} alt="" /></div>
-              <h2>Your Scheduled Surgeries</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-              <Link to="/SurgicalOperationsUser">More</Link>
-            </div>
+            <>
+              <div className="box passion">
+                <div className="img-holder"><img src={feature3} alt="" /></div>
+                <h2>Your Scheduled Surgeries</h2>
+                <p>View All Your Scheduled Surgeries From Here</p>
+                <Link to="/SurgicalOperationsUser">More</Link>
+              </div>
+              <div className="box passion">
+                <div className="img-holder"><img src={feature3} alt="" /></div>
+                <h2>Your Animals' Medications</h2>
+                <p>View All Your Prescribed Medications From Here</p>
+                <Link to="/MedicationAdmin2">More</Link>
+              </div>
+            </>
             :
-            <div className="box passion">
-              <div className="img-holder"><img src={feature3} alt="" /></div>
-              <h2>Your Scheduled Surgeries</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-              <Link to="/TableOfSurgries">More</Link>
-            </div>
+            <>
+              <div className="box passion">
+                <div className="img-holder"><img src={feature3} alt="" /></div>
+                <h2>List Of All Animal Care Locations</h2>
+                <p>Animal Care Locations Trusted By This Site</p>
+                <Link to="/listlocations">More</Link>
+              </div>
+              <div className="box passion">
+                <div className="img-holder"><img src={feature3} alt="" /></div>
+                <h2>Your Scheduled Surgeries</h2>
+                <p>View All Your Scheduled Surgeries From Here</p>
+                <Link to="/TableOfSurgries">More</Link>
+              </div>
+            </>
           }
-
-          <div className="box time">
-            <div className="img-holder"><img src={feature2} alt="" /></div>
-            <h2>Animal Emergency Service</h2>
-            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit harum hic veniam eligendi minima</p>
-            <Link to="/emergency">More</Link>
-          </div>
         </div>
       </div>
 

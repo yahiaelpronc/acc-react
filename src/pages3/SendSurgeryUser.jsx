@@ -44,14 +44,13 @@ function SendSurgeryUser() {
             method: 'post',
             url: 'http://127.0.0.1:8000/api/insertSurgry/',
             data: fielddata
-        }).then((res) => 
-        {
-                    history.push("/")
-        console.log(res.data)
+        }).then((res) => {
+            history.push("/SurgicalOperationsUser")
+            console.log(res.data)
 
         }
 
-        
+
         )
             .catch((err) => console.log(err))
     }
@@ -84,8 +83,8 @@ function SendSurgeryUser() {
             </div>
 
             <div className='chosenAnimal'>
-                <h4 className='col-4 text-danger me-5'>{loggedUser.username}</h4>
-                <div className='ms-5 col-4 selectMANU'>
+                <h4 className='col-4 text-info'>Your Animals :</h4>
+                <div className='col-4 selectMANU'>
                     <select class="form-select" aria-label="Default select example" value={animalname1} onChange={(e) => changedata(e)} name='animalname1'>
                         <option value="" selected>Choose Animal</option>
                         {animals.map(animal => {
@@ -112,7 +111,7 @@ function SendSurgeryUser() {
             </div>
 
             <div className='d-flex justify-content-end mt-5'>
-                <button onClick={(e)=>insertSurgery(e)} disabled={errdata.messageerr || errdata.selecterr} className='buttoooon'>Submit</button>
+                <button onClick={(e) => insertSurgery(e)} disabled={errdata.messageerr || errdata.selecterr} className='buttoooon'>Submit</button>
             </div>
 
 

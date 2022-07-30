@@ -5,7 +5,7 @@ import img1 from './images/1.jpg';
 import img2 from './images/2.webp';
 import img3 from './images/3.jpg';
 import img4 from './images/4.jpg';
-
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -22,39 +22,38 @@ function FooterComponent() {
                         <h3>ACC</h3>
                         <ul className="social">
                             <li>
-                                <a href="#" className="facebook">
+                                <Link to="#" className="facebook">
                                     <i className="fab fa-facebook-f"></i>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="twitter">
+                                <Link to="#" className="twitter">
                                     <i className="fa-brands fa-twitter"></i>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="youtube">
+                                <Link to="#" className="youtube">
                                     <i className="fab fa-youtube"></i>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="instagram">
+                                <Link to="#" className="instagram">
                                     <i className="fa-brands fa-instagram"></i>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         <p className="text">
-                            Welcome to Animal Care Center of Qena, your local veterinarians in Qena,Egypt.
-                            We are pleased to provide a wide variety of animal veterinary services in Qena.
-
+                            Your local veterinarians in Egypt.
+                            We Are Pleased To Provide A Nation-Wide Variety Of Animal Care Services.
                         </p>
                     </div>
                     <div className="box">
                         <ul className="links">
-                            <li><a href="#">Important Link 1</a></li>
-                            <li><a href="#">Important Link 2</a></li>
-                            <li><a href="#">Important Link 3</a></li>
-                            <li><a href="#">Important Link 4</a></li>
-                            <li><a href="#">Important Link 5</a></li>
+                            <li><Link to="#">Important Link 1</Link></li>
+                            <li><Link to="#">Important Link 2</Link></li>
+                            <li><Link to="#">Important Link 3</Link></li>
+                            <li><Link to="#">Important Link 4</Link></li>
+                            <li><Link to="#">Important Link 5</Link></li>
                         </ul>
                     </div>
                     <div className="box">
@@ -85,7 +84,7 @@ function FooterComponent() {
 
                     </div>
                 </div>
-                <p className="copyright">Made With &lt;3 By Team</p>
+                <p className="copyright">Made With &lt;3 By ITI Team</p>
             </div>
         </>
     )
