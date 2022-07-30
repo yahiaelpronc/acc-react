@@ -155,13 +155,14 @@ function NavbarComponent() {
               {userType === "user" ?
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
-                  <li><Link to="/ServicesRequest">Services Request</Link></li>
+                  <li><Link to="/ServicesRequest">My Services </Link></li>
                   {loggedUser.isAdmin &&
                     <li><Link to="/AdminPage2">Add location</Link></li>
                   }
                   <li><Link to="/listlocations">List locations</Link></li>
-                  <li><Link to="/SurgicalOperationsUser">Surgical Operations User</Link></li>
-                  <li><Link to="/UserServiceResponses">Services Responses User</Link></li>
+                  <li><Link to="/SurgicalOperationsUser">My Surgeries</Link></li>
+                  
+                  <li><Link to="/UserServiceResponses">Services Responses</Link></li>
                   {currentPage === "" &&
                     <>
                       <li>
@@ -195,6 +196,8 @@ function NavbarComponent() {
                 <>
                   <li><Link to={`/SurgeryRequest`}>SurgeryRequest</Link></li>
                   <li><Link to={`/TableOfSurgries`}>My Surgries</Link></li>
+                  <li><Link to="/ServicesRequest">My Services</Link></li>
+
                   {/* <li><Link to={`/MedicationAdmin2`}>Add Medication</Link></li> */}
                   <li><Link to="/listlocations">List locations</Link></li>
                   <li>

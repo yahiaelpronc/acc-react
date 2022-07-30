@@ -40,8 +40,8 @@ function UserServiceResponses(){
                 {Requests.map(req=>{
                     return(<>
                     {req.statusUser !== "declined" && (
-                                                         <ServicesResponsesDiv AnimalType={req.AnimalType} animalOwner={req.animalOwner} serviceName={req.serviceName} price={req.price}
-                                                         id={req.id} date={req.date} time={req.time} timePeriod={req.timePeriod} statusUser={req.statusUser} statusOwner={req.statusOwner} />
+                                                         <ServicesResponsesDiv AnimalType={req.AnimalType} locationName={req.locationName} animalOwner={req.animalOwner} serviceName={req.serviceName} price={req.price}
+                                                         id={req.id} date={req.date} time={req.time} timePeriod={req.timePeriod} statusUser={req.statusUser} locationOwner={req.locationOwner} statusOwner={req.statusOwner} />
                     )}
 
 

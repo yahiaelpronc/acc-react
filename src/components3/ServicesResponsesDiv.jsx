@@ -2,11 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import '../pages/PagesStatic/NewSchedule.css'
+
 
 
 
 function ServicesResponsesDiv(props){
-    const [showdata,setshowdata]=useState("block")
+    const [showdata,setshowdata]=useState("flex")
 
 
 
@@ -32,59 +34,87 @@ function ServicesResponsesDiv(props){
 
 
     return (<>
-            <div style={{display:showdata}} className='p-3 row my-2 border border-dark border-3'>
 
-               
+                <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{display:showdata}}>
+                    <div className="col-6">
+                        <div className=" cc card">
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor="span22">Animal Type: </label>
+                                    <span className="span22">{props.AnimalType}</span>
+
+                                </li>
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor="">location owner :</label>
+                                    <span className="span22">{props.locationOwner}</span>
+                                </li>
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor="">service Name:</label>
+                                    <span className="span22">{props.serviceName}</span>
+                                </li>
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor=""> location Name:</label>
+                                    <span className="span22">{props.locationName}</span>
+                                </li>
 
 
-
-                    <div className='col-3'>
-                        <p className='fw-bold my-2 text-danger'>AnimalType :<span className='text-dark'>{props.AnimalType}</span></p>
-                        <p className='fw-bold mt-5 text-danger'>animalOwner :<span className='text-dark'>{props.animalOwner}</span></p>
-
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className='col-2'>
-                        <p className='fw-bold my-2 text-danger'>service type:<span className='text-dark'>{props.serviceName}</span></p>
-                        <p className='fw-bold mt-5 text-danger'>statusOwner :<span className='text-dark'>{props.statusOwner}</span></p>
+
+                    <div className="col-6">
+                        <div className=" cc card">
+                            <ul className="list-group list-group-flush">
 
 
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor="">Owner status  :</label>
+                                    <span className="span22">{props.statusOwner}</span>
+                                </li>
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor=""> Date:</label>
+                                    <span className="span22">{props.date}</span>
+
+                                </li>
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor=""> Time:</label>
+                                    <span className="span22">{props.time} {props.timePeriod}</span>
+
+                                </li>
+                                <li className="list-group-item">
+                                    <label className="labels" htmlFor=""> Price:</label>
+                                    <span className="span22">{props.price}</span>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className='my-4 p-2'>
+                            {/* <button onClick={(e)=> acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button> */}
+                            <button onClick={(e)=> declineStatus(e)} className='btn btn-danger mx-2'>decline</button>
+                            <button className='btn btn-danger mx-2'>chat</button>
+                        </div>
                     </div>
-                    <div className= 'd-flex align-items-center col-2'>
-                        <p className='fw-bold my-2 mx-3 text-danger'>date :<span className='text-dark'>{props.date}</span></p>
-                    
-                        
-
-
-                    </div>
-                    <div className= 'd-flex align-items-center col-2'>
-                    <p className='fw-bold my-2 text-danger '>price :<span className='text-dark'>{props.price}</span></p>
-
-                    
-                        
-
-
-                    </div>
-
-                    <div className=' d-flex align-items-center col-1'>
-                    <p className='fw-bold my-2 text-danger'>time: <span className='text-dark'>{props.time} {props.timePeriod}</span></p>
-                
-
-
-                    </div>
-
-                    <div className='d-flex my-3 justify-content-end'>
-
-                        <button onClick={(e)=> declineStatus(e)} className='btn btn-danger mx-2'>decline</button>
-                        <button className='btn btn-danger mx-2'>chat</button>
-                    </div>
-                
+                </div>
 
 
 
 
 
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            
             </>)
 }
 export default ServicesResponsesDiv
