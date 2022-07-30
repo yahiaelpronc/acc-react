@@ -15,10 +15,9 @@ function AdminPage2() {
             "Gharbia", "Giza", "Ismailia", "Kafr El Sheikh", "Luxor", "Matruh", "Minya", "Monufia", "New Valley",
             "North Sinai", "Port Said", "Qalyubia", "Qena", "Red Sea", "Sharqia", "Sohag", "South Sinai", "Suez"]
     )
-
+    const [owner, setowner] = useState("")
 
     const [name, setname] = useState("")
-    const [owner, setowner] = useState("")
     const [email, setemail] = useState("")
     const [address, setaddress] = useState(null)
     const [governorate, setgovernorate] = useState(null)
@@ -27,6 +26,7 @@ function AdminPage2() {
     const [image, setimage] = useState("")
     const [description, setdescription] = useState("")
     const [service, setservice] = useState("")
+    const [price, setprice] = useState("")
     const [work_hours_start, setwork_hours_start] = useState("")
     const [work_hours_end, setwork_hours_end] = useState("")
     const [work_hours_start_period, setwork_hours_start_period] = useState("")
@@ -38,10 +38,9 @@ function AdminPage2() {
         emailerr: "",
         addresserr: "",
         mobileerr: "",
-        ownererr: "",
         work_hours_starterr: "",
         work_hours_enderr: "",
-
+        ownererr: "",
     })
 
     const changedata = (e) => {
@@ -59,13 +58,6 @@ function AdminPage2() {
                 emailerr: emailRegex.test(e.target.value) ? "" : "Please Write A Correct Email"
             })
         }
-        else if (e.target.name === "owner") {
-            setowner(e.target.value)
-            seterrdata({
-                ...errdata,
-                ownererr: (e.target.value.length < 3 || e.target.value.length > 30) ? "This Field Has To Be 3 to 30 Characters Long" : ""
-            })
-        }
         else if (e.target.name === "mobile") {
             setmobile(e.target.value)
             seterrdata({
@@ -78,7 +70,14 @@ function AdminPage2() {
                 ...errdata,
                 addresserr: (e.target.value.length > 3 && e.target.value.length < 30) ? "" : "This Field Has To Be 3 to 30 Characters Long"
             })
-        } else if (e.target.name === "work_hours_start") {
+        }
+        else if (e.target.name === "price") {
+            setprice(e.target.value)
+            seterrdata({
+                priceerr: e.target.value < 1 ? "Price Must Be More Than 0$" : ""
+            })
+        }
+        else if (e.target.name === "work_hours_start") {
             setwork_hours_start(e.target.value)
             seterrdata({
                 work_hours_starterr: e.target.value > 12 ? "Hours Must Be Less Than 12" : ""
@@ -87,6 +86,13 @@ function AdminPage2() {
             setwork_hours_end(e.target.value)
             seterrdata({
                 work_hours_enderr: e.target.value > 12 ? "Hours Must Be Less Than 12" : ""
+            })
+        }
+        else if (e.target.name === "owner") {
+            setowner(e.target.value)
+            seterrdata({
+                ...errdata,
+                ownererr: (e.target.value.length < 3 || e.target.value.length > 30) ? "This Field Has To Be 3 to 30 Characters Long" : ""
             })
         }
     }
@@ -106,7 +112,7 @@ function AdminPage2() {
         fielddata.append("work_hours_start_period", work_hours_start_period)
         fielddata.append("service", service)
         fielddata.append("owner", owner)
-
+        fielddata.append("price", price)
         await axios({
             method: 'POST',
             url: 'http://localhost:8000/api/insertLocation/',
@@ -171,7 +177,7 @@ function AdminPage2() {
 
         </div>
 
-        <div className='page33'>
+        {/* <div className='page33'>
             <ul className="nav nav-tabs p-3 my-3">
                 <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="#" id='add'>Add Location</a>
@@ -186,169 +192,178 @@ function AdminPage2() {
                     <a className="nav-link" href="" >Projcts Reports</a>
                 </li>
             </ul>
-        </div>
+        </div> */}
+
+        <div className='MAXbooox'>
+            <div className='headerrr row p-2 my-2'>
+
+                <img className='pageIMG col-5' src={require(`./myimages/adminlocation2.jpg`)} />
+                <div className='col-7 d-flex align-items-center justify-content-center '>
+                    <h2 className="main-title exxxtra">Add New Animal Care Location</h2>
 
 
-        <div className='row p-2 my-2'>
 
-            <img className='col-3 h-25 w-25 rounded' src={require(`./myimages/adminlocation2.jpg`)} />
-            <div className='col-6 d-flex align-items-center justify-content-center '>
-                <h2 className="main-title my-5">Add New Animal Location</h2>
+                </div>
+
+            </div>
+            <div className='MINIcontainerr'>
+                <div className='daaata row'>
+
+                    <div class="detaaa col-5">
+
+                        <input type="text" className="detaaalzzz" onChange={(e) => changedata(e)} name="name" value={name} required aria-describedby="emailHelp" placeholder="Enter location Name" />
+                        <p className='text-danger'>{errdata.nameerr}</p>
+
+                    </div>
+
+                    <div class="detaaa col-5">
+
+                        <input type="email" className="detaaalzzz" onChange={(e) => changedata(e)} name='email' value={email} required aria-describedby="emailHelp" placeholder="Enter location email" />
+                        <p className='text-danger'>{errdata.emailerr}</p>
+
+                    </div>
+
+
+                </div>
+
+                <div className='daaata row'>
+
+                    <div class="detaaa col-5">
+
+                        <input type="text" className="detaaalzzz" onChange={(e) => changedata(e)} name="address" value={address} required aria-describedby="emailHelp" placeholder="Enter location address" />
+                        <p className='text-danger'>{errdata.addresserr}</p>
+
+                    </div>
+                    <div class="detaaa col-5">
+
+                        <input type="text" class="detaaalzzz" onChange={(e) => changedata(e)} name="owner" value={owner} required aria-describedby="emailHelp" placeholder="Enter Owner's Username" />
+                        <p className='text-danger'>{errdata.ownererr}</p>
+
+                    </div>
+
+
+
+                </div>
+
+                <div className='daaata row '>
+
+                    <div class="detaaa col-5">
+
+                        <input type="text" className="detaaalzzz" onChange={(e) => changedata(e)} name="mobile" value={mobile} required aria-describedby="emailHelp" placeholder="Enter location mobile" />
+                        <p className='text-danger'>{errdata.mobileerr}</p>
+
+                    </div>
+                    <div class="detaaa col-5">
+
+                        <input type="text" className="detaaalzzz" onChange={(e) => setwebsite_link(e.target.value)} name='website_link' value={website_link} required aria-describedby="emailHelp" placeholder="Enter location website_link" />
+
+
+                    </div>
+
+
+                </div>
+                <div className='daaata row '>
+
+                    <div class="detaaa col-5">
+
+                        <input type="number" class="detaaalzzz" onChange={(e) => changedata(e)} name="work_hours_start" value={work_hours_start} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
+                        <p className='text-danger'>{errdata.work_hours_starterr}</p>
+
+                    </div>
+                    <div class="detaaa col-5">
+
+                        <select required value={work_hours_start_period} class="detaaalzzz" onChange={(e) => setwork_hours_start_period(e.target.value)} name="work_hours_start_period" aria-label="Default select example">
+                            <option selected value="">Choose Period</option>
+                            <option value="am">AM</option>
+                            <option value="pm">PM</option>
+
+                        </select>
+
+
+                    </div>
+
+
+
+                </div>
+                <div className='daaata row '>
+
+                    <div class="detaaa col-5">
+
+                        <input type="number" class="detaaalzzz" onChange={(e) => changedata(e)} name="work_hours_end" value={work_hours_end} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
+                        <p className='text-danger'>{errdata.work_hours_enderr}</p>
+
+                    </div>
+                    <div class="detaaa col-5">
+
+                        <select required value={work_hours_end_period} class="detaaalzzz" name="work_hours_end_period" onChange={(e) => setwork_hours_end_period(e.target.value)} aria-label="Default select example">
+                            <option selected value="">Choose Period</option>
+                            <option value="am">AM</option>
+                            <option value="pm">PM</option>
+
+                        </select>
+
+
+                    </div>
+
+                    <div className='daaata row '>
+
+                    </div>
+                    <div class="detaaa col-5">
+
+                        <select required value={service} class="detailz" onChange={(e) => setservice(e.target.value)} name="service" aria-label="Default select example" id='seee'>
+                            <option selected value="">Services</option>
+                            <option value='Wellness Exams & Vaccinations'>Wellness Exams & Vaccinations</option>
+                            <option value='Boarding & Grooming Services'>Boarding & Grooming Services</option>
+                            <option value='Animal Emergency Services'>Animal Emergency Services</option>
+
+
+                        </select>
+
+
+                    </div>
+                    <div class="detaaa col-5">
+
+                        <input type="number" class="detaaalzzz" onChange={(e) => changedata(e)} name="price" value={price} required aria-describedby="emailHelp" placeholder="Enter Service's Price In Dollars $" />
+                        <p className='text-danger'>{errdata.priceerr}</p>
+
+                    </div>
+                    <div class="detaaa col-5">
+                        <select required value={governorate} className="detaaalzzz" name="governorate" onChange={(e) => setgovernorate(e.target.value)} aria-label="Default select example">
+                            <option selected value="">Choose Governorate</option>
+                            {governorates.map(gov => {
+                                return (<>
+                                    <option value={gov}>{gov}</option>
+                                </>)
+                            })}
+                        </select>
+                    </div>
+                </div>
+                <div className='row'>
+
+                    <div class="picc col-5"  >
+
+                        <span class="details">upload a profile pic.</span>
+                        <input type="file" placeholder="upload" required id="file" name="profile_pic" onChange={(e) => setimage(e.target.files[0])} />
+                        <p id="fileerr"></p>
+
+
+
+
+                    </div>
+                </div>
+                <div class="detaaa col-7">
+
+                    <textarea id="w3review" className='w3review' name="description" rows="4" cols="50" style={{ width: "100%" }}
+                        onChange={(e) => setdescription(e.target.value)} value={description} required aria-describedby="emailHelp" placeholder="Describe Your Services" />
+                </div>
+                <p className='text-danger'>{submitErr}</p>
+                <button onClick={Registerlocation} type="submit" disabled={errdata.nameerr || errdata.emailerr || errdata.mobileerr
+                    || errdata.addresserr || errdata.work_hours_starterr
+                    || errdata.work_hours_enderr || errdata.ownererr || errdata.priceerr} className='buttoooon' id='sub'>Submit</button>
 
 
 
             </div>
-
-        </div>
-        <div className='containpppp'>
-            <div className='row my-2 p-2'>
-
-                <div class="form-group mx-5 col-4">
-
-                    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="name" value={name} required aria-describedby="emailHelp" placeholder="Enter location Name" />
-                    <p className='text-danger'>{errdata.nameerr}</p>
-
-                </div>
-                <div class="form-group mx-5 col-4">
-
-                    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="owner" value={owner} required aria-describedby="emailHelp" placeholder="Enter Owner's Username" />
-                    <p className='text-danger'>{errdata.ownererr}</p>
-
-                </div>
-                <div class="form-group col-4">
-
-                    <input type="email" class="form-control" onChange={(e) => changedata(e)} name='email' value={email} required aria-describedby="emailHelp" placeholder="Enter location email" />
-                    <p className='text-danger'>{errdata.emailerr}</p>
-
-                </div>
-
-
-            </div>
-
-            <div className='row my-2 p-2'>
-
-                <div class="form-group mx-5 col-4">
-
-                    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="address" value={address} required aria-describedby="emailHelp" placeholder="Enter location address" />
-                    <p className='text-danger'>{errdata.addresserr}</p>
-
-                </div>
-                <div class="form-group col-4">
-
-                    <select required value={governorate} name="governorate" onChange={(e) => setgovernorate(e.target.value)} class="form-select" aria-label="Default select example">
-                        <option selected value="">Choose Governorate</option>
-                        {governorates.map(gov => {
-                            return (<>
-                                <option value={gov}>{gov}</option>
-                            </>)
-                        })}
-                    </select>
-
-
-
-                </div>
-
-
-            </div>
-
-            <div className='row my-2 p-2'>
-
-                <div class="form-group mx-5 col-4">
-
-                    <input type="text" class="form-control" onChange={(e) => changedata(e)} name="mobile" value={mobile} required aria-describedby="emailHelp" placeholder="Enter location mobile" />
-                    <p className='text-danger'>{errdata.mobileerr}</p>
-
-                </div>
-                <div class="form-group col-4">
-
-                    <input type="text" class="form-control" onChange={(e) => setwebsite_link(e.target.value)} name='website_link' value={website_link} required aria-describedby="emailHelp" placeholder="Enter location website_link" />
-
-
-                </div>
-
-
-            </div>
-            <div className='row my-2 p-2'>
-
-                <div class="form-group mx-5 col-4">
-
-                    <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_start" value={work_hours_start} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
-                    <p className='text-danger'>{errdata.work_hours_starterr}</p>
-
-                </div>
-                <div class="form-group col-4">
-
-                    <select required value={work_hours_start_period} onChange={(e) => setwork_hours_start_period(e.target.value)} name="work_hours_start_period" class="form-select" aria-label="Default select example">
-                        <option selected value="">Choose Period</option>
-                        <option value="am">AM</option>
-                        <option value="pm">PM</option>
-
-                    </select>
-
-
-                </div>
-
-
-
-            </div>
-            <div className='row my-2 p-2'>
-
-                <div class="form-group mx-5 col-4">
-
-                    <input type="number" class="form-control" onChange={(e) => changedata(e)} name="work_hours_end" value={work_hours_end} required aria-describedby="emailHelp" placeholder="Enter location work_hours_start" />
-                    <p className='text-danger'>{errdata.work_hours_enderr}</p>
-
-                </div>
-                <div class="form-group col-4">
-
-                    <select required value={work_hours_end_period} name="work_hours_end_period" onChange={(e) => setwork_hours_end_period(e.target.value)} class="form-select" aria-label="Default select example">
-                        <option selected value="">Choose Period</option>
-                        <option value="am">AM</option>
-                        <option value="pm">PM</option>
-
-                    </select>
-
-
-                </div>
-
-
-            </div>
-            <div class="form-group col-4">
-
-                <select required value={service} onChange={(e) => setservice(e.target.value)} name="service" class="form-select" aria-label="Default select example" id='seee'>
-                    <option selected value="">Services</option>
-                    <option value='Wellness Exams & Vaccinations'>Wellness Exams & Vaccinations</option>
-                    <option value='Boarding & Grooming Services'>Boarding & Grooming Services</option>
-                    <option value='Animal Emergency Services'>Animal Emergency Services</option>
-
-
-                </select>
-
-
-            </div>
-            <div className='row my-2 p-2'>
-
-                <div class="form-group ms-2 col-5"  >
-
-                    <span class="details">upload a profile pic.</span>
-                    <input type="file" placeholder="upload" required id="file" name="profile_pic" onChange={(e) => setimage(e.target.files[0])} />
-                    <p id="fileerr"></p>
-
-
-
-
-                </div>
-            </div>
-            <div class="form-group col-4">
-
-                <textarea id="w3review" name="description" rows="4" cols="50"
-                    onChange={(e) => setdescription(e.target.value)} value={description} required aria-describedby="emailHelp" placeholder="Describe Your Services" />
-            </div>
-            <p className='text-danger'>{submitErr}</p>
-            <button onClick={Registerlocation} type="submit" disabled={errdata.nameerr || errdata.emailerr || errdata.mobileerr || errdata.addresserr || errdata.work_hours_starterr || errdata.work_hours_enderr} className='btn  my-4 p-2' id='sub'>Submit</button>
-
-
-
         </div>
 
 

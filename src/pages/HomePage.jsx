@@ -50,7 +50,7 @@ function Home() {
           <div className="text">
             <h1 className="d-flex justify-self-start">Welcome, To Animal Care Center</h1>
             <p>Your local veterinarians in Egypt.
-              We are pleased to provide a wide variety of animal veterinary services in Qena.</p>
+              We are pleased to provide a wide variety of animal veterinary services in Qena Governorate.</p>
           </div>
           <div className="image col-4">
             <img src={require(`./images/ACC Logo (1).png`)} alt="Website Logo" className="smallImg1" />

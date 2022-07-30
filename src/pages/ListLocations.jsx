@@ -102,6 +102,7 @@ function Locations() {
                               <p className="fs-6">{location.service}</p>
                               <p className="fs-6">{location.governorate}</p>
                               <p className="fs-6">{location.address}</p>
+                              <p className="fs-6">Price : {location.price}$</p>
                             </div>
                             <div className="info">
                               <Link to={`detailslocations/${location.id}`} className="de">Details</Link>
@@ -124,6 +125,7 @@ function Locations() {
                                   <p className="fs-6">{location.service}</p>
                                   <p className="fs-6">{location.governorate}</p>
                                   <p className="fs-6">{location.address}</p>
+                                  <p className="fs-6">Price : {location.price}$</p>
                                 </div>
                                 <div className="info">
                                   <Link to={`detailslocations/${location.id}`} className="de">Details</Link>
@@ -146,6 +148,7 @@ function Locations() {
                                       <p className="fs-6">{location.service}</p>
                                       <p className="fs-6">{location.governorate}</p>
                                       <p className="fs-6">{location.address}</p>
+                                      <p className="fs-6">Price : {location.price}$</p>
                                     </div>
                                     <div className="info">
                                       <Link to={`detailslocations/${location.id}`} className="de">Details</Link>
@@ -164,6 +167,7 @@ function Locations() {
                                   <p className="fs-6">{location.service}</p>
                                   <p className="fs-6">{location.governorate}</p>
                                   <p className="fs-6">{location.address}</p>
+                                  <p className="fs-6">Price : {location.price}$</p>
                                 </div>
                                 <div className="info">
                                   <Link to={`detailslocations/${location.id}`} className="de">Details</Link>

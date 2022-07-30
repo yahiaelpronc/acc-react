@@ -15,6 +15,7 @@ import UserDetails from './pages3/userdetails';
 import ListVets from './pages3/listvets';
 import VetDetails from './pages3/vetdetails';
 import FooterComponent from './Components/FooterComponent';
+import SurgicalRequest from './Components4/SurgicalRequest';
 import Home from './pages/HomePage';
 import Emergency from './pages/Emergency';
 import './pages/PagesStatic/Home.css';
@@ -86,6 +87,7 @@ function App() {
           <Route path={"/AdminPage2"} exact component={AdminPage2} />
           <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
           <Route path={"/UserServiceResponses"} exact component={UserServiceResponses} />
+          <Route path={"/SurgicalRequest"} exact component={SurgicalRequest} />
           <Route path={"/TableOfSurgries"} exact component={TableOfSurgries} />
           <Route path={"*"} exact component={NotFound}/>
         </Switch>
