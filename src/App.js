@@ -48,6 +48,7 @@ import TableOfSurgries from './pages3/tableOfSurgeries';
 import UserServiceResponses from './pages3/UserServiceResponses';
 import Welcome from './pages/Welcome';
 import NotFound from './pages/NotFound';
+import MedicationUser from './pages/MedicationUser';
 function App() {
     return (
       <div className="App">
@@ -85,6 +86,7 @@ function App() {
           <Route path={"/SurgeryRequest"} exact component={SurgeryRequest} />
           <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
           <Route path={"/SendSurgeryUser/:vetUsername"} exact component={SendSurgeryUser} />
+          <Route path={"/MedicationUser"} exact component={MedicationUser} />
           <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
           <Route path={"/AddAnimal"} exact component={AddAnimal} />
           <Route path={"/LocationDD"} exact component={ListLocations} />

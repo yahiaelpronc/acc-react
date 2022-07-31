@@ -255,7 +255,7 @@ function Home() {
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>Your Animals' Medications</h2>
                 <p>View All Your Prescribed Medications From Here</p>
-                <Link to="/MedicationAdmin2">More</Link>
+                <Link to="/MedicationUser">More</Link>
               </div>
             </>
             :

@@ -89,8 +89,13 @@ function ServicesRequestsDiv(props) {
                                 <span className="span22">{props.statusUser}</span>
                             </li>
                             <li className="list-group-item">
-                                <label className="labels" htmlFor=""> Date:</label>
+                                <label className="labels" htmlFor=""> Date :</label>
                                 <span className="span22">{props.date}</span>
+
+                            </li>
+                            <li className="list-group-item">
+                                <label className="labels" htmlFor=""> Time :</label>
+                                <span className="span22">{props.time} {props.timePeriod}</span>
 
                             </li>
 

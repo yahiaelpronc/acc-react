@@ -100,153 +100,95 @@ function MedicationAdmin2() {
         }).then((response) => history2.push("/"))
             .catch((err) => console.log(err))
     }
-    return (<>
-        {userType === "user" ?
-            <>
-                <div className='MAXcontainerr'>
-                    <h2 className='main-title'>Animals' Medication History</h2>
-                    {/* <div className='medicationPIC'>
+    return (
+        <>
+            <div className='MAXcontainerr'>
+                <h2 className='main-title'>Medication Adminstration</h2>
+                {/* <div className='medicationPIC'>
                 <img src={require(`./myimages/prescription2.webp`)} />
             </div> */}
-                    <div className='col-4 animalNAME'>
-                        <select class="form-select" aria-label="Default select example"
-                            value={userData.animalName} name="animalName" onChange={(e) => changeData(e)}>
-                            <option selected="" required>Choose Animal</option>
-                            {animals.map(animal => {
-                                return (<>
-                                    <option value={animal.animalName}>{animal.animalName}</option>
-                                </>)
-                            }
-                            )}
-                        </select>
-                    </div>
-                    <div className='my-3 p-3'>
-                        <h4 className='TEXT'><strong>Medication History</strong></h4>
-                        <table class="table table-striped table-hover ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Animal Name</th>
-                                    <th scope="col">Vet Name</th>
-                                    <th scope="col">Medication Name</th>
-                                    <th scope="col" className='mb-2'>Dosage</th>
-                                    <th scope="col">Dosage Interval </th>
-                                    <th scope="col">Adminstration Route</th>
-                                    <th scope="col">Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {pastMedications.length > 0 ?
-                                    pastMedications.map(pastMedication => {
-                                        return (<>
-                                            <tr>
-                                                <td>{pastMedication.animalName}</td>
-                                                <td>{pastMedication.vetName}</td>
-                                                <td>{pastMedication.medicationName}</td>
-                                                <td>{pastMedication.dosage} Millimeter</td>
-                                                <td>Every {pastMedication.dosageInterval} Minutes</td>
-                                                <td>{pastMedication.adminstrationRoute}</td>
-                                                <td>{pastMedication.date}</td>
-                                            </tr>
-                                        </>)
-                                    }) :
-                                    null
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                <div className='col-4 animalNAME'>
+                    <select class="form-select" aria-label="Default select example"
+                        value={userData.animalName} name="animalName" onChange={(e) => changeData(e)}>
+                        <option selected="" required>Choose Animal</option>
+                        {animals.map(animal => {
+                            return (<>
+                                <option value={animal.animalName}>{animal.animalName}</option>
+                            </>)
+                        }
+                        )}
+                    </select>
                 </div>
-            </>
-            :
-            <>
-                <div className='MAXcontainerr'>
-                    <h2 className='main-title'>Medication Adminstration</h2>
-                    {/* <div className='medicationPIC'>
-                <img src={require(`./myimages/prescription2.webp`)} />
-            </div> */}
-                    <div className='col-4 animalNAME'>
-                        <select class="form-select" aria-label="Default select example"
-                            value={userData.animalName} name="animalName" onChange={(e) => changeData(e)}>
-                            <option selected="" required>Choose Animal</option>
-                            {animals.map(animal => {
-                                return (<>
-                                    <option value={animal.animalName}>{animal.animalName}</option>
-                                </>)
-                            }
-                            )}
-                        </select>
-                    </div>
-                    <div className='row'>
-                        <div className='col-5'>
-                            <div class="col-auto MEDdetailz">
-                                <input type="text" value={userData.medicationName} name="medicationName" onChange={(e) => changeData(e)}
-                                    className="form-control" placeholder='Medication Name' aria-describedby="passwordHelpInline" />
-                            </div>
-                            <div class="col-auto MEDdetailz">
-                                <input type="number" value={userData.dosage} name="dosage" onChange={(e) => changeData(e)}
-                                    className="form-control" placeholder='Dosage' aria-describedby="passwordHelpInline" />
-                            </div>
+                <div className='row'>
+                    <div className='col-5'>
+                        <div class="col-auto MEDdetailz">
+                            <input type="text" value={userData.medicationName} name="medicationName" onChange={(e) => changeData(e)}
+                                className="form-control" placeholder='Medication Name' aria-describedby="passwordHelpInline" />
                         </div>
-                        <div className='col-5'>
-                            <div class="col-auto MEDdetailz">
-                                <input type="number" value={userData.dosageInterval} name="dosageInterval" onChange={(e) => changeData(e)}
-                                    className="form-control" placeholder='Dosage Interval In Minutes' aria-describedby="passwordHelpInline" />
-                            </div>
-                            <div className='MEDdetailz'>
-                                <select class="form-select" value={userData.adminstrationRoute} name="adminstrationRoute" onChange={(e) => changeData(e)}
-                                    aria-label="Default select example">
-                                    <option selected value="">Adminstration Route</option>
-                                    <option value="Intramascular">Intramascular</option>
-                                    <option value="Intravenous">Intravenous </option>
-                                    <option value="Oral">Oral </option>
-                                    <option value="Sublingual">Sublingual </option>
-                                    <option value="Topical">Topical </option>
-                                    <option value="Ocular">Ocular </option>
-                                    <option value="Subcutaneous">Subcutaneous </option>
-                                </select>
-                            </div>
+                        <div class="col-auto MEDdetailz">
+                            <input type="number" value={userData.dosage} name="dosage" onChange={(e) => changeData(e)}
+                                className="form-control" placeholder='Dosage' aria-describedby="passwordHelpInline" />
                         </div>
                     </div>
-                    <div className='my-3 p-3'>
-                        <h4 className='TEXT'><strong>Medication History</strong></h4>
-                        <table class="table table-striped table-hover ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Animal Name</th>
-                                    <th scope="col">Vet Name</th>
-                                    <th scope="col">Medication Name</th>
-                                    <th scope="col" className='mb-2'>Dosage</th>
-                                    <th scope="col">Dosage Interval </th>
-                                    <th scope="col">Adminstration Route</th>
-                                    <th scope="col">Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {pastMedications.length > 0 ?
-                                    pastMedications.map(pastMedication => {
-                                        return (<>
-                                            <tr>
-                                                <td>{pastMedication.animalName}</td>
-                                                <td>{pastMedication.vetName}</td>
-                                                <td>{pastMedication.medicationName}</td>
-                                                <td>{pastMedication.dosage} Millimeter</td>
-                                                <td>Every {pastMedication.dosageInterval} Minutes</td>
-                                                <td>{pastMedication.adminstrationRoute}</td>
-                                                <td>{pastMedication.date}</td>
-                                            </tr>
-                                        </>)
-                                    }) :
-                                    null
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className='d-flex justify-content-end me-4 my-2 p-2'>
-                        <button className='buttoooon' onClick={(e) => { inserMedication(e) }}>Adminster Medication</button>
+                    <div className='col-5'>
+                        <div class="col-auto MEDdetailz">
+                            <input type="number" value={userData.dosageInterval} name="dosageInterval" onChange={(e) => changeData(e)}
+                                className="form-control" placeholder='Dosage Interval In Minutes' aria-describedby="passwordHelpInline" />
+                        </div>
+                        <div className='MEDdetailz'>
+                            <select class="form-select" value={userData.adminstrationRoute} name="adminstrationRoute" onChange={(e) => changeData(e)}
+                                aria-label="Default select example">
+                                <option selected value="">Adminstration Route</option>
+                                <option value="Intramascular">Intramascular</option>
+                                <option value="Intravenous">Intravenous </option>
+                                <option value="Oral">Oral </option>
+                                <option value="Sublingual">Sublingual </option>
+                                <option value="Topical">Topical </option>
+                                <option value="Ocular">Ocular </option>
+                                <option value="Subcutaneous">Subcutaneous </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </>
-        }
-    </>
+                <div className='my-3 p-3'>
+                    <h4 className='TEXT'><strong>Medication History</strong></h4>
+                    <table class="table table-striped table-hover ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Animal Name</th>
+                                <th scope="col">Vet Name</th>
+                                <th scope="col">Medication Name</th>
+                                <th scope="col" className='mb-2'>Dosage</th>
+                                <th scope="col">Dosage Interval </th>
+                                <th scope="col">Adminstration Route</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {pastMedications.length > 0 ?
+                                pastMedications.map(pastMedication => {
+                                    return (<>
+                                        <tr>
+                                            <td>{pastMedication.animalName}</td>
+                                            <td>{pastMedication.vetName}</td>
+                                            <td>{pastMedication.medicationName}</td>
+                                            <td>{pastMedication.dosage} Millimeter</td>
+                                            <td>Every {pastMedication.dosageInterval} Minutes</td>
+                                            <td>{pastMedication.adminstrationRoute}</td>
+                                            <td>{pastMedication.date}</td>
+                                        </tr>
+                                    </>)
+                                }) :
+                                null
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div className='d-flex justify-content-end me-4 my-2 p-2'>
+                    <button className='buttoooon' onClick={(e) => { inserMedication(e) }}>Adminster Medication</button>
+                </div>
+            </div>
+        </>
     )
 }
 export default MedicationAdmin2

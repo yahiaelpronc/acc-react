@@ -32,7 +32,22 @@ function ServicesResponsesDiv(props) {
             )
             .catch((err) => console.log(err))
     }
-
+    const acceptStatus = async (e) => {
+        let formdata2 = new FormData()
+        formdata2.append("statusUser", "accepted")
+        await axios({
+            method: 'POST',
+            url: `http://localhost:8000/api/updateSrviceStatusUser/${props.id}/`,
+            data: formdata2
+        })
+            .then((data) => {
+                // history.push("/")
+                e.target.style.display = "none"
+                console.log(data.data)
+                console.log("done sir")
+            })
+            .catch((err) => console.log(err))
+    }
 
     return (<>
 
@@ -85,14 +100,16 @@ function ServicesResponsesDiv(props) {
                         </li>
                         <li className="list-group-item">
                             <label className="labels" htmlFor=""> Price:</label>
-                            <span className="span22">{props.price}</span>
+                            <span className="span22">{props.price}$</span>
 
                         </li>
 
                     </ul>
                 </div>
                 <div className='my-4 p-2'>
-                    {/* <button onClick={(e)=> acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button> */}
+                    {props.statusUser !== "accepted" &&
+                        <button onClick={(e) => acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button>
+                    }
                     <button onClick={(e) => declineStatus(e)} className='btn btn-danger mx-2'>decline</button>
                     {/* <button className='btn btn-danger mx-2'>chat</button> */}
                 </div>
