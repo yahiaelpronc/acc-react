@@ -11,7 +11,7 @@ function MedicationAdmin2() {
     const history2 = useHistory()
     const dispatch = useDispatch()
     const loggedUser = useSelector((state) => state.loggedUser);
-    const currentUser = useSelector((state) => state.currentUser);
+    const currentVet = useSelector((state) => state.currentVet);
     const userType = useSelector((state) => state.type);
     const [animals, setAnimals] = useState([])
     const [pastMedications, setPastMedications] = useState([])
@@ -25,14 +25,14 @@ function MedicationAdmin2() {
     })
     // GET ANIMALS OF USER
     useEffect(() => {
-        dispatch(changeCurrentUser("zoldeek"))
-        axios.get(`http://localhost:8000/api/listAnimals/${currentUser}`)
+        setAnimals([])
+        axios.get(`http://localhost:8000/api/listAnimals/${currentVet}`)
             .then((res) => {
                 setAnimals(res.data)
             }
             )
             .catch((err) => console.log(err))
-    }, [currentUser])
+    }, [])
     // GET PAST MEDS WHEN SELECTING AN ANIMAL
     useEffect(() => {
         axios.get(`http://localhost:8000/api/getMedication/${userData.animalName}/`)

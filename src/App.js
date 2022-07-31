@@ -28,6 +28,8 @@ import Logout from './pages/Logout';
 import logoutVet from './pages/logoutVet';
 import DetailsLocations from './pages/Details';
 import loginUsers from './pages/LoginUsers';
+import verified from './pages/verified';
+import Notverified from './pages/Notverified';
 import LoginAsUser from './pages/LoginAsUser';
 import LoginAsVet from './pages/LoginAsVet';
 import AddAnimal from './pages3/AddAnimal';
@@ -44,6 +46,7 @@ import RequestSur from './pages/RequestSur';
 import ServicesRequest from './pages3/ServicesRequest';
 import TableOfSurgries from './pages3/tableOfSurgeries';
 import UserServiceResponses from './pages3/UserServiceResponses';
+import Welcome from './pages/Welcome';
 import NotFound from './pages/NotFound';
 function App() {
     return (
@@ -52,6 +55,9 @@ function App() {
         <NavbarComponent/>
         <Switch>
           <Route path={"/"} exact component={Home}/>
+          <Route path={"/Welcome"} exact component={Welcome}/>
+          <Route path={"/Notverified"} exact component={Notverified}/>
+          <Route path={"/verified"} exact component={verified}/>
           <Route path={"/NewSc/:id"} exact component={NewSchedule}/>
           <Route path={"/NewRe"} exact component={NewRequest}/>
           <Route path={"/SurOp"} exact component={SurgicalOp}/>

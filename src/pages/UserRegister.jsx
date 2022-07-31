@@ -407,7 +407,7 @@ function UserRegister() {
             else {
                 console.log("login")
                 console.log(res.data)
-                history.push("/login")
+                history.push("/Welcome")
             }
         })
             .catch((err) => console.log(err))
