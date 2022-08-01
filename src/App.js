@@ -49,60 +49,68 @@ import UserServiceResponses from './pages3/UserServiceResponses';
 import Welcome from './pages/Welcome';
 import NotFound from './pages/NotFound';
 import MedicationUser from './pages/MedicationUser';
+import { useSelector, useDispatch } from 'react-redux'
 function App() {
-    return (
-      <div className="App">
-        <BrowserRouter>
-        <NavbarComponent/>
-        <Switch>
-          <Route path={"/"} exact component={Home}/>
-          <Route path={"/Welcome"} exact component={Welcome}/>
-          <Route path={"/Notverified"} exact component={Notverified}/>
-          <Route path={"/verified"} exact component={verified}/>
-          <Route path={"/NewSc/:id"} exact component={NewSchedule}/>
-          <Route path={"/NewRe"} exact component={NewRequest}/>
-          <Route path={"/SurOp"} exact component={SurgicalOp}/>
-          <Route path={"/NewDe"} exact component={NewDetails}/>
-          <Route path={"/Filter"} exact component={LocationFilter}/>
-          {/* <Route path={"/NewDe"} exact component={NewDetails}/> */}
-          <Route path={"/VetRegister"} exact component={VetRegister}/>
-          <Route path={"/UserRegister"} exact component={UserRegister}/>
-          <Route path={"/Register"} exact component={Register}/>
-          <Route path={"/login"} exact component={loginUsers}/>
-          <Route path={"/LoginAsUser"} exact component={LoginAsUser}/>
-          <Route path={"/LoginAsVet"} exact component={LoginAsVet}/>
-          <Route path={"/operation"} exact component={ScheduledOperation}/>
-          <Route path={"/request/:id"} exact component={RequestSur}/>
-          <Route path={"/emergency"} exact component={Emergency}/>
-          <Route path={"/myform"} exact component={Myform}/>
-          <Route path={"/vetform2"} exact component={VetForm2}/>
-          <Route path={"/detailslocations/:locationName"} exact component={NewDetails} />
-          <Route path={"/listlocations"} exact component={Locations} />
-          <Route path={"/details/:id"} exact component={LocationDetails} />
-          <Route path={"/listusers"} exact component={ListUsers} />
-          <Route path={"/userdetails/:username"} exact component={UserDetails} />
-          <Route path={"/vetdetails/:username"} exact component={VetDetails} />
-          <Route path={"/listvets"} exact component={ListVets} />
-          <Route path={"/SurgeryRequest"} exact component={SurgeryRequest} />
-          <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
-          <Route path={"/SendSurgeryUser/:vetUsername"} exact component={SendSurgeryUser} />
-          <Route path={"/MedicationUser"} exact component={MedicationUser} />
-          <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
-          <Route path={"/AddAnimal"} exact component={AddAnimal} />
-          <Route path={"/LocationDD"} exact component={ListLocations} />
-          <Route path={"/logout"} exact component={Logout} />
-          <Route path={"/logoutVet"} exact component={logoutVet} />
-          <Route path={"/AdminPage2"} exact component={AdminPage2} />
-          <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
-          <Route path={"/UserServiceResponses"} exact component={UserServiceResponses} />
-          <Route path={"/SurgicalRequest"} exact component={SurgicalRequest} />
-          <Route path={"/TableOfSurgries"} exact component={TableOfSurgries} />
-          <Route path={"*"} exact component={NotFound}/>
-        </Switch>
-        <FooterComponent/>
-        </BrowserRouter>
-      </div>
-    );
+  const loggedUser = useSelector((state) => state.loggedUser);
+  const logged = useSelector((state) => state.logged);
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <NavbarComponent/>
+      <Switch>
+        <Route path={"/"} exact component={Home}/>
+        <Route path={"/Welcome"} exact component={Welcome}/>
+        <Route path={"/Notverified"} exact component={Notverified}/>
+        <Route path={"/verified"} exact component={verified}/>
+        <Route path={"/VetRegister"} exact component={VetRegister}/>
+        <Route path={"/UserRegister"} exact component={UserRegister}/>
+        <Route path={"/Register"} exact component={Register}/>
+        <Route path={"/login"} exact component={loginUsers}/>
+        <Route path={"/LoginAsUser"} exact component={LoginAsUser}/>
+        <Route path={"/LoginAsVet"} exact component={LoginAsVet}/>
+        {logged &&
+        <>
+        <Route path={"/NewSc/:id"} exact component={NewSchedule}/>
+        <Route path={"/NewRe"} exact component={NewRequest}/>
+        <Route path={"/SurOp"} exact component={SurgicalOp}/>
+        <Route path={"/NewDe"} exact component={NewDetails}/>
+        <Route path={"/Filter"} exact component={LocationFilter}/>
+        <Route path={"/operation"} exact component={ScheduledOperation}/>
+        <Route path={"/request/:id"} exact component={RequestSur}/>
+        <Route path={"/emergency"} exact component={Emergency}/>
+        <Route path={"/myform"} exact component={Myform}/>
+        <Route path={"/vetform2"} exact component={VetForm2}/>
+        <Route path={"/detailslocations/:locationName"} exact component={NewDetails} />
+        <Route path={"/listlocations"} exact component={Locations} />
+        <Route path={"/details/:id"} exact component={LocationDetails} />
+        <Route path={"/listusers"} exact component={ListUsers} />
+        <Route path={"/userdetails/:username"} exact component={UserDetails} />
+        <Route path={"/vetdetails/:username"} exact component={VetDetails} />
+        <Route path={"/listvets"} exact component={ListVets} />
+        <Route path={"/SurgeryRequest"} exact component={SurgeryRequest} />
+        <Route path={"/SurgicalOperationsUser"} exact component={SurgicalOperationsUser} />
+        <Route path={"/SendSurgeryUser/:vetUsername"} exact component={SendSurgeryUser} />
+        <Route path={"/MedicationUser"} exact component={MedicationUser} />
+        <Route path={"/MedicationAdmin2"} exact component={MedicationAdmin2} />
+        <Route path={"/AddAnimal"} exact component={AddAnimal} />
+        <Route path={"/LocationDD"} exact component={ListLocations} />
+        <Route path={"/logout"} exact component={Logout} />
+        <Route path={"/logoutVet"} exact component={logoutVet} />
+        {loggedUser.isAdmin &&
+        <Route path={"/AdminPage2"} exact component={AdminPage2} />
+        }
+        <Route path={"/ServicesRequest"} exact component={ServicesRequest} />
+        <Route path={"/UserServiceResponses"} exact component={UserServiceResponses} />
+        <Route path={"/SurgicalRequest"} exact component={SurgicalRequest} />
+        <Route path={"/TableOfSurgries"} exact component={TableOfSurgries} />
+        </>
+        }
+        <Route path={"*"} exact component={NotFound}/>
+      </Switch>
+      <FooterComponent/>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
