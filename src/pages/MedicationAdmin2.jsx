@@ -97,7 +97,23 @@ function MedicationAdmin2() {
             method: 'post',
             url: 'http://127.0.0.1:8000/api/addMedication/',
             data: formField
-        }).then((response) => history2.push("/"))
+        }).then((response) => {
+            sendNotification(String(userData.animalName).split("_")[1], "medication")
+            history2.push("/")
+        })
+            .catch((err) => console.log(err))
+    }
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
             .catch((err) => console.log(err))
     }
     return (

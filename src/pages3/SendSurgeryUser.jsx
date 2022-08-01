@@ -45,6 +45,7 @@ function SendSurgeryUser() {
             url: 'http://127.0.0.1:8000/api/insertSurgry/',
             data: fielddata
         }).then((res) => {
+            sendNotification(currentVet.vetUsername, "surgery")
             history.push("/SurgicalOperationsUser")
             console.log(res.data)
 
@@ -54,7 +55,19 @@ function SendSurgeryUser() {
         )
             .catch((err) => console.log(err))
     }
-
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
+            .catch((err) => console.log(err))
+    }
     const messagereg = /^[a-zA-Z0-9_'-]/
     const changedata = (e) => {
         if (e.target.name === "message") {

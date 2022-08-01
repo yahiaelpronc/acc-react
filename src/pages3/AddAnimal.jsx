@@ -5,12 +5,13 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import './PagesStatic/AddAnimal.css';
+import { useSelector, useDispatch } from 'react-redux'
 
 import { useHistory } from "react-router-dom";
 
 function AddAnimal() {
     const history = useHistory()
-
+    const loggedUser = useSelector((state) => state.loggedUser);
     const nameRegex = /^[a-zA-Z ]{3,30}$/
     // const [changedata,set]
     const [animalname, setanimalname] = useState("")
@@ -81,20 +82,16 @@ function AddAnimal() {
         setgender(e.target.value)
         if (e.target.value === "female") {
             setDisplayFemaleState(true)
-
-
-
         } else {
             setDisplayFemaleState(false)
         }
-
     }
 
 
     const RegisterAnimal = async () => {
         let formField = new FormData()
-        formField.append("animalName", animalname + "_" + ownerusername)
-        formField.append("ownerUsername", ownerusername)
+        formField.append("animalName", animalname + "_" + loggedUser.username)
+        formField.append("ownerUsername", loggedUser.username)
         formField.append("weight", weight)
         formField.append("b_date", b_date)
         formField.append("picture", image)
@@ -151,7 +148,7 @@ function AddAnimal() {
                 <div class="detaaa">
 
                     <span className='i2em'>Owner Name</span>
-                    <input type="text" className="detaaalz" onChange={(e) => changedata(e)} name='ownerusername' value={ownerusername} required aria-describedby="emailHelp" placeholder="Enter owner username" />
+                    <input type="text" className="detaaalz" name='ownerusername' value={loggedUser.username} disabled />
                     <p className='text-danger'>{errdata.errusername}</p>
 
                 </div>
@@ -209,11 +206,6 @@ function AddAnimal() {
                         <option selected value="">Choose Animal species</option>
                         <option value="cat">Cat</option>
                         <option value="dog">Dog</option>
-                        <option value="cow">Cow</option>
-                        <option value="cow">Goat</option>
-                        <option value="cow">Sheep</option>
-                        <option value="cow">Horse</option>
-
                     </select>
 
 
@@ -225,7 +217,7 @@ function AddAnimal() {
 
             </div>
             <div class="detaaa">
-                <span className="detaillls">Female Status</span>
+                <span className="detaillls" style={{ display: displayFemaleState ? "block" : "none" }}>Female Status</span>
                 <select required value={female_state} className='detaaalz' style={{ display: displayFemaleState ? "block" : "none" }} name="female_state" onChange={(e) => setfemalestate(e.target.value)} class="form-select" aria-label="Default select example">
                     <option selected value="">Choose  female_state</option>
                     <option value="immature">immature</option>
@@ -235,6 +227,7 @@ function AddAnimal() {
                 </select>
             </div>
 
+            <p style={{ fontSize: "20px" }}>* Optional :</p>
             <div className='daaata'>
                 <div className="picturr"  >
                     <span className="detailsss">upload a profile pic.</span>

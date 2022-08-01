@@ -95,6 +95,7 @@ function TableOfSurgries() {
         })
             .then((data) => {
                 // history.push("/")
+                sendNotification(e.target.name, "surgery")
                 console.log(data.data)
                 setshowdata("none")
                 console.log("done sir")
@@ -104,7 +105,19 @@ function TableOfSurgries() {
     }
     // style={{display:showdata}}
 
-
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
+            .catch((err) => console.log(err))
+    }
     return (
         <>
             <h2 className="main-title">Scheduled Operations</h2>
@@ -196,12 +209,12 @@ function TableOfSurgries() {
                                 {sur.price === 0 ? (<>
                                     <Link to={`/NewSc/${sur.id}`}>  <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Details</button></Link>
 
-                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
+                                    <button name={sur.owner} id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
 
                                 </>) : (<>
 
-                                    <button id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
+                                    <button name={sur.owner} id={sur.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
                                 </>)}
 

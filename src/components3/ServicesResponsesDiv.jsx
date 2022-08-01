@@ -14,7 +14,6 @@ function ServicesResponsesDiv(props) {
 
 
     const declineStatus = async () => {
-
         let formdata2 = new FormData()
         formdata2.append("statusUser", "declined")
         await axios({
@@ -24,11 +23,11 @@ function ServicesResponsesDiv(props) {
         })
             .then((data) => {
                 // history.push("/")
+                sendNotification(props.locationOwner, "service")
                 console.log(data.data)
                 setshowdata("none")
                 console.log("done sir")
             }
-
             )
             .catch((err) => console.log(err))
     }
@@ -42,13 +41,26 @@ function ServicesResponsesDiv(props) {
         })
             .then((data) => {
                 // history.push("/")
+                sendNotification(props.locationOwner, "service")
                 e.target.style.display = "none"
                 console.log(data.data)
                 console.log("done sir")
             })
             .catch((err) => console.log(err))
     }
-
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
+            .catch((err) => console.log(err))
+    }
     return (<>
 
         <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>

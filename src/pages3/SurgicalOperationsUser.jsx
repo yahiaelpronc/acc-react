@@ -41,6 +41,7 @@ function SurgicalOperationsUser() {
         })
             .then((data) => {
                 // history.push("/SurgicalOperationsUser")
+                sendNotification(e.target.name, "surgery")
                 console.log(data.data)
                 setshowdata("none")
                 console.log("done sir")
@@ -60,16 +61,28 @@ function SurgicalOperationsUser() {
             data: formdata2
         })
             .then((data) => {
+                sendNotification(e.target.name, "surgery")
                 history.push("/SurgicalOperationsUser")
                 console.log(data.data)
                 e.target.style.display = "none";
-
                 console.log("done sir")
             }
             )
             .catch((err) => console.log(err))
     }
-
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
+            .catch((err) => console.log(err))
+    }
     return (<>
         <div className='bg-light p-3'>
             <div className='row p-2'>
@@ -144,21 +157,21 @@ function SurgicalOperationsUser() {
                                     </ul>
                                 </div>
                                 {opartion.statusVet === "declined" ? (<>
-                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
+                                    <button id={opartion.id} name={opartion.vetName} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
 
                                 </>) : (<>
                                     {opartion.price !== 0 &&
                                         <>
                                             {opartion.statusUser !== "accepted" && (<>
-                                                <button id={opartion.id} onClick={(e) => AcceptSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Accept</button>
+                                                <button id={opartion.id} name={opartion.vetName} onClick={(e) => AcceptSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Accept</button>
                                             </>)}
                                         </>
                                     }
 
 
 
-                                    <button id={opartion.id} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
+                                    <button id={opartion.id} name={opartion.vetName} onClick={(e) => dismissSurgery(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                     {/* <button className="btn btn-danger mt-5 ms-4 px-3 py-2">Chat</button> */}
                                 </>)}
                             </div>

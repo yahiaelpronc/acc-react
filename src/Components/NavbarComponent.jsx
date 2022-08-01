@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Myform from './Myform';
+import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
-import { changeUser, changeVet, changeLogged, changeLoggedType } from '../store/actions/action'
+import { changeUser, changeVet, changeLogged, changeLoggedType, changegotNotification } from '../store/actions/action'
 import './ComponentStatic/navbar.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios'
@@ -12,6 +13,7 @@ function NavbarComponent() {
   const loggedUser = useSelector((state) => state.loggedUser);
   const currentVet1 = useSelector((state) => state.currentVet);
   const currentPage = useSelector((state) => state.currentPage);
+  const gotNotification = useSelector((state) => state.gotNotification);
   const userType = useSelector((state) => state.type);
   const [messages1, setMessages1] = useState([])
   const [Associated, setAssociated] = useState([])
@@ -21,19 +23,35 @@ function NavbarComponent() {
   const [DidGetMessages1, setDidGetMessages1] = useState(false)
   const [GotAssociated, setGotAssociated] = useState(false)
   const [IntervalVariable1, setIntervalVariable1] = useState()
+  const [Notifications, setnotifications] = useState([])
+  const [medication_notifications, setmedication_notifications] = useState(0)
+  const [service_notifications, setservice_notifications] = useState(0)
+  const [surgery_notifications, setsurgery_notifications] = useState(0)
   const [sentMessage1, setsentMessage1] = useState("")
   const [selectedVet, setSelectedVet] = useState("")
+  const [hreff, sethreff] = useState(window.location.href)
+  const [serviceColor, setserviceColor] = useState("black")
+  const [surgeryColor, setsurgeryColor] = useState("black")
+  const [medicationColor, setmedicationColor] = useState("black")
+  const [IntervalVariable, setIntervalVariable] = useState()
   const [isOnlineColor1, setisOnlineColor1] = useState("grey")
   const [scrollNeeded1, setscrollNeeded1] = useState(true)
+  const [GotNotifications, setGotNotifications] = useState(true)
   const [selectedCity, setSelectedCity] = useState(loggedUser.governorate)
+  const history = useHistory()
   const dispatch = useDispatch()
+
   useEffect(() => {
     setAssociated([])
     setMessages1([])
+    setmedication_notifications(0)
+    setservice_notifications(0)
+    setsurgery_notifications(0)
     axios.get(`http://localhost:8000/api/getAllMessagesAssociated/${loggedUser.username}/`)
       .then((res) => {
         console.log("Messages : ", res.data)
         setMessages1(res.data)
+        getNotifications()
       }
       )
       .catch((err) => console.log(err))
@@ -139,8 +157,6 @@ function NavbarComponent() {
       setscrollNeeded1(false)
     }
   }
-
-
   function changeMessage(e) {
     setsentMessage1(e.target.value)
   }
@@ -148,6 +164,61 @@ function NavbarComponent() {
     if (e.key === 'Enter') {
       e.preventDefault()
       sendMessage(e)
+    }
+  }
+
+  function getNotifications() {
+    setnotifications([])
+    setmedication_notifications(0)
+    setservice_notifications(0)
+    setsurgery_notifications(0)
+    axios.get(`http://localhost:8000/api/countNotifications/${loggedUser.username}/`)
+      .then((res) => {
+        setnotifications(res.data)
+        console.log("Notifications ", res.data)
+        setGotNotifications(true)
+      }
+      )
+      .catch((err) => console.log(err))
+  }
+  if (Notifications.length > 0 && GotNotifications) {
+    for (let i = 0; i < Notifications.length; i++) {
+      if (Notifications[i].type === "medication") {
+        setmedication_notifications(medication_notifications + 1)
+      }
+      else if (Notifications[i].type === "service") {
+        setservice_notifications(service_notifications + 1)
+      }
+      else {
+        setsurgery_notifications(surgery_notifications + 1)
+      }
+    }
+    setGotNotifications(false)
+  }
+  function deleteNotifications(e) {
+    if (e.target.name === "surgeryNotifications") {
+      axios.delete(`http://localhost:8000/api/deleteNotifications/${loggedUser.username}/surgery/`)
+        .then((res) => {
+          getNotifications()
+        }
+        )
+        .catch((err) => console.log(err))
+    }
+    else if (e.target.name === "serviceNotifications") {
+      axios.delete(`http://localhost:8000/api/deleteNotifications/${loggedUser.username}/service/`)
+        .then((res) => {
+          getNotifications()
+        }
+        )
+        .catch((err) => console.log(err))
+    }
+    else {
+      axios.delete(`http://localhost:8000/api/deleteNotifications/${loggedUser.username}/medication/`)
+        .then((res) => {
+          getNotifications()
+        }
+        )
+        .catch((err) => console.log(err))
     }
   }
   return (<>
@@ -168,15 +239,68 @@ function NavbarComponent() {
               {userType === "user" ?
                 <>
                   <li><Link to="/emergency">Emergency</Link></li>
-                  <li><a href="#Services">Our Services</a></li>
+                  {currentPage === "" &&
+                    <li><a href="#Services">Services</a></li>
+                  }
                   {loggedUser.isAdmin &&
                     <li><Link to="/AdminPage2">Add location</Link></li>
                   }
-                  {loggedUser.isOwner &&
-                    <li><Link to="/ServicesRequest">My Location's Services </Link></li>
-                  }
                   {currentPage === "" &&
                     <>
+                      <li>
+                        {/* <Link to=""> */}
+                        <div>
+                          {(medication_notifications + service_notifications + surgery_notifications) > 0 ?
+                            <Link onClick={(e) => getNotifications(e)} className="btn dropdown-toggle" role="button" id="butNav" data-bs-toggle="dropdown">
+                              <span style={{ color: "blue" }}>Notifications</span>
+                            </Link>
+                            :
+                            <Link style={{ color: "black" }} onClick={(e) => getNotifications(e)} className="btn dropdown-toggle" role="button" id="butNav" data-bs-toggle="dropdown">
+                              <span style={{ color: "black" }}>Notifications</span>
+                            </Link>
+                          }
+                          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                            <>
+                              {service_notifications > 0 ?
+                                <>
+                                  {loggedUser.isOwner ?
+                                    <Link to="/ServicesRequest" onClick={(e) => deleteNotifications(e)} name="serviceNotifications" style={{ color: "blue" }} className="dropdown-item" id="surgery">
+                                      Services : {service_notifications}</Link>
+                                    :
+                                    <Link to="/UserServiceResponses" onClick={(e) => deleteNotifications(e)} name="serviceNotifications" style={{ color: "blue" }} className="dropdown-item" id="surgery">
+                                      Services : {service_notifications}</Link>
+                                  }
+                                </>
+                                :
+                                <>
+                                  {loggedUser.isOwner ?
+                                    <Link to="/ServicesRequest" onClick={(e) => deleteNotifications(e)} name="serviceNotifications" style={{ color: "black" }} className="dropdown-item" id="surgery">
+                                      Services : {service_notifications}</Link>
+                                    :
+                                    <Link to="/UserServiceResponses" onClick={(e) => deleteNotifications(e)} name="serviceNotifications" style={{ color: "black" }} className="dropdown-item" id="surgery">
+                                      Services : {service_notifications}</Link>
+                                  }
+                                </>
+                              }
+                              {medication_notifications > 0 ?
+                                <Link to="/MedicationUser" onClick={(e) => deleteNotifications(e)} name="medicationNotifications" style={{ color: "blue" }} className="dropdown-item" id="surgery">
+                                  Medication : {medication_notifications}</Link>
+                                :
+                                <Link to="/MedicationUser" onClick={(e) => deleteNotifications(e)} name="medicationNotifications" style={{ color: "black" }} className="dropdown-item" id="surgery">
+                                  Medication : {medication_notifications}</Link>
+                              }
+                              {surgery_notifications > 0 ?
+                                <Link to="/SurgicalOperationsUser" onClick={(e) => deleteNotifications(e)} name="surgeryNotifications" style={{ color: "blue" }} className="dropdown-item" id="surgery">
+                                  Surgeries : {surgery_notifications}</Link>
+                                :
+                                <Link to="/SurgicalOperationsUser" onClick={(e) => deleteNotifications(e)} name="surgeryNotifications" style={{ color: "black" }} className="dropdown-item" id="surgery">
+                                  Surgeries : {surgery_notifications}</Link>
+                              }
+                            </>
+                          </ul>
+                        </div>
+                        {/* </Link> */}
+                      </li>
                       <li>
                         {/* <Link to=""> */}
                         <div>
@@ -208,9 +332,42 @@ function NavbarComponent() {
                 </>
                 :
                 <>
-                  <li><a href="#Services">Our Services</a></li>
+                  <li><a href="#Services">Services</a></li>
                   {currentPage === "" &&
                     <>
+                      <li>
+                        {/* <Link to=""> */}
+                        <div>
+                          {(service_notifications + surgery_notifications) > 0 ?
+                            <Link onClick={(e) => getNotifications(e)} className="btn dropdown-toggle" role="button" id="butNav" data-bs-toggle="dropdown">
+                              <span style={{ color: "blue" }}>Notifications</span>
+                            </Link>
+                            :
+                            <Link style={{ color: "black" }} onClick={(e) => getNotifications(e)} className="btn dropdown-toggle" role="button" id="butNav" data-bs-toggle="dropdown">
+                              <span style={{ color: "black" }}>Notifications</span>
+                            </Link>
+                          }
+                          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                            <>
+                              {service_notifications > 0 ?
+                                <Link to="/UserServiceResponses" onClick={(e) => deleteNotifications(e)} name="serviceNotifications" style={{ color: "blue" }} className="dropdown-item" id="surgery">
+                                  Services : {service_notifications}</Link>
+                                :
+                                <Link to="/UserServiceResponses" style={{ color: "black" }} name="serviceNotifications" className="dropdown-item" id="surgery">
+                                  Services : {service_notifications}</Link>
+                              }
+                              {surgery_notifications > 0 ?
+                                <Link to="/TableOfSurgries" onClick={(e) => deleteNotifications(e)} name="surgeryNotifications" style={{ color: "blue" }} className="dropdown-item" id="surgery">
+                                  Surgeries : {surgery_notifications}</Link>
+                                :
+                                <Link to="/TableOfSurgries" onClick={(e) => deleteNotifications(e)} name="surgeryNotifications" style={{ color: "black" }} className="dropdown-item" id="surgery">
+                                  Surgeries : {surgery_notifications}</Link>
+                              }
+                            </>
+                          </ul>
+                        </div>
+                        {/* </Link> */}
+                      </li>
                       <li>
                         {/* <Link to=""> */}
                         <div>

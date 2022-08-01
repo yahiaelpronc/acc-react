@@ -46,6 +46,7 @@ function Home() {
   const [Users, setUsers] = useState([])
   const [Services, setServices] = useState([])
   const userType = useSelector((state) => state.type);
+  const loggedUser = useSelector((state) => state.loggedUser);
 
 
   useEffect(() => {
@@ -236,15 +237,28 @@ function Home() {
               <Link to="/listlocations">More</Link>
             </div>
           }
+          {loggedUser.isOwner &&
+            <div className="box quality">
+              <div className="img-holder"><img src={feature1} alt="" /></div>
+              <h2>Your Location's Service Requests</h2>
+              <p>View All Of Your Location's Service Requests From Here</p>
+              <Link to="/ServicesRequest">More</Link>
+            </div>
+          }
           <div className="box quality">
             <div className="img-holder"><img src={feature1} alt="" /></div>
             <h2>Your Booked Services</h2>
             <p>View All Your Booked Services From Here</p>
             <Link to="/UserServiceResponses">More</Link>
           </div>
-
           {userType === "user" ?
             <>
+              <div className="box passion">
+                <div className="img-holder"><img src={feature3} alt="" /></div>
+                <h2>Add An Animal</h2>
+                <p>Add An Animal Of Your's , And Let Us Take Care of the Rest</p>
+                <Link to="/AddAnimal">More</Link>
+              </div>
               <div className="box passion">
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>Your Scheduled Surgeries</h2>
