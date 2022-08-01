@@ -1,14 +1,15 @@
-.chat-container{
-  overflow-y:scroll;
-  height:400px
+.chat-container {
+  overflow-y: scroll;
+  height: 400px;
 }
-body{
+body {
   overflow-x: hidden;
 }
-.box3{
+.box3 {
   box-shadow: 0 0 15px 2px rgb(0 0 0 / 40%) !important;
 }
-.card1,.card2{
+.card1,
+.card2 {
   display: block;
   height: 300px;
   width: 300px;
@@ -23,9 +24,12 @@ body{
 
 .card1:hover,
 .card1:focus {
-  transform: scale(1.1);
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
 }
-
 
 .demo-content {
   padding: 15px;
@@ -49,7 +53,7 @@ body{
   width: fit-content;
   height: fit-content;
   margin: var(--cardMargin);
-  border: 1px solid #5F656C;
+  border: 1px solid #5f656c;
   border-radius: 15px;
   box-sizing: border-box;
   margin: 20px auto;
@@ -71,8 +75,8 @@ body{
 
 .card1 .content P {
   font-weight: bold;
-  font-size: 18PX;
-  color: #5B6068;
+  font-size: 18px;
+  color: #5b6068;
 }
 
 .testimonials {
@@ -94,31 +98,27 @@ body{
   margin-bottom: 30px;
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   width: 24%;
   position: fixed;
   bottom: -30px;
   right: 1px;
   display: none;
-  background-color: #5B6068;
+  background-color: #5b6068;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-
 }
 
 .padding {
-  padding: 3rem !important
+  padding: 3rem !important;
 }
-
-
 
 .card-header:first-child {
-  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
-
 
 .card-header {
   display: -webkit-box;
@@ -141,11 +141,11 @@ h4.card-title {
   font-size: 17px;
 }
 
-.card-header>*:last-child {
+.card-header > *:last-child {
   margin-right: 0;
 }
 
-.card-header>* {
+.card-header > * {
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -167,9 +167,6 @@ h4.card-title {
   color: #fff !important;
 }
 
-
-
-
 .card-title {
   font-family: Roboto, sans-serif;
   font-weight: 300;
@@ -178,7 +175,6 @@ h4.card-title {
   padding: 15px 20px;
   border-bottom: 1px solid rgba(77, 82, 89, 0.07);
 }
-
 
 .ps-container {
   position: relative;
@@ -198,8 +194,8 @@ h4.card-title {
 
 .media {
   padding: 16px 12px;
-  -webkit-transition: background-color .2s linear;
-  transition: background-color .2s linear;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
 }
 
 .media .avatar {
@@ -220,9 +216,9 @@ h4.card-title {
 }
 
 .media-chat .media-body {
-  -webkit-box-flex: initial;
-  flex: initial;
-  display: table;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
 }
 
@@ -240,14 +236,14 @@ h4.card-title {
   color: #9b9b9b;
 }
 
-.media>* {
+.media > * {
   margin: 0 8px;
 }
 
 .media-chat .media-body p.meta {
   background-color: transparent !important;
   padding: 0;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .media-meta-day {
@@ -257,14 +253,14 @@ h4.card-title {
   align-items: center;
   margin-bottom: 0;
   color: #8b95a5;
-  opacity: .8;
+  opacity: 0.8;
   font-weight: 400;
 }
 
 .media {
   padding: 16px 12px;
-  -webkit-transition: background-color .2s linear;
-  transition: background-color .2s linear;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
 }
 
 .media-meta-day::before {
@@ -273,14 +269,14 @@ h4.card-title {
 
 .media-meta-day::before,
 .media-meta-day::after {
-  content: '';
+  content: "";
   -webkit-box-flex: 1;
   flex: 1 1;
   border-top: 1px solid #ebebeb;
 }
 
 .media-meta-day::after {
-  content: '';
+  content: "";
   -webkit-box-flex: 1;
   flex: 1 1;
   border-top: 1px solid #ebebeb;
@@ -304,8 +300,8 @@ h4.card-title {
 
 .media {
   padding: 16px 12px;
-  -webkit-transition: background-color .2s linear;
-  transition: background-color .2s linear;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
 }
 
 .media-chat.media-chat-reverse .media-body p {
@@ -322,7 +318,6 @@ h4.card-title {
   background-color: #f5f6f7;
   border-radius: 3px;
 }
-
 
 .border-light {
   border-color: #f1f2f3 !important;
@@ -342,11 +337,11 @@ h4.card-title {
   background-color: #f9fafb;
 }
 
-.publisher>*:first-child {
+.publisher > *:first-child {
   margin-left: 0;
 }
 
-.publisher>* {
+.publisher > * {
   margin: 0 8px;
 }
 
@@ -374,8 +369,8 @@ textarea {
   font-size: 16px;
   cursor: pointer;
   overflow: -moz-hidden-unscrollable;
-  -webkit-transition: .2s linear;
-  transition: .2s linear;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
 }
 
 .file-group {
@@ -390,8 +385,8 @@ textarea {
   font-size: 16px;
   cursor: pointer;
   overflow: -moz-hidden-unscrollable;
-  -webkit-transition: .2s linear;
-  transition: .2s linear;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
 }
 
 .publisher a {
@@ -413,7 +408,6 @@ textarea {
 
 /* Start Animation */
 @keyframes up-and-down {
-
   0%,
   100% {
     top: 0;
@@ -425,7 +419,6 @@ textarea {
 }
 
 @keyframes bouncing {
-
   0%,
   10%,
   20%,
@@ -478,7 +471,6 @@ textarea {
 }
 
 @keyframes flashing {
-
   0%,
   40% {
     opacity: 1;
