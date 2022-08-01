@@ -96,8 +96,22 @@ function NewDetails() {
             }
             else {
                 console.log(res.data)
+                sendNotification(currentLocationDetails.owner, "service")
                 history.push("/UserServiceResponses")
             }
+        })
+            .catch((err) => console.log(err))
+    }
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
         })
             .catch((err) => console.log(err))
     }

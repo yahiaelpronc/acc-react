@@ -1,3 +1,9 @@
+export const changegotNotification = (payload) => {
+    return {
+        payload,
+        type: "CHANGE_GOT_NOTIFICATION"
+    }
+}
 export const changcurrentPage = (payload) => {
     return {
         payload,

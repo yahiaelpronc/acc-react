@@ -6,9 +6,15 @@ const INITIAL_VALUE = {
     logged:false,
     type:"",
     currentPage:"",
+    gotNotification:false,
 }
 export default function UserReducer(state=INITIAL_VALUE,action){
     switch(action.type){
+        case "CHANGE_GOT_NOTIFICATION":
+            return{
+                ...state,
+                gotNotification : action.payload
+            };
         case "CHANGE_USER":
             return{
                 ...state,

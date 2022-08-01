@@ -51,6 +51,7 @@ function SurgericalResponseDiv(props) {
             data: formdata2
         })
             .then((data) => {
+                sendNotification(props.vetName, "surgery")
                 history.push("/SurgicalOperationsUser")
                 console.log(data.data)
                 // setshowdata("none")
@@ -71,6 +72,7 @@ function SurgericalResponseDiv(props) {
             data: formdata2
         })
             .then((data) => {
+                sendNotification(props.vetName, "surgery")
                 history.push("/SurgicalOperationsUser")
                 console.log(data.data)
                 // setshowdata("none")
@@ -79,6 +81,19 @@ function SurgericalResponseDiv(props) {
                 console.log("done sir")
             }
             )
+            .catch((err) => console.log(err))
+    }
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
             .catch((err) => console.log(err))
     }
     return (<>

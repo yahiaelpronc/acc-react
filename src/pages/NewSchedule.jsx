@@ -116,8 +116,10 @@ function NewSchedule() {
             method: 'post',
             url: `http://127.0.0.1:8000/api/SurVetUpdates/${myid}/`,
             data: dataField
-        }).then((res) =>
+        }).then((res) => {
+            sendNotification(mySurgery.owner, "surgery")
             history.push("/TableOfSurgries")
+        }
         )
             .catch((err) => console.log(err))
 
@@ -140,6 +142,7 @@ function NewSchedule() {
             data: formdata2
         })
             .then((data) => {
+                sendNotification(mySurgery.owner, "surgery")
                 history.push("/TableOfSurgries")
                 console.log(data.data)
                 console.log("done sir")
@@ -176,7 +179,19 @@ function NewSchedule() {
     }
 
 
-
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
+            .catch((err) => console.log(err))
+    }
 
     return (
         <>

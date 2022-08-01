@@ -21,6 +21,7 @@ function ServicesRequestsDiv(props) {
         })
             .then((data) => {
                 // history.push("/")
+                sendNotification(props.animalOwner, "service")
                 e.target.style.display = "none"
                 console.log(data.data)
                 console.log("done sir")
@@ -38,6 +39,7 @@ function ServicesRequestsDiv(props) {
             data: formdata2
         })
             .then((data) => {
+                sendNotification(props.animalOwner, "service")
                 // history.push("/")
                 console.log(data.data)
                 setshowdata("none")
@@ -48,7 +50,19 @@ function ServicesRequestsDiv(props) {
             .catch((err) => console.log(err))
     }
 
-
+    const sendNotification = async (username, type) => {
+        let formField = new FormData()
+        formField.append("receiver", username)
+        formField.append("type", type)
+        await axios({
+            method: 'POST',
+            url: 'http://localhost:8000/api/insertNotifications/',
+            data: formField
+        }).then((res) => {
+            console.log("Notification Sent")
+        })
+            .catch((err) => console.log(err))
+    }
     return (<>
         {props.statusOwner !== "declined" && (<>
 
