@@ -92,7 +92,7 @@ function ServicesRequestsDiv(props) {
     console.log("our date Year today",yearDiff)
     const [DateDiff,setDateDiff]=useState()
     return (<>
-        {props.statusOwner !== "declined" && (<>
+        {(props.statusOwner !== "declined" && (yearDiff > 0 || (MonthDiff > 0 && yearDiff == 0 ) || (yearDiff == 0 && MonthDiff == 0 && dayDiff > 0) )  )&& (<>
 
             <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
 
@@ -159,8 +159,6 @@ function ServicesRequestsDiv(props) {
                                                 <input placeholder="Reason" type="text" className="inputs" onChange={(e)=>setReason(e.target.value)} value={reason} name='reason' required />
                                                 <div  className="d-flex justify-content-end"><button onClick={(e)=>declineStatus(e)}  className="btn btn-danger">Submit</button></div>
 
-                                                
-
                             </li>
 
                         </ul>
@@ -171,12 +169,10 @@ function ServicesRequestsDiv(props) {
                         }
 
 
-<button onClick={(e) => submitDecline(e)} disabled={dayDiff <= 0 && MonthDiff <= 0 && yearDiff <=0} className='btn btn-danger mx-2'>decline</button>
+                        <button onClick={(e) => submitDecline(e)} disabled={dayDiff <= 1 && MonthDiff <= 0 && yearDiff <=0} className='btn btn-danger mx-2'>decline</button>
 
 
-                    {/* {(dayDiff > 0 | MonthDiff > 0 | yearDiff > 0 ) && (
 
-                    )} */}
                     </div>
                 </div>
             </div>
