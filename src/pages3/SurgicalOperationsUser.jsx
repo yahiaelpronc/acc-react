@@ -166,7 +166,7 @@ function SurgicalOperationsUser() {
                             <div className="col-6">
                                 <div className=" cc card">
                                     <ul className="list-group list-group-flush">
-                                        {opartion.statusVet !== "declined" && (<>
+                                        {opartion.price !== 0 && (<>
                                             <li className="list-group-item">
                                                 <label className="labels" htmlFor="span22">price : </label>
                                                 <span className="span22">{opartion.price}$</span>
@@ -195,7 +195,7 @@ function SurgicalOperationsUser() {
                                                 <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
                                                 <input id="reasonInput" placeholder="Reason" type="text" className="inputs" onChange={(e)=>setmyReason(e)}  required />
                                                 <p id={`errdeclinePara${opartion.id}`} className='text-danger'></p>
-                                                <div  className="d-flex justify-content-end"><button id={opartion.id} name={opartion.vetName} onClick={(e)=>dismissSurgery(e)}  className="btn btn-danger">Submit</button></div>
+                                                <div  className="d-flex justify-content-end"><button id={opartion.id} name={opartion.vetName} onClick={(e)=>dismissSurgery(e)}  className="btn btn-danger">Confirm</button></div>
                                         </li>
                                         {/* <li className="list-group-item" style={{display:showreason}}>
                                                 <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>

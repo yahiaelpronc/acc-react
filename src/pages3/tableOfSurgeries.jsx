@@ -320,7 +320,7 @@ function TableOfSurgries() {
                                                 <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
                                                 <input id="reasonInput" placeholder="Reason" type="text" className="inputs" onChange={(e)=>setmyReason(e)}  required />
                                                 <p id={`errdeclinePara${sur.id}`} className='text-danger'></p>
-                                                <div  className="d-flex justify-content-end"><button id={sur.id} name={sur.vetName} onClick={(e)=>dismissSurgery(e)}  className="btn btn-danger">Submit</button></div>
+                                                <div  className="d-flex justify-content-end"><button id={sur.id} name={sur.vetName} onClick={(e)=>dismissSurgery(e)}  className="btn btn-danger">Confirm</button></div>
                                         </li>
                                         </>)}
 

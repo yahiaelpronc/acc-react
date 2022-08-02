@@ -172,7 +172,7 @@ function ServicesResponsesDiv(props) {
                         <li className="list-group-item" style={{display:showreason}}>
                                                 <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
                                                 <input placeholder="Reason" type="text" className="inputs" onChange={(e)=>setReason(e.target.value)} value={reason} name='reason' required />
-                                                <div  className="d-flex justify-content-end"><button onClick={(e)=>declineStatus(e)} className="btn btn-danger">Submit</button></div>
+                                                <div  className="d-flex justify-content-end"><button onClick={(e)=>declineStatus(e)} className="btn btn-danger">Confirm</button></div>
 
                                                 
 
