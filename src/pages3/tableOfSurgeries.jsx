@@ -100,6 +100,8 @@ function TableOfSurgries() {
             .then((data) => {
                 if(data.data === "you cant decline before 24 hours"){
                     setDeclineErr("you cant decline before 24 hours")
+                    document.getElementById(`errdeclinePara${e.target.id}`).innerText="you cant decline before 24 hours"
+
                 }else{
                     sendNotification(e.target.name, "surgery")
                     console.log(data.data)
@@ -129,8 +131,15 @@ function TableOfSurgries() {
             .catch((err) => console.log(err))
     }
     
+
     const submitDecline =(e)=>{
-        setshowreason("block")
+        // setshowreason("block")
+        // if(showreason === "none"){
+        //     setshowreason("block")
+        // }else{
+        //     setshowreason("none")
+        // }
+        document.getElementById(`reason${e.target.id}`).style.display="block"
 
     }
 
@@ -178,7 +187,9 @@ function TableOfSurgries() {
     // console.log("test1111 is :",Mydiff)
 
 
-
+    const setmyReason=(e)=>{
+        setReason(e.target.value)
+    }
 
 
     return (
@@ -300,16 +311,12 @@ function TableOfSurgries() {
 
 
 
-                                            <li className="list-group-item" style={{display:showreason}}>
+                                            <li className="list-group-item" id={`reason${sur.id}`} style={{display:"none"}}>
                                                 <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
-                                                <input placeholder="Reason" type="text" className="inputs" onChange={(e)=>setReason(e.target.value)} value={reason} name='reason' required />
-                                                <p className="span22 my-2 p-1 text-danger">{declineErr}</p>
-
-                                                <div  className="d-flex justify-content-end"><button onClick={(e)=>dismissSurgery(e)} id={sur.id} name={sur.owner} className="btn btn-danger">Submit</button></div>
-
-                                                
-
-                                            </li>
+                                                <input id="reasonInput" placeholder="Reason" type="text" className="inputs" onChange={(e)=>setmyReason(e)}  required />
+                                                <p id={`errdeclinePara${sur.id}`} className='text-danger'></p>
+                                                <div  className="d-flex justify-content-end"><button id={sur.id} name={sur.vetName} onClick={(e)=>dismissSurgery(e)}  className="btn btn-danger">Submit</button></div>
+                                        </li>
                                         </>)}
 
 

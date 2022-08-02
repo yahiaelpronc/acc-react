@@ -179,10 +179,11 @@ function ServicesResponsesDiv(props) {
                     {props.statusUser !== "accepted" &&
                         <button onClick={(e) => acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button>
                         }
-                    {(dayDiff > 0 | MonthDiff > 0 | yearDiff > 0 ) && (
-                        <button onClick={(e) => submitDecline(e)} className='btn btn-danger mx-2'>decline</button>
+                        <button onClick={(e) => submitDecline(e)} disabled={dayDiff <= 0 && MonthDiff <= 0 && yearDiff <=0} className='btn btn-danger mx-2'>decline</button>
 
-                    )}
+                    {/* {(dayDiff > 0 | MonthDiff > 0 | yearDiff > 0 ) && (
+
+                    )} */}
                   
                 </div>
             </div>
