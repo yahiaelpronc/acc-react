@@ -32,6 +32,8 @@ function SurgicalOperationsUser() {
             .then((res) => setOperations(res.data))
             .catch((Err) => console.log(Err))
     }, [])
+    const [dateleft, setdateleft] = useState(false)
+
     const [Declineerr,setDclineErr]=useState()
     const dismissSurgery = async (e) => {
         let id = e.target.id
@@ -47,7 +49,8 @@ function SurgicalOperationsUser() {
                 if(data.data === "you cant decline before 24 hours"){
                     setDclineErr("you cant decline before 24 hours")
                     document.getElementById(`errdeclinePara${e.target.id}`).innerText="you cant decline before 24 hours"
-                }else{
+                }
+                else{
                     sendNotification(e.target.name, "surgery")
                     console.log(data.data)
                     setshowdata("none")
@@ -125,7 +128,7 @@ function SurgicalOperationsUser() {
 
             {Opartions.map(opartion => {
                 return (<>
-                    {opartion.statusUser !== "declined" && (
+                    {opartion.statusUser !== "declined"  && (
 
                         <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
 

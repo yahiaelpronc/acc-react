@@ -85,6 +85,7 @@ function TableOfSurgries() {
 
     }
     const [showdata, setshowdata] = useState("flex")
+    const [dateleft, setdateleft] = useState(false)
 
     const dismissSurgery = async (e) => {
         let id = e.target.id
@@ -102,7 +103,11 @@ function TableOfSurgries() {
                     setDeclineErr("you cant decline before 24 hours")
                     document.getElementById(`errdeclinePara${e.target.id}`).innerText="you cant decline before 24 hours"
 
-                }else{
+                }else if(data.data === "date passed"){
+                    setdateleft(true)
+
+                }
+                else{
                     sendNotification(e.target.name, "surgery")
                     console.log(data.data)
                     setshowdata("none")
@@ -216,7 +221,7 @@ function TableOfSurgries() {
 
 
                 return (<>
-                    {sur.statusVet !== "declined" && (
+                    {(sur.statusVet !== "declined" && dateleft !== true) && (
                         <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
 
                             <div className="col-12 p-3 fs-4 text-danger">{sur.message}</div>
