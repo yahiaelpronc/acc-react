@@ -9,6 +9,8 @@ import '../pages/PagesStatic/NewSchedule.css'
 
 function ServicesResponsesDiv(props) {
     const [showdata, setshowdata] = useState("flex")
+    const [showreason, setshowreason] = useState("none")
+    const [reason, setReason] = useState("")
 
 
 
@@ -16,6 +18,7 @@ function ServicesResponsesDiv(props) {
     const declineStatus = async () => {
         let formdata2 = new FormData()
         formdata2.append("statusUser", "declined")
+        formdata2.append("reasonUser", reason)
         await axios({
             method: 'POST',
             url: `http://localhost:8000/api/updateSrviceStatusUser/${props.id}/`,
@@ -61,6 +64,39 @@ function ServicesResponsesDiv(props) {
         })
             .catch((err) => console.log(err))
     }
+
+    const submitDecline =(e)=>{
+        setshowreason("block")
+
+    }
+
+  
+
+    const dateday=props.date.split("-")[2]
+    const dateMonth=props.date.split("-")[1]
+    const dateYear=props.date.split("-")[0]
+    
+    
+    const mytoday=new Date()
+
+    const todayYear=mytoday.getFullYear()
+    const todayMonth=mytoday.getMonth()+1
+    const todayDay=mytoday.getDay()
+
+    const dayDiff=dateday-todayDay
+    const MonthDiff=dateMonth-todayMonth
+    const yearDiff=dateYear-todayYear
+    console.log("our date today",dayDiff)
+    console.log("our date month today",MonthDiff)
+    console.log("our date Year today",yearDiff)
+    const [DateDiff,setDateDiff]=useState()
+
+    // if(dayDiff > 0 | MonthDiff > 0 | yearDiff > 0){
+    //     console.log("yessssssssssssssssssssssss")
+    //     setDateDiff(true)
+    // }
+
+
     return (<>
 
         <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
@@ -100,9 +136,22 @@ function ServicesResponsesDiv(props) {
                             <label className="labels" htmlFor="">Owner status  :</label>
                             <span className="span22">{props.statusOwner}</span>
                         </li>
+                        {props.statusOwner === "declined" &&(<>
+                                                <li className="list-group-item">
+                                                    <label className="labels" htmlFor=""> Owner Reason :</label>
+                                                    <span className="span22">{props.reasonVet} </span>
+                                                </li>
+
+
+                        </>)}
                         <li className="list-group-item">
                             <label className="labels" htmlFor=""> Date:</label>
                             <span className="span22">{props.date}</span>
+
+                        </li>
+                        <li className="list-group-item">
+                    
+                            <span className="span22  text-danger">note* : you cant decline before 24 hours</span>
 
                         </li>
                         <li className="list-group-item">
@@ -115,15 +164,26 @@ function ServicesResponsesDiv(props) {
                             <span className="span22">{props.price}$</span>
 
                         </li>
+                        <li className="list-group-item" style={{display:showreason}}>
+                                                <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
+                                                <input placeholder="Reason" type="text" className="inputs" onChange={(e)=>setReason(e.target.value)} value={reason} name='reason' required />
+                                                <div  className="d-flex justify-content-end"><button onClick={(e)=>declineStatus(e)} className="btn btn-danger">Submit</button></div>
+
+                                                
+
+                        </li>
 
                     </ul>
                 </div>
                 <div className='my-4 p-2'>
                     {props.statusUser !== "accepted" &&
                         <button onClick={(e) => acceptStatus(e)} className='btn btn-danger mx-2'>Accept</button>
-                    }
-                    <button onClick={(e) => declineStatus(e)} className='btn btn-danger mx-2'>decline</button>
-                    {/* <button className='btn btn-danger mx-2'>chat</button> */}
+                        }
+                    {(dayDiff > 0 | MonthDiff > 0 | yearDiff > 0 ) && (
+                        <button onClick={(e) => submitDecline(e)} className='btn btn-danger mx-2'>decline</button>
+
+                    )}
+                  
                 </div>
             </div>
         </div>

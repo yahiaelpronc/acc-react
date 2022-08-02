@@ -47,7 +47,6 @@ function Home() {
   const [Services, setServices] = useState([])
   const userType = useSelector((state) => state.type);
   const loggedUser = useSelector((state) => state.loggedUser);
-  const logged = useSelector((state) => state.logged);
 
 
   useEffect(() => {
@@ -235,11 +234,7 @@ function Home() {
               <div className="img-holder"><img src={feature3} alt="" /></div>
               <h2>List Of All Animal Care Locations</h2>
               <p>Animal Care Locations Trusted By This Site</p>
-              {logged ?
-                <Link to="/listlocations">More</Link>
-                :
-                <Link to="/login">Login To Start</Link>
-              }
+              <Link to="/listlocations">More</Link>
             </div>
           }
           {loggedUser.isOwner &&
@@ -247,22 +242,14 @@ function Home() {
               <div className="img-holder"><img src={feature1} alt="" /></div>
               <h2>Your Location's Service Requests</h2>
               <p>View All Of Your Location's Service Requests From Here</p>
-              {logged ?
-                <Link to="/ServicesRequest">More</Link>
-                :
-                <Link to="/login">Login To Start</Link>
-              }
+              <Link to="/ServicesRequest">More</Link>
             </div>
           }
           <div className="box quality">
             <div className="img-holder"><img src={feature1} alt="" /></div>
             <h2>Your Booked Services</h2>
             <p>View All Your Booked Services From Here</p>
-            {logged ?
-              <Link to="/UserServiceResponses">More</Link>
-              :
-              <Link to="/login">Login To Start</Link>
-            }
+            <Link to="/UserServiceResponses">More</Link>
           </div>
           {userType === "user" ?
             <>
@@ -270,31 +257,19 @@ function Home() {
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>Add An Animal</h2>
                 <p>Add An Animal Of Your's , And Let Us Take Care of the Rest</p>
-                {logged ?
-                  <Link to="/AddAnimal">More</Link>
-                  :
-                  <Link to="/login">Login To Start</Link>
-                }
+                <Link to="/AddAnimal">More</Link>
               </div>
               <div className="box passion">
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>Your Scheduled Surgeries</h2>
                 <p>View All Your Scheduled Surgeries From Here</p>
-                {logged ?
-                  <Link to="/SurgicalOperationsUser">More</Link>
-                  :
-                  <Link to="/login">Login To Start</Link>
-                }
+                <Link to="/SurgicalOperationsUser">More</Link>
               </div>
               <div className="box passion">
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>Your Animals' Medications</h2>
                 <p>View All Your Prescribed Medications From Here</p>
-                {logged ?
-                  <Link to="/MedicationUser">More</Link>
-                  :
-                  <Link to="/login">Login To Start</Link>
-                }
+                <Link to="/MedicationUser">More</Link>
               </div>
             </>
             :
@@ -303,21 +278,13 @@ function Home() {
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>List Of All Animal Care Locations</h2>
                 <p>Animal Care Locations Trusted By This Site</p>
-                {logged ?
-                  <Link to="/listlocations">More</Link>
-                  :
-                  <Link to="/login">Login To Start</Link>
-                }
+                <Link to="/listlocations">More</Link>
               </div>
               <div className="box passion">
                 <div className="img-holder"><img src={feature3} alt="" /></div>
                 <h2>Your Scheduled Surgeries</h2>
                 <p>View All Your Scheduled Surgeries From Here</p>
-                {logged ?
-                  <Link to="/TableOfSurgries">More</Link>
-                  :
-                  <Link to="/login">Login To Start</Link>
-                }
+                <Link to="/TableOfSurgries">More</Link>
               </div>
             </>
           }

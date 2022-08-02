@@ -21,6 +21,9 @@ function ServicesRequest(){
     },[])
 
 
+    
+
+
 
     return(<>
 
@@ -39,7 +42,7 @@ function ServicesRequest(){
 
                 {Requests.map(req=>{
                     return(<>
-                                 <ServicesRequestsDiv AnimalType={req.AnimalType} animalOwner={req.animalOwner} serviceName={req.serviceName} price={req.price}
+                                 <ServicesRequestsDiv reasonVet={req.reasonVet} reasonUser={req.reasonUser} AnimalType={req.AnimalType} animalOwner={req.animalOwner} serviceName={req.serviceName} price={req.price}
                                     date={req.date} time={req.time} statusOwner={req.statusOwner} statusUser={req.statusUser} timePeriod={req.timePeriod} id={req.id} />
 
                             </>)
