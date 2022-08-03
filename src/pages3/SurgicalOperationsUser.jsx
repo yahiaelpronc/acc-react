@@ -34,7 +34,7 @@ function SurgicalOperationsUser() {
     }, [])
     const [dateleft, setdateleft] = useState(false)
 
-    const [Declineerr,setDclineErr]=useState()
+    const [Declineerr, setDclineErr] = useState()
     const dismissSurgery = async (e) => {
         let id = e.target.id
         let formdata2 = new FormData()
@@ -46,11 +46,11 @@ function SurgicalOperationsUser() {
             data: formdata2
         })
             .then((data) => {
-                if(data.data === "you cant decline before 24 hours"){
+                if (data.data === "you cant decline before 24 hours") {
                     setDclineErr("you cant decline before 24 hours")
-                    document.getElementById(`errdeclinePara${e.target.id}`).innerText="you cant decline before 24 hours"
+                    document.getElementById(`errdeclinePara${e.target.id}`).innerText = "you cant decline before 24 hours"
                 }
-                else{
+                else {
                     sendNotification(e.target.name, "surgery")
                     console.log(data.data)
                     setshowdata("none")
@@ -98,19 +98,19 @@ function SurgicalOperationsUser() {
         })
             .catch((err) => console.log(err))
     }
-    const submitDecline =(e)=>{
+    const submitDecline = (e) => {
         // setshowreason("block")
         // if(showreason === "none"){
         //     setshowreason("block")
         // }else{
         //     setshowreason("none")
         // }
-        document.getElementById(`reason${e.target.id}`).style.display="block"
+        document.getElementById(`reason${e.target.id}`).style.display = "block"
 
     }
 
 
-    const setmyReason=(e)=>{
+    const setmyReason = (e) => {
         setReason(e.target.value)
     }
     return (<>
@@ -128,7 +128,7 @@ function SurgicalOperationsUser() {
 
             {Opartions.map(opartion => {
                 return (<>
-                    {opartion.statusUser !== "declined"  && (
+                    {opartion.statusUser !== "declined" && (
 
                         <div className="container-fluid row p-3 border border-secondary my-5 mx-2 rounded" style={{ display: showdata }}>
 
@@ -150,7 +150,7 @@ function SurgicalOperationsUser() {
                                             <label className="labels" htmlFor=""> vet Name:</label>
                                             <span className="span22">{opartion.vetName} </span>
                                         </li>
-                                        {opartion.statusVet !== "declined" && (<>
+                                        {opartion.price !== 0 && (<>
                                             <li className="list-group-item">
                                                 <label className="labels" htmlFor=""> operation Name:</label>
                                                 <span className="span22">{opartion.operationName}</span>
@@ -176,6 +176,9 @@ function SurgicalOperationsUser() {
                                                 <label className="labels" htmlFor="">Date :</label>
                                                 <span className="span22">{opartion.date}</span>
                                             </li>
+                                            <li className="list-group-item">
+                                                <span className="span22 text-danger">Note* : you can't decline before 24 hours </span>
+                                            </li>
 
                                         </>)}
 
@@ -183,19 +186,20 @@ function SurgicalOperationsUser() {
                                             <label className="labels" htmlFor="">Vet's Response :</label>
                                             <span className="span22">{opartion.statusVet}</span>
                                         </li>
-                                        {opartion.statusVet === "declined" && (<>
-                                            <li className="list-group-item">
-                                            <label className="labels" htmlFor="">Vet's Reason :</label>
-                                            <span className="span22">{opartion.reasonVet}</span>
-                                        </li>
-                                        </>)}
-        
-                                        
-                                        <li className="list-group-item" id={`reason${opartion.id}`} style={{display:"none"}}>
-                                                <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
-                                                <input id="reasonInput" placeholder="Reason" type="text" className="inputs" onChange={(e)=>setmyReason(e)}  required />
-                                                <p id={`errdeclinePara${opartion.id}`} className='text-danger'></p>
-                                                <div  className="d-flex justify-content-end"><button id={opartion.id} name={opartion.vetName} onClick={(e)=>dismissSurgery(e)}  className="btn btn-danger">Confirm</button></div>
+                                        {(opartion.statusVet === "declined" && opartion.reasonVet !== "") &&
+                                            (<>
+                                                <li className="list-group-item">
+                                                    <label className="labels" htmlFor="">Vet's Reason :</label>
+                                                    <span className="span22">{opartion.reasonVet}</span>
+                                                </li>
+                                            </>)}
+
+
+                                        <li className="list-group-item" id={`reason${opartion.id}`} style={{ display: "none" }}>
+                                            <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
+                                            <input id="reasonInput" placeholder="Reason" type="text" className="inputs" onChange={(e) => setmyReason(e)} required />
+                                            <p id={`errdeclinePara${opartion.id}`} className='text-danger'></p>
+                                            <div className="d-flex justify-content-end"><button id={opartion.id} name={opartion.vetName} onClick={(e) => dismissSurgery(e)} className="btn btn-danger">Confirm</button></div>
                                         </li>
                                         {/* <li className="list-group-item" style={{display:showreason}}>
                                                 <label className="sp text-danger" htmlFor="">Reason Of Decline:</label>
@@ -209,8 +213,8 @@ function SurgicalOperationsUser() {
                                     </ul>
                                 </div>
                                 {opartion.statusVet === "declined" ? (<>
-                                    <button id={opartion.id}  onClick={(e) => submitDecline(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
-                          
+                                    <button id={opartion.id} onClick={(e) => submitDecline(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
+
 
                                 </>) : (<>
                                     {opartion.price !== 0 &&
@@ -220,7 +224,7 @@ function SurgicalOperationsUser() {
                                             </>)}
                                         </>
                                     }
-                                    <button id={opartion.id}  onClick={(e) => submitDecline(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
+                                    <button id={opartion.id} onClick={(e) => submitDecline(e)} className="btn btn-danger mt-5 ms-5 p-2">Decline & Dismiss</button>
                                 </>)}
                             </div>
                         </div>
