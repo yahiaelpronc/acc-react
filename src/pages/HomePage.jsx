@@ -255,7 +255,7 @@ function Home() {
             <>
               <div className="box passion">
                 <div className="img-holder"><img src={feature3} alt="" /></div>
-                <h2>Add An Animal</h2>
+                <h2>Add An Animal Of Your's</h2>
                 <p>Add An Animal Of Your's , And Let Us Take Care of the Rest</p>
                 <Link to="/AddAnimal">More</Link>
               </div>
